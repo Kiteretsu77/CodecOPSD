@@ -2,7 +2,17 @@
   <img width="100%" src="assets/readme/codecopsd_header.gif" alt="CodecOPSD">
 </div>
 
-# On-Policy Codec Distillation for Efficient All-in-One Video Generation
+<h1 align="center">CodecOPSD</h1>
+
+<h3 align="center">On-Policy Codec Distillation<br>for Efficient All-in-One Video Generation</h3>
+
+<p align="center">
+<a href="https://kiteretsu77.github.io/BoyangWang/">Boyang Wang</a>,
+<a href="https://kmatzen.com/">Kevin Blackburn-Matzen</a>,
+<a href="https://research.adobe.com/person/oindrila-saha/">Oindrila Saha</a>,
+<a href="https://mgadelha.me/">Matheus Gadelha</a>,
+<a href="https://www.cs.virginia.edu/~zc3bp/">Zezhou Cheng</a>
+</p>
 
 <div align="center">
 
@@ -15,52 +25,49 @@
 
 Sequence-wise generators (MiniMax-H3 Ref2VA, MiniMax-H3-Image, Qwen-Image 2.1, FLUX 3 Image Klein) append every
 reference picture or video to the input token sequence, so the token cost grows sharply as more references are added.
-
 We propose **CodecOPSD** to prune the redundant condition tokens with a video codec, and we train a small LoRA on the
 kept tokens via on-policy self-distillation.
 
 On average, CodecOPSD drops about 70% of the condition tokens on MiniMax-H3 Ref2VA with almost unchanged quality and
 1.87x faster denoising, and up to 8.4x faster with more conditions (three reference videos, higher-resolution
-references, more frames, and a higher drop rate).
+references, more frames, and a higher drop rate). On MiniMax-H3-Image, it drops about 65% of the reference tokens and
+makes denoising about 2x faster. More cases are on the [project page](https://kiteretsu77.github.io/CodecOPSD_website/).
 
-On MiniMax-H3-Image, it drops about 65% of the reference tokens and makes denoising about 2x faster.
-
-🎬 [Visualization](#visualization) **|** 🖼️ [Gallery](#gallery) **|** 🔥 [News & TODO](#news) **|** 🔧 [Installation](#installation) **|**
-⚡ [Quick Start](#quick_start) **|** 🚀 [Inference](#inference) **|** 🧩 [Codec Pruning](#codec_pruning) **|**
-🏋️ [Training](#training) **|** 📜 [License and Citation](#license)
+🎬 [Visualization](#visualization) **|** 🔥 [News](#news) **|** 🔧 [Installation](#installation) **|** ⚡ [Quickstart](#quick_start) **|** 🚀 [Inference](#inference) **|** 🧩 [Codec Pruning](#codec_pruning) **|** 🏋️ [Train](#training) **|** 📜 [License](#license)
 
 ⭐ **If you like CodecOPSD, please help ⭐⭐star⭐⭐ this repo. Thanks!** 🤗
 
 ## <a name="visualization"></a> Visualization 🎬
 
-Teacher = the released model with every condition token. **+ CodecOPSD** = the same model with codec pruning and the
-CodecOPSD LoRA. Same references, prompt, seed, and sampler. The times and speed-ups are for denoising only, not end to
-end. More cases, with the kept tokens of every reference: [project page](https://kiteretsu77.github.io/CodecOPSD_website/).
+**Teacher** = the released model, every condition token.<br>
+**+ CodecOPSD** (student) = the same model with codec pruning and the CodecOPSD LoRA.<br>
+Everything else is the same; only the number of condition tokens differs. Times are denoising times.
 
 ### MiniMax-H3 Ref2VA (reference-to-video generation)
 
-**Silver wolf in a dusk desert**: 2 pictures + 3 videos -> 1 video (Pika H3 Flex, distilled 6 steps), 768 x 1344, 243
-frames, 1x B200. Extreme setting: 90% priority-based pruning on the effect, motion, and camera videos, also applied in
-the VLM encoder.
+**Silver wolf in a dusk desert**: 2 pictures + 3 videos → 768p, 243 frames, Pika H3 Flex 6 steps, B200.<br>
+<sub>Extreme setting: 90% of the three videos' tokens pruned, in the DiT and in the VLM.</sub>
 
 <img src="assets/readme/vis/wolf/refs.jpg" width="100%">
 
-| Teacher (all tokens)<br>denoising 1013 s | **+ CodecOPSD**<br>denoising 121 s (**8.4x faster**)<br>condition tokens 232,064 -> 24,153 (-90%)<br>VLM reference tokens 47,670 -> 10,996 (-77%) |
+| Teacher (all tokens)<br><sub>1013 s</sub> | **+ CodecOPSD**: **8.4x faster**<br><sub>121 s · tokens 232k → 24k (−90%) · VLM 47.7k → 11.0k (−77%)</sub> |
 |:---:|:---:|
 | <img src="assets/readme/vis/wolf/out_0.webp" width="100%"> | <img src="assets/readme/vis/wolf/out_1.webp" width="100%"> |
 
-**Anime duel in two shots**: 3 pictures + 3 videos -> 1 video (Pika H3 Flex, distilled 6 steps), 768 x 1344, 124
-frames, 1x H200. Extreme setting: 90% priority-based pruning on the two effect videos, also applied in the VLM encoder.
+**Anime duel in two shots**: 3 pictures + 3 videos → 768p, 124 frames, Pika H3 Flex 6 steps, H200.<br>
+<sub>Extreme setting: 90% of the two effect videos' tokens pruned, in the DiT and in the VLM.</sub>
 
 <img src="assets/readme/vis/anime_duel/refs.jpg" width="100%">
 
-| Teacher (all tokens)<br>denoising 731 s | **+ CodecOPSD**<br>denoising 108 s (**6.8x faster**)<br>condition tokens 133,392 -> 22,329 (-83%) |
+| Teacher (all tokens)<br><sub>731 s</sub> | **+ CodecOPSD**: **6.8x faster**<br><sub>108 s · tokens 133k → 22k (−83%)</sub> |
 |:---:|:---:|
 | <img src="assets/readme/vis/anime_duel/out_0.webp" width="100%"> | <img src="assets/readme/vis/anime_duel/out_1.webp" width="100%"> |
 
 <a name="gallery"></a>**H3 Ref2VA Gallery** (click to open it)
 
 <a href="https://kiteretsu77.github.io/CodecOPSD_website/#gallery"><img src="assets/readme/gallery/gallery_ref2va.jpg" width="100%"></a>
+
+<br>
 
 ### MiniMax-H3-Image (reference-to-image generation)
 
@@ -70,7 +77,7 @@ logo printed on the mug.
 
 <img src="assets/readme/vis/desk/refs.jpg" width="80%">
 
-| Teacher (all tokens)<br>denoising 29.7 s | **+ CodecOPSD**<br>denoising 9.5 s (**3.1x faster**)<br>reference tokens 17,280 -> 4,006 (-77%) |
+| Teacher (all tokens)<br><sub>29.7 s</sub> | **+ CodecOPSD**: **3.1x faster**<br><sub>9.5 s · tokens 17.3k → 4.0k (−77%)</sub> |
 |:---:|:---:|
 | <img src="assets/readme/vis/desk/out_0.jpg" width="100%"> | <img src="assets/readme/vis/desk/out_1.jpg" width="100%"> |
 
@@ -78,13 +85,15 @@ logo printed on the mug.
 
 <img src="assets/readme/vis/group16/refs.jpg" width="100%">
 
-| Teacher (all tokens)<br>denoising 302.9 s | **+ CodecOPSD**<br>denoising 39.6 s (**7.6x faster**)<br>reference tokens 98,624 -> 17,108 (-83%) |
+| Teacher (all tokens)<br><sub>302.9 s</sub> | **+ CodecOPSD**: **7.6x faster**<br><sub>39.6 s · tokens 98.6k → 17.1k (−83%)</sub> |
 |:---:|:---:|
 | <img src="assets/readme/vis/group16/out_0.jpg" width="100%"> | <img src="assets/readme/vis/group16/out_1.jpg" width="100%"> |
 
 <a name="gallery_image"></a>**H3-Image Gallery** (click to open it)
 
 <a href="https://kiteretsu77.github.io/CodecOPSD_website/#gallery-h3img"><img src="assets/readme/gallery/gallery_image.jpg" width="100%"></a>
+
+<br>
 
 ### 16 conditions, mixed together
 
@@ -101,7 +110,7 @@ on its own rollouts from the teacher, which sees every condition token:
 <img src="assets/readme/pipeline.jpg" width="75%">
 </p>
 
-## <a name="news"></a> News & TODO 🔥
+## <a name="news"></a> News 🔥
 
 - **2026-11**: Code release: inference and training of CodecOPSD for MiniMax-H3 Ref2VA and MiniMax-H3-Image, one-line
   inference, and Gradio demos.
