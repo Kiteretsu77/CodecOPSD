@@ -1,0 +1,27 @@
+CodecOPSD License
+
+Copyright (c) 2026 The CodecOPSD Authors. All rights reserved.
+
+This license covers the source code of this repository (the "Software"), except the third-party parts listed in
+section 3.
+
+1. Research use. Any person or organization, companies included, may use, copy, modify, merge and distribute the
+   Software free of charge for research purposes, including publishing papers, benchmarks and other research results
+   that use or build on it, provided that this copyright notice and this license are kept in every copy or
+   substantial portion of the Software.
+
+2. Commercial use. Any commercial use of the Software or of works derived from it, such as use in or for a product
+   or a service, or any other use meant for commercial advantage or monetary compensation, needs a separate license
+   from the authors. Contact: TODO (email for commercial licensing).
+
+3. Third-party parts keep their own licenses:
+   - src/codecopsd/codec_gazer/csrc/ffmpeg-5.1.patch modifies FFmpeg 5.1; FFmpeg and the patched FFmpeg are under the
+     GNU Lesser General Public License 2.1 or later.
+   - The models and weights this code runs (MiniMax-H3, MiniMax-H3-Image and the weights built on them) are not
+     covered by this license; they keep the licenses of their releases.
+
+4. No warranty. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+   LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+   SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+   CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+   IN THE SOFTWARE.

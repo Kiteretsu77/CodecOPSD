@@ -1,0 +1,28 @@
+# On-Policy Codec Distillation for Efficient All-in-One Video Generation (CodecOPSD).
+#
+# Authors: Boyang Wang, Kevin Blackburn-Matzen, Oindrila Saha, Matheus Gadelha, Zezhou Cheng
+#
+# Copyright (c) 2026 The CodecOPSD Authors. All rights reserved.
+
+# MiniMax-H3-Image (prompt + reference pictures -> image) + CodecOPSD student: the settings of MiniMaxH3ImageCodecOPSDPipeline.
+# They follow the released model and diffusers' MiniMax-H3-Image pipeline, except where marked "CodecOPSD".
+
+text_encoder_layer: 50      # the text encoder's hidden_states[50]; later layers are never read (the pipeline keeps 51 layers)
+max_sequence_length: 4096   # tokens of the prompt, and of each reference label, the text encoder reads
+
+canvas:
+  multiple: 32
+  min_area: 4194304         # 2048 x 2048: a smaller output is generated on a canvas of this area (same aspect ratio)
+                            # and resized back after decoding
+default_size: [2048, 2048]  # height, width
+sigmas: [1.0, 0.9675236940383911, 0.8875485062599182, 0.75, 0.5327739119529724, 0.23200887441635132, 0.0]
+                            # the released grid: 6 steps, one output head of the transformer per step, no guidance
+
+references:
+  vae_short_edge: [1024, 2048]     # the VAE copy of a picture: a short edge outside this range is resized (LANCZOS) to
+                                   # the nearer bound, multiples of 32; encoded at its own size, posterior sampled
+  vision_short_edge: [1024, 1024]  # the text encoder copy: short edge 1024
+  noise_t: 0.999            # every reference row is noised to t = 0.999 (t = 1 - sigma) and held there
+  gaze_kind: image          # CodecOPSD: the codec gazer reads the VAE copy cut to whole 32 px tokens (codec_gazer.yaml
+                            # `image`); the student's text encoder reads the gazed vision tokens at the picture threshold
+                            # scale the LoRA was trained with (its metadata)

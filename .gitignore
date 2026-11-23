@@ -1,0 +1,27 @@
+# Python and build files
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.so
+.venv/
+build/
+
+# Archives
+*.zip
+
+# Base models and LoRA weights (downloaded)
+/models
+/weights
+/FastH3-Omni-8step
+/MiniMax-H3
+/MiniMax-H3-Image
+/Pika-H3-Flex
+
+# Assets: only the README figures are kept in git
+/assets/*
+!/assets/readme/
+
+# Outputs
+/outputs
+/out.*
+*.mp4

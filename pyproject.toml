@@ -1,0 +1,30 @@
+[project]
+name = "codecopsd"
+version = "0.1.0"
+description = "On-Policy Codec Distillation (CodecOPSD) for video diffusion models, built on diffusers"
+requires-python = ">=3.10"
+dependencies = [
+    # pinned to the tested versions: numerics, private diffusers helpers and the x264 build all depend on them
+    "torch==2.8.0",
+    "torchvision==0.23.0",
+    "diffusers==0.43.0",  # the first release with MiniMax-H3-Image
+    "transformers==5.14.1",  # the students were trained on the text encoder's vision features of this version
+    "accelerate",
+    "safetensors",
+    "huggingface_hub",
+    "numpy",
+    "pillow",
+    "imageio==2.38.1",  # reads the reference videos (FFMPEG plugin)
+    "imageio-ffmpeg==0.7.0",  # its ffmpeg 7.0.2 / x264 build re-encodes the references for the codec gazer
+    "pyyaml",
+]
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+codecopsd = ["configs/*.yaml"]

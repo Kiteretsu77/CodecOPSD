@@ -1,0 +1,44 @@
+# On-Policy Codec Distillation for Efficient All-in-One Video Generation (CodecOPSD).
+#
+# Authors: Boyang Wang, Kevin Blackburn-Matzen, Oindrila Saha, Matheus Gadelha, Zezhou Cheng
+#
+# Copyright (c) 2026 The CodecOPSD Authors. All rights reserved.
+
+# MiniMax-H3 (reference to video) + CodecOPSD student: the settings of MiniMaxH3CodecOPSDPipeline.
+# They follow the released Ref2VA model, except where the CodecOPSD students were trained otherwise (marked "CodecOPSD").
+
+text_encoder_layer: 50      # the text encoder's hidden_states[50]; later layers are never read (the pipeline keeps 51 layers)
+vlm_video_fps: 2.0          # reference videos are shown to the text encoder at 2 fps (one vision block per 2 sampled frames)
+fps: 24
+
+canvas:                     # output size and video references: short edge 768, area capped at 768 x 1344, multiples of 32
+  multiple: 32
+  short_edge: 768
+  max_pixels: 1032192
+default_size: [480, 832]    # height, width: 480p (768 x 1344 = 768p)
+default_num_frames: 124     # 24 fps, 17n + 5 frames (the video VAE encodes 17-frame clips)
+num_inference_steps: 50     # sampler "base": sigma grid points (shift 12, from the released scheduler), 49 transformer
+                            # calls, no guidance (the paper's numbers)
+
+sampler: pika               # pipelines/minimax_h3_ref2va/samplers.py; the CodecOPSD LoRA runs on each unchanged (zero-shot)
+samplers:                   # few-step versions of the released base; `weights` is looked up next to the MiniMax-H3 folder
+  pika:                     # Pika H3 Flex: rank-128 LoRA on every row of the Ref2VA transformer, 6 calls, re-noising
+    weights: Pika-H3-Flex/ref2va/adapter.safetensors
+    knots: [1000, 750, 500, 250, 100, 40, 0]  # sigma x 1000 before the shift (12); fresh noise after every call
+  fasth3:                   # FastH3 Omni 8-step: full fine-tune with 32 output heads, 8 Euler calls (its
+    weights: FastH3-Omni-8step                # fastvideo_inference.json holds the grid and the shifts)
+
+references:
+  picture_short_edge: 2048  # pictures are resized (LANCZOS) to this short edge, as released
+  noise_t: 0.999            # every reference row is noised to t = 0.999 (t = 1 - sigma) and held there, as released
+  video_encode: mode        # CodecOPSD: videos are encoded as the VAE posterior mode; pictures as released (sampled, seed 42, float16)
+  gaze_kinds:               # CodecOPSD: codec gazer kind per reference (configs/codec_gazer.yaml): plain RGB only
+    image: image
+    video: video
+  video_drop: 0.70          # CodecOPSD: video references by priority drop, exactly 70 % of their tokens dropped at every
+                            # resolution and length (configs/codec_gazer.yaml); "elastic" or null (the threshold
+                            # decision) as alternatives. Pictures keep the threshold decision.
+  vlm_drop: true            # CodecOPSD: the student's text encoder reads only the gazed vision tokens of the references
+                            # (pictures at the image thresholds x 0.25); used when the loaded LoRA was trained with it
+
+audio: silent               # the audio rows are silent latents, clean (t = 1), never generated
