@@ -1,0 +1,26 @@
+{
+ "label": "Lipstick ad recast: 1 picture + 1 video",
+ "order": 9,
+ "source": "Comfy-Org workflow template api_minimax_h3_max_recast",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/flash_lipstick_recast_1.jpg",
+  "--reference",
+  "../../refs/flash_lipstick_recast_2.mp4",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ],
+ "demo": false
+}

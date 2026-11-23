@@ -1,0 +1,26 @@
+subject_definitions:
+<Subject 1> is the male character in <Picture 1>, with long black hair tied in a high ponytail, wearing a long silver robe with gold ornate shoulder guards, intricate silver embroidery, a dark inner vest, a wide belt with a golden buckle, red-wrapped gauntlets, and silver boots with gold detailing.
+<Subject 2> is the ancient ruin environment in <Picture 2>, featuring dark, moss-covered stone structures, broken pillars, hanging chains, misty green lighting, and a sense of deep, forgotten decay.
+<Subject 3> is the 8-panel line-art storyboard in <Picture 3>, defining the sequence of actions, camera compositions, subject placement, and timing for the target video.
+
+summary:
+[reference generation + keyframe completion] The target video follows the 8-panel storyboard from <Subject 3> in sequence, placing <Subject 1> within the ruins of <Subject 2>. The character moves through the environment, interacting with floating platforms and obstacles as guided by the storyboard's spatial progression, with each panel serving as a keyframe or composition anchor.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1] to [Shot 8]): fully_preserved - the character's long black hair, silver robe with gold shoulder guards, intricate embroidery, dark inner vest, wide belt, red-wrapped gauntlets, and silver boots are retained throughout the sequence.
+<Subject 2> (appears in [Shot 1] to [Shot 8]): fully_preserved - the dark, moss-covered stone ruins, broken pillars, hanging chains, and misty green atmosphere are retained as the consistent environment.
+<Subject 3> (controls [Shot 1] to [Shot 8]): fully_preserved - the 8-panel storyboard's sequence, camera angles, subject placement, and timing are strictly followed, with each panel serving as a keyframe or composition anchor for the corresponding shot.
+
+detailed_description:
+The target video is a cinematic, high-fantasy action sequence with a dark, atmospheric visual style and consistent green-tinged lighting.
+[Shot 1] The scene opens with a wide shot of <Subject 2>, the ancient ruin environment, featuring dark, moss-covered stone structures, broken pillars, and hanging chains shrouded in mist. <Subject 1>, the male character in the silver robe with gold shoulder guards, stands at the entrance of a stone archway, facing forward. The camera is positioned behind him, establishing the environment and his position within it.
+[Shot 2] At 00:01.000, the shot cuts to a medium shot from behind <Subject 1> as he walks forward through the ruins. He moves toward a stone platform with a floating beam above it. The camera follows him from behind, maintaining a consistent distance.
+[Shot 3] At 00:02.000, the shot cuts to a medium shot from behind <Subject 1> as he stops and looks up at the floating beam. The beam is suspended in mid-air, and a small light flash appears above it, indicating an interactive element. The camera remains steady, focusing on his reaction.
+[Shot 4] At 00:03.000, the shot cuts to a side view of the floating beam as it begins to move horizontally across the gap. The beam glides smoothly, and the camera pans slightly to follow its motion, keeping <Subject 1> in the frame as he watches.
+[Shot 5] At 00:04.000, the shot cuts to a low-angle close-up of <Subject 1> as he crouches and prepares to jump onto the moving beam. His hands are extended forward, and his body is tensed for the leap. The camera tilts up slightly to emphasize his readiness.
+[Shot 6] At 00:05.000, the shot cuts to a side view as <Subject 1> leaps onto the moving beam. He lands smoothly and balances as the beam continues its motion. The camera follows his movement, keeping him centered in the frame.
+[Shot 7] At 00:06.000, the shot cuts to a medium shot from behind <Subject 1> as he walks across the beam toward the other side. The beam is now stable, and he moves with confidence. The camera follows him from behind, maintaining a consistent distance.
+[Shot 8] At 00:07.000, the shot cuts to a wide shot as <Subject 1> steps off the beam onto a stone platform on the other side. He stands upright, looking forward into the next section of the ruins. The camera pulls back slightly to show the full environment and his position within it.
+
+overall_soundscape:
+This is a silent video.

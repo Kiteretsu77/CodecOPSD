@@ -1,0 +1,19 @@
+subject_definitions:
+<Subject 1> is the young skateboarder in <Picture 1>, with messy blond hair, a red hoodie, grey cargo trousers, white sneakers and a black skateboard.
+<Subject 2> is the seaside plaza in <Picture 2> at sunset, with low concrete ledges and steps, tall street lamps, a row of young trees, a railing along the sea and an orange sky with scattered clouds.
+<Video 1> is the motion and camera reference: only the skating moves of the rider and the low camera that tracks beside him are reproduced; the street, the houses and the trees of the video are not used.
+
+summary:
+[reference generation] In one continuous shot, <Subject 1> skates along the low ledges of <Subject 2> at sunset with the skating moves of <Video 1>, followed by a low tracking camera as in <Video 1>. The video is silent.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the face, messy blond hair, red hoodie, grey cargo trousers, white sneakers and black skateboard are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the concrete ledges and steps, the street lamps, the young trees, the railing and the orange sunset sky over the sea are retained.
+<Video 1> (motion and camera reference): reference - only the skating moves of the rider and the low tracking camera are reproduced; the street, the houses and the trees of the video are not used.
+
+detailed_description:
+The target video is a silent 5.2-second single continuous shot in 2D anime style, with clean line art and warm sunset colours. There is no text, lettering or logo anywhere.
+[Shot 1] A low camera close to the ground tracks beside <Subject 1>, the young skateboarder with messy blond hair in the red hoodie and grey cargo trousers, as he rides the black skateboard along the low concrete ledges of <Subject 2>. He pushes off, rolls along the edge of the ledges and shifts his weight with the same skating moves as the rider in <Video 1>, while the street lamps, the railing and the orange sunset sky over the sea slide past behind him.
+
+overall_soundscape:
+This is a silent video.

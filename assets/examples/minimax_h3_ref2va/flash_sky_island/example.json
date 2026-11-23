@@ -1,0 +1,24 @@
+{
+ "label": "Floating island fly-in: 1 picture + 1 video",
+ "order": 24,
+ "source": "picture generated, video Pexels 20691359; smaller copies of the files for the extreme page",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/flash_sky_island_1.jpg",
+  "--reference",
+  "../../refs/flash_sky_island_2.mp4",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "threshold",
+  "--seed",
+  "42"
+ ],
+ "demo": false
+}

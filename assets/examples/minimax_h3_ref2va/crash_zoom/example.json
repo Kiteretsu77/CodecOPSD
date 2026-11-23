@@ -1,0 +1,25 @@
+{
+ "label": "Crash zoom: 1 picture + 1 video",
+ "order": 8.31,
+ "source": "picture generated, video Pexels 4917409 + digital zoom",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/crash_zoom_1.jpg",
+  "--reference",
+  "../../refs/crash_zoom_2.mp4",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ]
+}

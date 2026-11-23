@@ -1,0 +1,19 @@
+subject_definitions:
+<Subject 1> is the young woman in <Picture 1>, with very long red hair in a high ponytail, green eyes, an open light-blue denim jacket over a white shirt, black trousers and black shoes.
+<Subject 2> is the city rooftop in <Picture 2> at sunset, with an old metal water tank, a black iron railing, a curved metal handrail, long shadows on the concrete floor and the city skyline against an orange sky.
+<Video 1> is the camera reference: only its slow, steady orbit around the subject in the middle of the frame is reproduced, not its content; the statue and the city of the video are not used.
+
+summary:
+[reference generation] In one continuous shot, the camera slowly circles around <Subject 1> as she stands by the railing of <Subject 2> at sunset, her long ponytail moving in the wind. The video is silent.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the face, the long red ponytail, the green eyes, the light-blue denim jacket, the white shirt, the black trousers and the black shoes are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the layout, colours and lighting of the rooftop, the water tank, the iron railing and the city skyline at sunset are retained.
+<Video 1> (camera reference): reference - only its slow, steady orbit around the subject in the middle of the frame is reproduced, not its content.
+
+detailed_description:
+The target video is a silent 5.2-second single continuous shot in 2D anime style, with clean line art and warm sunset colours. There is no text, lettering or logo anywhere.
+[Shot 1] <Subject 1>, the young woman with the long red ponytail in the light-blue denim jacket, stands by the black iron railing of <Subject 2> with the setting sun behind the city skyline. From the first frame to the last, the camera slowly and steadily circles around her as in <Video 1>, keeping her in the middle of the frame, so that the water tank, the railing and the skyline turn slowly behind her. Her long ponytail and the hem of her jacket move in the evening wind.
+
+overall_soundscape:
+This is a silent video.

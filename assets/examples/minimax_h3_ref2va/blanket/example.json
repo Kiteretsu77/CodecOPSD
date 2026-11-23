@@ -1,0 +1,27 @@
+{
+ "label": "Spreading a blanket: 4 pictures",
+ "order": 4,
+ "source": "pictures OmniVBench",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/blanket_picture1.png",
+  "--reference",
+  "../../refs/blanket_picture2.png",
+  "--reference",
+  "../../refs/blanket_picture3.png",
+  "--reference",
+  "../../refs/blanket_picture4.png",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--video-drop",
+  "threshold",
+  "--seed",
+  "42"
+ ]
+}

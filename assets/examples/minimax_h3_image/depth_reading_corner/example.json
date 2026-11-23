@@ -1,0 +1,19 @@
+{
+ "label": "Depth map + an armchair photo: 2 pictures",
+ "order": 15,
+ "source": "pictures generated (depth map from a generated photo)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/depth_reading_corner_1.png",
+  "--image",
+  "../../refs/depth_reading_corner_2.jpg",
+  "--height",
+  "1664",
+  "--width",
+  "2496",
+  "--seed",
+  "42"
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "label": "Desk setup with edits (mug on the left, lamp on, mug logo): 6 pictures",
+ "order": 2,
+ "demo": false,
+ "source": "pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/desk_setup_1.jpg",
+  "--image",
+  "../../refs/desk_setup_2.jpg",
+  "--image",
+  "../../refs/desk_setup_3.jpg",
+  "--image",
+  "../../refs/desk_setup_4.jpg",
+  "--image",
+  "../../refs/desk_setup_5.jpg",
+  "--image",
+  "../../refs/desk_setup_6.jpg",
+  "--height",
+  "1664",
+  "--width",
+  "2496",
+  "--seed",
+  "42"
+ ]
+}

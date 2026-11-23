@@ -1,0 +1,17 @@
+subject_definitions:
+<Subject 1> is the horse in <Picture 1>: a black Friesian horse with a long wavy mane and feathered lower legs.
+<Video 1> is the motion reference: only the pounce of the polar bear is reproduced, with the same order of moves, body poses, range, speed and rhythm; the polar bear, the river, subtitles, logos and watermarks are not used.
+
+summary:
+[reference generation] In one continuous shot on a black basalt plain cut by glowing lava channels, <Subject 1> performs the pounce of <Video 1>, move for move. The video is silent.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the black coat, long wavy mane and feathered lower legs are retained.
+<Video 1> (motion reference): reference - only the pounce, its order of moves, poses, range, speed and rhythm are reproduced; the polar bear and the river are not used.
+
+detailed_description:
+The target video is realistic.
+[Shot 1] A black basalt plain is divided by glowing orange-red lava channels, gray smoke rises from a distant crater, and heat haze distorts the horizon. <Subject 1> stands on the basalt and performs the pounce of <Video 1>, leaping forward and down with the same poses, range, speed and rhythm.
+
+overall_soundscape:
+Silence.

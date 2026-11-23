@@ -1,0 +1,23 @@
+subject_definitions:
+<Subject 1> is the wolf made of flawless liquid chrome with glowing ember-orange eyes in <Picture 1>.
+<Subject 2> is the black volcanic sand desert under a violet dusk sky with giant iridescent soap bubbles floating above the dunes and a pale pink ringed planet on the horizon in <Picture 2>.
+<Video 1> is the effects reference: its crown splash of liquid chrome droplets is reproduced.
+<Video 2> is the motion reference: only the galloping gait of the running animal is reproduced; its camera framing and its snowy setting are not used.
+<Video 3> is the camera reference: only its slow, steady orbit around the subject, about sixty degrees over the shot, is reproduced, not its content.
+
+summary:
+[reference generation] The camera slowly circles around <Subject 1> from its side toward its front as it sprints across <Subject 2>; every paw strike splashes liquid chrome droplets and it leaps through a giant floating bubble. The video is silent.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the shape, colours and surface pattern of the wolf made of flawless liquid chrome with glowing ember-orange eyes are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the layout, colours and lighting of the black volcanic sand desert under a violet dusk sky with giant iridescent soap bubbles floating above the dunes and a pale pink ringed planet on the horizon are retained.
+<Video 1> (effects reference): reference - its crown splash of liquid chrome droplets is reproduced.
+<Video 2> (motion reference): reference - only the galloping gait of the running animal is reproduced; its camera framing and its snowy setting are not used.
+<Video 3> (camera reference): reference - only its slow, steady orbit around the subject, about sixty degrees over the shot, is reproduced, not its content.
+
+detailed_description:
+The target video is a silent 10.1-second single continuous shot in photorealistic cinematic CGI with high-contrast, reflective lighting. There is no text, lettering or logo anywhere.
+[Shot 1] From the first frame to the last, the camera slowly and steadily circles around the running wolf as in <Video 3>, about sixty degrees over the shot: at the start the wolf is seen exactly from its left side, and by the end the camera has moved around toward its front, so the wolf is seen in a three-quarter front view, while the dunes, the bubbles and the ringed planet of <Subject 2> slide slowly across the background behind it. <Subject 1> sprints at full speed across <Subject 2>, its legs stretching and gathering in a fast gallop as in <Video 2>. Every paw strike bursts into a crown splash of liquid chrome droplets that scatter and merge back into shining beads as in <Video 1>. At 00:05.487 the wolf leaps through a giant iridescent bubble, rainbow mist sparkling around its mirror body, and keeps running while the camera keeps circling slowly toward its front as in <Video 3>.
+
+overall_soundscape:
+This is a silent video.

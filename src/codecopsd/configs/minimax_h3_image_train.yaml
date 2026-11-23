@@ -1,0 +1,52 @@
+# On-Policy Codec Distillation for Efficient All-in-One Video Generation (CodecOPSD).
+#
+# Authors: Boyang Wang, Kevin Blackburn-Matzen, Oindrila Saha, Matheus Gadelha, Zezhou Cheng
+#
+# Copyright (c) 2026 The CodecOPSD Authors. All rights reserved.
+
+# CodecOPSD training of a MiniMax-H3-Image student (scripts/train_minimax_h3_image.py): the recipe of the released
+# student. Teacher = the released transformer, frozen, every reference token. Student = the same frozen weights + a LoRA
+# on the reference rows, given only the reference tokens the codec gazer keeps (configs/codec_gazer.yaml `image`). The
+# teacher is the student with the LoRA off. No target images: the teacher's prediction at the student's own state is
+# the target.
+
+lora:
+  rank: 128
+  alpha: 128                 # scale alpha / rank = 1
+  targets: [attn.to_q, attn.to_k, attn.to_v, attn.to_out.0, ff.net.0.proj, ff.net.2]   # every block
+  last_block_targets: [attn.to_k, attn.to_v]   # last block: the reference rows only feed keys / values
+
+codecopsd:
+  rollout_steps: 6           # the released grid (6 steps, one output head per step)
+  # Per update one state k is drawn uniformly from [0, 6), the same on every GPU: the student takes k steps from noise
+  # without gradients (LoRA on, gazed references), then at x_k both models predict the velocity with head k; loss =
+  # MSE(student, teacher) over the generated image rows, float32. No guidance (the released model is
+  # guidance-distilled).
+  vlm_drop: true             # the student's text encoder reads only the gazed vision tokens; the teacher reads every one
+  vlm_picture_threshold_scale: 1.0   # picture threshold scale of the student's text encoder mask: 1.0 = the transformer's
+                                     # mask. The released student: 0.25 for updates 1-1,500, 1.0 for 1,501-3,000.
+
+optimizer:                   # AdamW on the LoRA only (our runs used 8-bit AdamW)
+  lr: 5.0e-5
+  weight_decay: 0.0
+  eps: 1.0e-8
+  betas: [0.9, 0.999]
+  max_grad_norm: 1.0
+  # constant learning rate, no warmup
+
+batch:
+  per_gpu: 1                 # one packed sample per GPU
+  gradient_accumulation: 1   # our run: 14 GPUs x 1 = 14 samples per update
+updates: 3000
+save_every: 100              # updates
+seed: 42                     # data order, VAE draws, noise and k
+
+data:                        # a sample: a prompt and 1-16 pictures; output 2048 x 2048 unless the sample says otherwise
+  default_size: [2048, 2048]
+  # Our run: 14,000 samples of 1-5 pictures for updates 1-1,500, plus 5,600 of 6-9 pictures for 1,501-3,000; picture
+  # short edges 1024 / 1536 / 2048 (about 52 / 34 / 14 % of the 1-5 picture samples).
+
+memory:                      # per training GPU
+  gradient_checkpointing: true   # per block
+  # transformer 62 GB + LoRA, its gradients and AdamW states + activations: peak up to 87 GB on H200 (141 GB) at 1-9
+  # pictures; on 80 GB GPUs the transformer is sharded (FSDP, --fsdp auto).

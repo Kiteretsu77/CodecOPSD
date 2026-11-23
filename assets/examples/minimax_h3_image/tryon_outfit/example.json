@@ -1,0 +1,25 @@
+{
+ "label": "Outfit from product photos: 5 pictures",
+ "order": 4,
+ "source": "pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/tryon_outfit_1.jpg",
+  "--image",
+  "../../refs/tryon_outfit_2.jpg",
+  "--image",
+  "../../refs/tryon_outfit_3.jpg",
+  "--image",
+  "../../refs/tryon_outfit_4.jpg",
+  "--image",
+  "../../refs/tryon_outfit_5.jpg",
+  "--height",
+  "2720",
+  "--width",
+  "1536",
+  "--seed",
+  "42"
+ ]
+}

@@ -1,0 +1,20 @@
+subject_definitions:
+<Subject 1> is the young East Asian woman in <Picture 2>, characterized by her delicate facial features, shoulder-length straight black hair with natural volume, calm and serene expression, and a slender, upright posture.
+<Subject 2> is the complete fashion ensemble worn by <Subject 1>, compiled from <Picture 1>, <Picture 3>, and <Picture 4>: a white ribbed knit top with a notched V-neckline and half-length sleeves, a high-waisted dark grey A-line mini skirt whose tailored structure, fabric texture, and blind-stitched hem correspond to <Picture 1>, <Picture 3>, and <Picture 4>, black flat leather Mary Jane shoes with single buckle instep straps, white vertical-ribbed crew socks, a black leather rectangular tote bag with dual shoulder straps, a minimalist thin silver wire choker necklace, a polished rigid silver bangle, and an asymmetrical freshwater pearl bracelet with metallic accents.
+
+summary:
+[reference generation] The 5.00-second target video portrays <Subject 1> wearing <Subject 2> as she strolls casually forward along a tree-lined urban sidewalk under dappled summer sunlight, filmed in a continuous, smooth backward tracking shot.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the facial identity, shoulder-length black hairstyle, composed facial expression, and slender physique from <Picture 2> are fully retained throughout the stroll.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the full coordinated outfit and accessories from <Picture 1>, including the specific hem construction and A-line silhouette of the dark grey skirt detailed in <Picture 3> and <Picture 4>, are faithfully rendered on <Subject 1>.
+
+detailed_description:
+The target video is shot in a bright, naturalistic cinematic style featuring crisp summer green and cool grey tones bathed in soft, dappled natural daylight.
+[Shot 1] A wide, full-body shot opens on a straight, spacious city pedestrian sidewalk paved with smooth, light-grey granite stone slabs. Lush green roadside trees line the walkway, their leafy canopies filtering gentle summer sunlight onto the ground in animated patterns of light and shadow. To the side of the walkway, a minimalist white passenger car is neatly parked along the curb, while clean glass and light-toned walls of modern urban buildings recede into a soft background blur. <Subject 1>, bearing the refined features, smooth complexion, and dark shoulder-length hair from <Picture 2>, stands centrally in the frame wearing <Subject 2>. Her outfit consists of the snug white ribbed knit top with a notched V-neck, the crisp dark grey high-waisted A-line mini skirt from <Picture 1>, <Picture 3>, and <Picture 4>, white vertical-ribbed crew socks, and black flat Mary Jane shoes. In her right hand, she carries the black leather tote bag down by her side, with the thin silver choker visible at her collarbone and the silver bangle alongside the freshwater pearl bracelet resting at her wrists. The camera initiates a Tracking Shot pulling backward at a steady, moderate speed along the path, maintaining a consistent full-length framing distance. <Subject 1> steps forward into a smooth, leisurely stride, moving synchronously with the retreating camera. Her arms swing naturally in rhythm with her steps, causing the black tote bag to sway gently. The light summer breeze catches her dark hair, lifting individual strands away from her cheeks as the dappled sunlight shifts across her face, knit top, and grey skirt. She keeps a tranquil, faint smile, gazing ahead with relaxed confidence as she walks fluidly forward through the breezy, verdant urban environment until the end of the shot.
+
+overall_soundscape:
+Light, rhythmic footfalls of leather shoes tapping softly against smooth granite pavement, accompanied by the gentle rustle of tree leaves in a warm summer breeze and muffled, distant city traffic ambience.
+
+non_diegetic_music:
+A cheerful, breezy acoustic soundtrack featuring clean fingerpicked acoustic guitar and subtle light percussion at an easygoing, mid-tempo pace, sustaining an uninterrupted, leisurely mood.

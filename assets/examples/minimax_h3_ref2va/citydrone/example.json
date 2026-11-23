@@ -1,0 +1,25 @@
+{
+ "label": "Greybox city drone flight: 1 video",
+ "order": 1.5,
+ "source": "video: a greybox city rendered by us (the camera and layout reference)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/citydrone_1.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "158",
+  "--vlm-drop",
+  "dit",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "2026"
+ ]
+}

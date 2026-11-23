@@ -1,0 +1,19 @@
+{
+ "label": "Market poster: 2 pictures",
+ "order": 19,
+ "source": "pictures Aesthetic-4K",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/orchard_pear_1536.jpg",
+  "--image",
+  "../../refs/orchard_oranges_1536.jpg",
+  "--height",
+  "2720",
+  "--width",
+  "1536",
+  "--seed",
+  "42"
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "label": "Anime rooftop crane up: 2 pictures + 1 video",
+ "order": 3.8,
+ "demo": false,
+ "source": "pictures and video reused from the bundled examples (anime_rooftop, crane_barn)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/anime_rooftop_1.jpg",
+  "--reference",
+  "../../refs/anime_rooftop_4.jpg",
+  "--reference",
+  "../../refs/crane_barn_2.mp4",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ]
+}

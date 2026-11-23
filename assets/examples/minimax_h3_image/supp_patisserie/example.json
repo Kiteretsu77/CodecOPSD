@@ -1,0 +1,21 @@
+{
+ "label": "Patisserie terrace: 3 pictures",
+ "order": 0.6,
+ "source": "pictures: Aesthetic-4K photos (paper supplementary)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/supp_patisserie_1.jpg",
+  "--image",
+  "../../refs/supp_patisserie_2.jpg",
+  "--image",
+  "../../refs/supp_patisserie_3.jpg",
+  "--height",
+  "2048",
+  "--width",
+  "2048",
+  "--seed",
+  "3000"
+ ]
+}

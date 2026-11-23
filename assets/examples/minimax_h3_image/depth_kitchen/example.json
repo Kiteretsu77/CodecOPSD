@@ -1,0 +1,23 @@
+{
+ "label": "Depth map + object photos: 4 pictures",
+ "order": 9,
+ "source": "pictures generated (depth map from a generated photo)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/depth_kitchen_1.png",
+  "--image",
+  "../../refs/depth_kitchen_2.jpg",
+  "--image",
+  "../../refs/depth_kitchen_3.jpg",
+  "--image",
+  "../../refs/depth_kitchen_4.jpg",
+  "--height",
+  "1664",
+  "--width",
+  "2496",
+  "--seed",
+  "42"
+ ]
+}

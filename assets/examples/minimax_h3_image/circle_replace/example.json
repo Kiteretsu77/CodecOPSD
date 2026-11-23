@@ -1,0 +1,19 @@
+{
+ "label": "Replace the circled object: 2 pictures",
+ "order": 13,
+ "source": "pictures generated (red circle drawn)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/circle_replace_1.jpg",
+  "--image",
+  "../../refs/circle_replace_2.jpg",
+  "--height",
+  "1664",
+  "--width",
+  "2496",
+  "--seed",
+  "42"
+ ]
+}

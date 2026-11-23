@@ -1,0 +1,23 @@
+{
+ "label": "Summer poster from product photos: 4 pictures",
+ "order": 5,
+ "source": "pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/product_poster_1.jpg",
+  "--image",
+  "../../refs/product_poster_2.jpg",
+  "--image",
+  "../../refs/product_poster_3.jpg",
+  "--image",
+  "../../refs/product_poster_4.jpg",
+  "--height",
+  "2720",
+  "--width",
+  "1536",
+  "--seed",
+  "42"
+ ]
+}

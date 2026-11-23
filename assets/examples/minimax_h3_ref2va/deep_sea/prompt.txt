@@ -1,0 +1,25 @@
+subject_definitions:
+<Subject 1> is the giant translucent jellyfish whose bell is covered in rows of glowing magenta spots, with frilly pale blue arms and thin tentacles ending in tiny gold lights in <Picture 1>.
+<Subject 2> is the round dark-red deep-sea submersible with two white stripes, a ring of glowing orange portholes, two robotic claws and twin white searchlights in <Picture 2>.
+<Subject 3> is the deep-sea canyon floor with spiral black rock chimneys covered in glowing turquoise tube worms and fields of luminous violet anemones in <Picture 3>.
+<Video 1> is the effects reference: its swirling ring of cyan bioluminescent plankton bursting into a wave of light is reproduced.
+<Video 2> is the motion reference: its school of silver fish swirling into a tornado-shaped vortex and splitting apart is reproduced.
+<Video 3> is the camera reference: its steep downward dive that levels out and moves forward is reproduced.
+
+summary:
+[reference generation] Deep in <Subject 3>, <Subject 2> glides toward <Subject 1>; a ring of glowing plankton swirls around the jellyfish and a school of silver fish spins into a vortex behind it. The video is silent.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the shape, colours and surface pattern of the giant translucent jellyfish whose bell is covered in rows of glowing magenta spots, with frilly pale blue arms and thin tentacles ending in tiny gold lights are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the shape, colours and surface pattern of the round dark-red deep-sea submersible with two white stripes, a ring of glowing orange portholes, two robotic claws and twin white searchlights are retained.
+<Subject 3> (appears in [Shot 1]): fully_preserved - the layout, colours and lighting of the deep-sea canyon floor with spiral black rock chimneys covered in glowing turquoise tube worms and fields of luminous violet anemones are retained.
+<Video 1> (effects reference): reference - its swirling ring of cyan bioluminescent plankton bursting into a wave of light is reproduced.
+<Video 2> (motion reference): reference - its school of silver fish swirling into a tornado-shaped vortex and splitting apart is reproduced.
+<Video 3> (camera reference): reference - its steep downward dive that levels out and moves forward is reproduced.
+
+detailed_description:
+The target video is a silent 5.2-second single continuous shot in photorealistic deep-sea underwater cinematography in dark water lit only by bioluminescence and searchlights. There is no text, lettering or logo anywhere.
+[Shot 1] The camera dives steeply down into <Subject 3> and levels out as in <Video 3>. <Subject 2> glides in from the left, its twin searchlights sweeping the water, and lights up <Subject 1>, pulsing slowly in the centre of the frame above the glowing chimneys. A swirling cloud of cyan bioluminescent plankton spirals into a glowing ring around the jellyfish as in <Video 1>, while behind it a school of silver fish swirls into a tornado-shaped vortex as in <Video 2>. At 00:03.400 the plankton ring bursts outward in a wave of cyan light and the fish scatter in all directions.
+
+overall_soundscape:
+This is a silent video.

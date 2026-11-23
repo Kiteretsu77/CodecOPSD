@@ -1,0 +1,19 @@
+{
+ "label": "Sketch + a porcelain photo: 2 pictures",
+ "order": 16,
+ "source": "pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/sketch_teapot_porcelain_1.png",
+  "--image",
+  "../../refs/sketch_teapot_porcelain_2.jpg",
+  "--height",
+  "2048",
+  "--width",
+  "2048",
+  "--seed",
+  "42"
+ ]
+}

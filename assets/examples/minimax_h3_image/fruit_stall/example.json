@@ -1,0 +1,27 @@
+{
+ "label": "Fruit market stall: 6 pictures",
+ "order": 17,
+ "source": "pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/fruit_stall_1.jpg",
+  "--image",
+  "../../refs/fruit_stall_2.jpg",
+  "--image",
+  "../../refs/fruit_stall_3.jpg",
+  "--image",
+  "../../refs/fruit_stall_4.jpg",
+  "--image",
+  "../../refs/fruit_stall_5.jpg",
+  "--image",
+  "../../refs/fruit_stall_6.jpg",
+  "--height",
+  "1664",
+  "--width",
+  "2496",
+  "--seed",
+  "42"
+ ]
+}

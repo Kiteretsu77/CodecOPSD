@@ -1,0 +1,26 @@
+{
+ "label": "Mystic and robot: 2 pictures",
+ "order": 15,
+ "source": "Comfy Hub workflow 46a303cbccf9",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/flash_mystic_robot_1.jpg",
+  "--reference",
+  "../../refs/flash_mystic_robot_2.jpg",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ],
+ "demo": false
+}

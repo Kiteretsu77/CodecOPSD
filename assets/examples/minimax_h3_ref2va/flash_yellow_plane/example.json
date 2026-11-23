@@ -1,0 +1,24 @@
+{
+ "label": "Yellow plane: 1 picture",
+ "order": 14.5,
+ "source": "Comfy-Org workflow template video_fasth3_ominiref_r2v",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/flash_yellow_plane_1.jpg",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ],
+ "demo": false
+}

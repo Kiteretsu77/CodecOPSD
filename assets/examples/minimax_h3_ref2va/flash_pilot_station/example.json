@@ -1,0 +1,26 @@
+{
+ "label": "Station pilot: 2 pictures",
+ "order": 14,
+ "source": "Comfy-Org workflow_templates, video_pika_h3_flex_ref2va (prompt verbatim)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/flash_pilot_station_1.jpg",
+  "--reference",
+  "../../refs/flash_pilot_station_2.jpg",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ],
+ "demo": false
+}

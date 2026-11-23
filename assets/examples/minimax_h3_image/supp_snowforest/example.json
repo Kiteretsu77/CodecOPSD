@@ -1,0 +1,21 @@
+{
+ "label": "Snowy birch forest: 3 pictures",
+ "order": 0.64,
+ "source": "pictures: Aesthetic-4K photos (paper supplementary)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/supp_snowforest_1.jpg",
+  "--image",
+  "../../refs/supp_snowforest_2.jpg",
+  "--image",
+  "../../refs/supp_snowforest_3.jpg",
+  "--height",
+  "2048",
+  "--width",
+  "2048",
+  "--seed",
+  "3004"
+ ]
+}

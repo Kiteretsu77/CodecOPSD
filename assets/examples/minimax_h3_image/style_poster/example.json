@@ -1,0 +1,16 @@
+{
+ "label": "Style of a poster: 2 pictures",
+ "order": 21,
+ "source": "pictures Aesthetic-4K + Library of Congress",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/orchard_woman_1536.jpg",
+  "--image",
+  "../../refs/style_wpa_poster_1536.jpg",
+  "--reference-aspect",
+  "--seed",
+  "42"
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "label": "Frisbee dog: 2 pictures + 1 video",
+ "order": 27,
+ "source": "pictures + video Pexels; smaller copies of the files for the extreme page",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/flash_dog_frisbee_1.jpg",
+  "--reference",
+  "../../refs/flash_dog_frisbee_2.jpg",
+  "--reference",
+  "../../refs/flash_dog_frisbee_3.mp4",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ],
+ "demo": false
+}

@@ -1,0 +1,33 @@
+{
+ "label": "Silver wolf: 2 pictures + 3 videos",
+ "order": 1.3,
+ "source": "pictures and videos generated with MiniMax-H3 (Pika H3 Flex)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/wolf_hp_1.png",
+  "--reference",
+  "../../refs/wolf_hp_2.png",
+  "--reference",
+  "../../refs/wolf_hp_3.mp4",
+  "--reference",
+  "../../refs/wolf_hp_4.mp4",
+  "--reference",
+  "../../refs/wolf_hp_5.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "243",
+  "--vlm-drop",
+  "dit",
+  "--video-drop",
+  "0.9",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "2026"
+ ]
+}

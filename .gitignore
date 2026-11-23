@@ -1,0 +1,39 @@
+# Python and build files
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.so
+.venv/
+build/
+
+# Archives (code drops, release packs)
+*.zip
+
+# Base models and LoRA weights (downloaded)
+/models
+/weights
+/Cosmos3-Nano
+/FastH3-Omni-8step
+/MiniMax-H3
+/MiniMax-H3-Image
+/Pika-H3-Flex
+
+# Release assets (example media, stored results, packed archives)
+/release_assets
+/assets/examples/refs
+/assets/examples/cache
+
+# Outputs (inference, demo, training)
+/outputs
+/samples
+/encoded
+/runs
+/out.*
+/actions.json
+*.mp4
+
+# Notes
+tmp_info/
+
+# Gradio (share-link certificate)
+.gradio/

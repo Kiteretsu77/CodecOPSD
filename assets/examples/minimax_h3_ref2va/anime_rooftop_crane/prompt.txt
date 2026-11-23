@@ -1,0 +1,19 @@
+subject_definitions:
+<Subject 1> is the young man in <Picture 1>, with spiky white hair, a black jacket over a white shirt, black jeans and white sneakers.
+<Subject 2> is the city rooftop in <Picture 2> at sunset, with an old metal water tank, a black iron railing, a curved metal handrail, long shadows on the concrete floor and the city skyline against an orange sky.
+<Video 1> is the camera reference: only its slow crane move, rising straight up and a little forward, is reproduced, not its content; the pine trees, the lawn and the fields of the video are not used.
+
+summary:
+[reference generation] In one continuous shot, <Subject 1> stands on <Subject 2> at sunset with his hands in his jacket pockets while the camera rises slowly as in <Video 1>, revealing the city skyline and the sunset sky behind him. The video is silent.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the face, the spiky white hair, the black jacket, the white shirt, the black jeans and the white sneakers are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the layout, colours and lighting of the rooftop, the water tank, the iron railing and the city skyline at sunset are retained.
+<Video 1> (camera reference): reference - only its slow crane move, rising straight up and a little forward, is reproduced, not its content.
+
+detailed_description:
+The target video is a silent 5.2-second single continuous shot in 2D anime style, with clean line art and warm sunset colours. There is no text, lettering or logo anywhere.
+[Shot 1] The camera starts low, at the height of <Subject 1>, the young man with spiky white hair in the black jacket, who stands on <Subject 2> with his hands in his jacket pockets, looking out over the city. From the first frame to the last, the camera rises slowly and steadily straight up and a little forward as in <Video 1>, so that by the end it looks down on him and the rooftop, and the city skyline and the orange sunset sky spread out wide behind him.
+
+overall_soundscape:
+This is a silent video.

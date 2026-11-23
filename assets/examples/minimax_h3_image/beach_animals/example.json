@@ -1,0 +1,25 @@
+{
+ "label": "Beach animals from photos + a sketch: 5 pictures",
+ "order": 10,
+ "source": "pictures generated with MiniMax-H3-Image (photos and a line drawing)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/beach_animals_1.jpg",
+  "--image",
+  "../../refs/beach_animals_2.jpg",
+  "--image",
+  "../../refs/beach_animals_3.jpg",
+  "--image",
+  "../../refs/beach_animals_4.png",
+  "--image",
+  "../../refs/beach_animals_6.jpg",
+  "--height",
+  "1536",
+  "--width",
+  "2720",
+  "--seed",
+  "42"
+ ]
+}

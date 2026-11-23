@@ -1,0 +1,15 @@
+subject_definitions:
+<Video 1> is the camera and layout reference: an untextured grey block-out of the same flight through the same city. Only its camera path and the layout and geometry of the streets, trees, buildings, viaduct, tower and rooftops are reproduced, frame by frame; its flat grey surfaces, its pale haze and its blank sky are not used.
+
+summary:
+[reference generation] A racing drone flies low and fast down a sunny city avenue, banks hard into a cross street, shoots under a concrete rail viaduct, climbs steeply up the facade of a glass office tower, crests its roof and dives over a colourful sunlit city, with the camera path and layout of <Video 1> in every frame. The video is silent.
+
+retention_analysis:
+<Video 1> (camera and layout reference): reference - only its camera path and the layout and geometry of the streets, trees, buildings, viaduct, tower and rooftops are reproduced frame by frame; its grey untextured look, its pale haze and its blank sky are not used.
+
+detailed_description:
+The target video is a silent 6.6-second single continuous shot of photorealistic FPV drone footage of a real city on a clear, sunny late morning, with a deep blue sky, warm saturated natural colours, crisp shadows and rich detailed textures on every surface from the first frame to the last. There are no people, no cars, and no text, lettering, signs or logos anywhere.
+[Shot 1] The camera follows the path of <Video 1> exactly in every frame. The drone races a few metres above the dark asphalt of an avenue with white dashed lines, between light sidewalks lined with bright green trees and mid-rise buildings of red brick, cream limestone and terracotta stucco whose dark windows reflect the blue sky. At 00:01.100 it banks hard to the left around the corner building into a cross street, and at 00:02.200 it shoots under an elevated rail viaduct of weathered concrete with rust-brown steel railings, its shadowed underside flashing overhead. Beyond it the drone pulls up steeply at a tall office tower and climbs close along its sunlit facade of white concrete mullions and deep blue reflective glass, the window grid rushing downward through the frame. At 00:05.300 it crests the parapet over a flat roof of warm grey gravel with a small rooftop housing, and the whole city opens up below in full colour and sharp detail under the clear blue sky: red brick and terracotta rooftops, green roof gardens and tree-lined streets, cream, ochre and pastel facades, and blue glass towers glinting in the sun, stretching to a crisp, clearly visible skyline. In the last second the drone noses down and banks into a fast dive over the colourful rooftops, every building fully textured and coloured in bright sunlight until the final frame.
+
+overall_soundscape:
+This is a silent video.

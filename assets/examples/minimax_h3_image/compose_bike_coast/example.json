@@ -1,0 +1,21 @@
+{
+ "label": "Person + bicycle + place: 3 pictures",
+ "order": 18,
+ "source": "pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/compose_bike_coast_1.jpg",
+  "--image",
+  "../../refs/compose_bike_coast_2.jpg",
+  "--image",
+  "../../refs/compose_bike_coast_3.jpg",
+  "--height",
+  "1536",
+  "--width",
+  "2720",
+  "--seed",
+  "42"
+ ]
+}

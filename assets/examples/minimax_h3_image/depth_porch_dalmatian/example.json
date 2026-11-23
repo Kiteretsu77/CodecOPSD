@@ -1,0 +1,19 @@
+{
+ "label": "Depth map + a dog photo: 2 pictures",
+ "order": 22,
+ "source": "pictures generated (depth map from a generated photo)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/depth_porch_dalmatian_1.png",
+  "--image",
+  "../../refs/depth_porch_dalmatian_2.jpg",
+  "--height",
+  "2496",
+  "--width",
+  "1664",
+  "--seed",
+  "42"
+ ]
+}

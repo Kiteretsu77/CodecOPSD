@@ -1,0 +1,21 @@
+{
+ "label": "Street sketch + photos: 3 pictures",
+ "order": 12,
+ "source": "pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/sketch_street_1.png",
+  "--image",
+  "../../refs/sketch_street_2.jpg",
+  "--image",
+  "../../refs/sketch_street_3.jpg",
+  "--height",
+  "1664",
+  "--width",
+  "2496",
+  "--seed",
+  "42"
+ ]
+}

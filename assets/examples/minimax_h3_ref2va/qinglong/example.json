@@ -1,0 +1,33 @@
+{
+ "label": "Azure dragon: 5 pictures + 1 video",
+ "order": 2.5,
+ "source": "pictures + video generated with MiniMax-H3",
+ "thumb_frame": 235,
+ "demo": true,
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/qinglong_hp_1.png",
+  "--reference",
+  "../../refs/qinglong_hp_2.png",
+  "--reference",
+  "../../refs/qinglong_hp_3.png",
+  "--reference",
+  "../../refs/qinglong_hp_4.png",
+  "--reference",
+  "../../refs/qinglong_hp_5.png",
+  "--reference",
+  "../../refs/qinglong_hp_6.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "243",
+  "--video-drop",
+  "threshold",
+  "--seed",
+  "7"
+ ]
+}

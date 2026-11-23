@@ -1,0 +1,26 @@
+{
+ "label": "Superboy and kaiju: 2 pictures",
+ "order": 12,
+ "source": "Comfy-Org workflow_templates, video_minimax_h3_r2v",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/flash_superboy_kaiju_1.jpg",
+  "--reference",
+  "../../refs/flash_superboy_kaiju_2.jpg",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ],
+ "demo": false
+}

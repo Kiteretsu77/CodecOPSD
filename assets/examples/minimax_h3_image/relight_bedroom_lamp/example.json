@@ -1,0 +1,19 @@
+{
+ "label": "Relight at night: 2 pictures",
+ "order": 20,
+ "source": "pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/relight_bedroom_lamp_1.jpg",
+  "--image",
+  "../../refs/relight_bedroom_lamp_2.jpg",
+  "--height",
+  "2496",
+  "--width",
+  "1664",
+  "--seed",
+  "42"
+ ]
+}

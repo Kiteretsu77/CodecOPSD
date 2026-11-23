@@ -1,0 +1,25 @@
+subject_definitions:
+<Subject 1> is the translucent raspberry-red jelly cube creature with black bead eyes, a tiny smile and a sprig of mint on top in <Picture 1>.
+<Subject 2> is the pistachio-green macaron airship with a cream filling band, a round porthole and striped candy-cane propellers in <Picture 2>.
+<Subject 3> is the dessert canyon with layered sponge-cake cliffs, a river of melted chocolate, waffle-cone towers, rainbow lollipop trees and pink cotton-candy clouds in a mint-green sky in <Picture 3>.
+<Video 1> is the effects reference: its glossy crown-shaped chocolate splash is reproduced.
+<Video 2> is the effects reference: its explosion of rainbow sprinkles and powdered sugar toward the camera is reproduced.
+<Video 3> is the camera reference: its fast low first-person dive and left bank through a narrow gap is reproduced.
+
+summary:
+[reference generation] <Subject 1> rides on top of <Subject 2> flying fast and low through <Subject 3>; chocolate splashes up from the river and rainbow sprinkles explode around them. The video is silent.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the shape, colours and surface pattern of the translucent raspberry-red jelly cube creature with black bead eyes, a tiny smile and a sprig of mint on top are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the shape, colours and surface pattern of the pistachio-green macaron airship with a cream filling band, a round porthole and striped candy-cane propellers are retained.
+<Subject 3> (appears in [Shot 1]): fully_preserved - the layout, colours and lighting of the dessert canyon with layered sponge-cake cliffs, a river of melted chocolate, waffle-cone towers, rainbow lollipop trees and pink cotton-candy clouds in a mint-green sky are retained.
+<Video 1> (effects reference): reference - its glossy crown-shaped chocolate splash is reproduced.
+<Video 2> (effects reference): reference - its explosion of rainbow sprinkles and powdered sugar toward the camera is reproduced.
+<Video 3> (camera reference): reference - its fast low first-person dive and left bank through a narrow gap is reproduced.
+
+detailed_description:
+The target video is a silent 5.2-second single continuous shot in a glossy hyper-real 3D render with a macro photography look, soft pastel lighting and shallow depth of field. There is no text, lettering or logo anywhere.
+[Shot 1] The camera races fast and low through <Subject 3>, chasing <Subject 2> as it dives toward the chocolate river and banks left through a narrow gap between two waffle-cone towers as in <Video 3>. <Subject 1> sits on top of the airship, wobbling with every turn. As the airship skims the river, thick glossy chocolate splashes up in tall crown-shaped splashes as in <Video 1>. At 00:03.000 an explosion of rainbow sprinkles and powdered sugar bursts toward the camera as in <Video 2> and the jelly cube jiggles happily.
+
+overall_soundscape:
+This is a silent video.

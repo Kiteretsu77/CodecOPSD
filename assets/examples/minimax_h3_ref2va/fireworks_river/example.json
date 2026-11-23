@@ -1,0 +1,25 @@
+{
+ "label": "Fireworks effect: 1 picture + 1 video",
+ "order": 51,
+ "source": "picture + video Pexels",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/fireworks_river_1.jpg",
+  "--reference",
+  "../../refs/fireworks_river_2.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ]
+}

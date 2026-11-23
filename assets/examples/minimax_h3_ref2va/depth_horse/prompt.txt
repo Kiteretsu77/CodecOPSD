@@ -1,0 +1,1 @@
+The black Friesian horse from <Picture 1> trots across the snowy paddock of <Picture 2> straight toward the camera. <Video 1> is a depth map: the video follows its layout, shapes and motion, but the depth map itself is never shown. Realistic, soft winter light.

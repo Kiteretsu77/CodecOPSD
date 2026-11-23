@@ -1,0 +1,16 @@
+{
+ "label": "Replace a chair from a photo: 2 pictures",
+ "order": 24,
+ "source": "pictures Unsplash",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/obj_replace_chair_1_1536.jpg",
+  "--image",
+  "../../refs/obj_replace_chair_2_1536.jpg",
+  "--reference-aspect",
+  "--seed",
+  "42"
+ ]
+}

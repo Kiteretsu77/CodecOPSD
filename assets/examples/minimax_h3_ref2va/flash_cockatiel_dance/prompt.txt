@@ -1,0 +1,17 @@
+subject_definitions:
+<Subject 1> is the cockatiel in <Picture 1>, with grey body feathers, a pale yellow face and crest and round orange cheek patches.
+<Video 1> is the motion reference: only the dance of the woman is reproduced, move for move, with the same order of moves, body poses, range, speed and rhythm; the woman, her clothes, the living room, subtitles, logos and watermarks are not used.
+
+summary:
+[reference generation] In one continuous shot on an indoor wooden stage, <Subject 1> performs the dance of <Video 1>, move for move. The video is silent.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the grey plumage, pale yellow face and crest and orange cheek patches are retained.
+<Video 1> (motion reference): reference - only the dance moves, their order, poses, range, speed and rhythm are reproduced; the woman, her clothes and the living room are not used.
+
+detailed_description:
+The target video is realistic.
+[Shot 1] An indoor wooden stage stands before a row of tall windows, an ivory curtain hangs behind it, green plants frame both sides, and sunlight forms clean bands across the floor. <Subject 1> stands in the middle of the stage and performs the dance of <Video 1>, copying each move in order with the same poses, range, speed and rhythm.
+
+overall_soundscape:
+Silence.

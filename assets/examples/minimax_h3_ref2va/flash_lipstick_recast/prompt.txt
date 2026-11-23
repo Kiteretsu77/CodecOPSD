@@ -1,0 +1,17 @@
+subject_definitions:
+<Subject 1> is the woman in <Picture 1>, with fair skin, red lipstick, a red beret, red-framed glasses, pearl necklaces and a red jacket over a white turtleneck.
+<Video 1> supplies the scene, the action, the timing and the framing: a woman speaking to the camera in a bright room with white flowers, holding a lipstick up; only <Subject 1> takes her place.
+
+summary:
+[reference generation] In one continuous shot, <Subject 1> takes the place of the woman in <Video 1>: she speaks to the camera in the same bright room with white flowers and holds the lipstick up the same way, with the same framing and timing. The video is silent.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - her face, red beret, red-framed glasses, pearl necklaces and red jacket are retained.
+<Video 1> (scene and motion reference): reference - the room, the white flowers, the lipstick, the framing, the gestures and their timing are reproduced; the original woman is not used.
+
+detailed_description:
+The target video is realistic, a bright, softly lit beauty advertisement.
+[Shot 1] A bright room with a white wall and a vase of white flowers. <Subject 1> faces the camera at the same distance as the woman in <Video 1>, speaks with natural lip movements and holds a red lipstick up beside her face with the same hand and the same timing as in <Video 1>.
+
+overall_soundscape:
+Silence.

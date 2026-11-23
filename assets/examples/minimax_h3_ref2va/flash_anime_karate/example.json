@@ -1,0 +1,28 @@
+{
+ "label": "Anime karate: 2 pictures + 1 video",
+ "order": 3.6,
+ "source": "pictures generated, video Pexels 7045195",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/flash_anime_karate_1.jpg",
+  "--reference",
+  "../../refs/flash_anime_karate_2.jpg",
+  "--reference",
+  "../../refs/flash_anime_karate_3.mp4",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ],
+ "demo": false
+}

@@ -1,0 +1,32 @@
+{
+ "source": "pictures and videos generated with MiniMax-H3",
+ "demo": true,
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/sea_jellyfish.png",
+  "--reference",
+  "../../refs/sea_submersible.png",
+  "--reference",
+  "../../refs/sea_canyon.png",
+  "--reference",
+  "../../refs/sea_effect_plankton_124f.mp4",
+  "--reference",
+  "../../refs/sea_motion_school_124f.mp4",
+  "--reference",
+  "../../refs/sea_camera_dive_124f.mp4",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ]
+}

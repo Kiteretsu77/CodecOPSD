@@ -1,0 +1,27 @@
+{
+ "label": "Breakfast table: 6 pictures",
+ "order": 11,
+ "source": "pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/breakfast_table_1.jpg",
+  "--image",
+  "../../refs/breakfast_table_2.jpg",
+  "--image",
+  "../../refs/breakfast_table_3.jpg",
+  "--image",
+  "../../refs/breakfast_table_4.jpg",
+  "--image",
+  "../../refs/breakfast_table_5.jpg",
+  "--image",
+  "../../refs/breakfast_table_6.jpg",
+  "--height",
+  "2048",
+  "--width",
+  "2048",
+  "--seed",
+  "42"
+ ]
+}

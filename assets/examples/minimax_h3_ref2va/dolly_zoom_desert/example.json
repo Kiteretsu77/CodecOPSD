@@ -1,0 +1,25 @@
+{
+ "label": "Dolly zoom on a desert road: 1 picture + 1 video",
+ "order": 0.5,
+ "source": "picture generated, video Pexels 5328371",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/dolly_zoom_desert_1.jpg",
+  "--reference",
+  "../../refs/vertigo_2.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ]
+}

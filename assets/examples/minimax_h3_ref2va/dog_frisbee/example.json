@@ -1,0 +1,27 @@
+{
+ "label": "Frisbee dog: 2 pictures + 1 video",
+ "order": 40,
+ "source": "pictures + video Pexels",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/dog_frisbee_1.jpg",
+  "--reference",
+  "../../refs/dog_frisbee_2.jpg",
+  "--reference",
+  "../../refs/dog_frisbee_3.mp4",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ]
+}

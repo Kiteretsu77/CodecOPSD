@@ -1,0 +1,27 @@
+{
+ "label": "Family portrait: 6 pictures",
+ "order": 1,
+ "source": "pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/family_sofa_1.jpg",
+  "--image",
+  "../../refs/family_sofa_2.jpg",
+  "--image",
+  "../../refs/family_sofa_3.jpg",
+  "--image",
+  "../../refs/family_sofa_4.jpg",
+  "--image",
+  "../../refs/family_sofa_5.jpg",
+  "--image",
+  "../../refs/family_sofa_6.jpg",
+  "--height",
+  "1536",
+  "--width",
+  "2720",
+  "--seed",
+  "42"
+ ]
+}

@@ -1,0 +1,18 @@
+subject_definitions:
+<Subject 1> is the little boy superhero in <Picture 1>, with spiky orange hair, a black eye mask, freckles, a red suit with a white star on the chest and a red cape, standing on a night city rooftop.
+<Subject 2> is the colossal black mech-kaiju in <Picture 2>, with fanged jaws, red eyes, a glowing red chest core and blue lightning arcing off its head.
+
+summary:
+[reference generation] A bold comic-book ink film in two cuts at night over a city: <Subject 1> shouts a challenge from a rooftop while his words appear as huge comic lettering, a whip pan carries the words away, and <Subject 2> rears back and unleashes a giant roar.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the face, spiky orange hair, eye mask, freckles, red suit and cape are retained in the comic ink style.
+<Subject 2> (appears in [Shot 2]): fully_preserved - the black mech body, fanged jaws, red eyes, glowing chest core and blue lightning are retained.
+
+detailed_description:
+The target video is in a bold comic-book ink style with heavy linework and a red and blue-black palette, at night over a city.
+[Shot 1] A top-down view of <Subject 1> on the rooftop, his red cape fluttering in the wind, hands planted on his hips, a cocky grin as he looks straight up into the camera. The camera slowly descends toward him as he speaks. <Subject 1> (S1) shouts, <d>[English] Get ready to meet your maker!</d> As he speaks, comic-book lettering appears word by word in sync with his voice, "GET READY TO", "MEET", "YOUR", "MAKER", huge jagged letters, white with heavy black outlines and red drop shadows, tilted at scrappy angles, stacking in the air between his face and the lens. A violent whip pan off the rooftop smears the floating words away.
+[Shot 2] At 00:02.500, a low hero angle on <Subject 2> towering over the skyline as it rears back and unleashes a giant roar, jaws wide, red eyes and chest core flaring blinding bright, blue lightning arcing off its head. The shockwave ripples dust and rattles windows down the buildings, with comic speed lines and ink splatter bursting out. It leans into the camera as the roar peaks, and the shot holds on the roar.
+
+overall_soundscape:
+The boy's cocky shout, the whoosh of the whip pan, and the kaiju's deafening roar with rattling windows.

@@ -1,0 +1,30 @@
+{
+ "label": "Fashion lookbook: 4 pictures (portrait)",
+ "order": 10,
+ "source": "taobao-content-ai/MiniMax-H3-PTD-RefAsymOPD-LoRAs, sample-4 (prompt verbatim)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/flash_lookbook_1.jpg",
+  "--reference",
+  "../../refs/flash_lookbook_2.jpg",
+  "--reference",
+  "../../refs/flash_lookbook_3.jpg",
+  "--reference",
+  "../../refs/flash_lookbook_4.jpg",
+  "--height",
+  "832",
+  "--width",
+  "480",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ],
+ "demo": false
+}

@@ -1,0 +1,25 @@
+{
+ "label": "Furnish an empty room: 5 pictures",
+ "order": 7,
+ "source": "pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/room_staging_1.jpg",
+  "--image",
+  "../../refs/room_staging_2.jpg",
+  "--image",
+  "../../refs/room_staging_3.jpg",
+  "--image",
+  "../../refs/room_staging_4.jpg",
+  "--image",
+  "../../refs/room_staging_5.jpg",
+  "--height",
+  "1536",
+  "--width",
+  "2720",
+  "--seed",
+  "42"
+ ]
+}

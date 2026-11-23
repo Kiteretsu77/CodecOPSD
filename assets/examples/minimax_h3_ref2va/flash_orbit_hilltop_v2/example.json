@@ -1,0 +1,26 @@
+{
+ "label": "Orbit shot: 1 picture + 1 video",
+ "order": 26,
+ "source": "picture generated, video Mixkit 30434; smaller copies of the files for the extreme page",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/flash_orbit_hilltop_v2_1.jpg",
+  "--reference",
+  "../../refs/flash_orbit_hilltop_3.mp4",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ],
+ "demo": false
+}

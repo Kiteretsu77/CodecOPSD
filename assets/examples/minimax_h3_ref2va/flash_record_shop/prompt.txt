@@ -1,0 +1,19 @@
+subject_definitions:
+<Subject 1> is the character Desmond in <Picture 1>, shown from the front, three-quarter and back views: a slim man in a mustard double-breasted suit and loafers, holding a vinyl record, drawn as a vintage pop-art fashion illustration.
+<Subject 2> is the record shop in <Picture 2>, with record shelves, a terracotta checkerboard floor and a turntable, in the same pop-art style.
+<Video 1> is the motion reference: only the body motion, choreography, timing and camera movement of the person are reproduced: whirling spins, flung arms and kicks, with a potted fern held overhead; the person's face, body, clothes, the fern, the room, the colours and the photographic look are not used.
+
+summary:
+[reference generation] In one continuous shot in the art style of <Picture 1> and <Picture 2>, <Subject 1> dances on the checkerboard floor of <Subject 2> with the spins, flung arms and kicks of <Video 1>, holding his vinyl record high above his head where the dancer holds the fern.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the face, proportions, mustard suit, colours and vinyl record of the character sheet are retained, in its pop-art ink style.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the layout, colours, record shelves and terracotta checkerboard floor of the shop are retained.
+<Video 1> (motion reference): reference - only the body motion, choreography, timing and camera movement are reproduced; the person, the clothes, the fern, the room and the photographic look are not used.
+
+detailed_description:
+The target video is a vintage pop-art fashion illustration with black ink outlines, flat colour blocks, halftone and risograph grain, never photoreal, with only one character in frame.
+[Shot 1] <Subject 1> dances on the terracotta checkerboard floor of <Subject 2> with the same whirling spins, flung arms and kicks as the person in <Video 1>, his mustard suit jacket flaring with each turn. Where the person in <Video 1> holds the potted fern overhead, <Subject 1> holds his vinyl record high above his head like a dance partner. Normal real-time speed, no slow motion, no text, no captions, no logos.
+
+overall_soundscape:
+An upbeat 1960s-style soul groove playing from the turntable, loafers tapping and squeaking on the floor, and a soft record crackle.

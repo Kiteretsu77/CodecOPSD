@@ -1,0 +1,23 @@
+{
+ "label": "Anime characters in one scene: 4 pictures",
+ "order": 8,
+ "source": "pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/anime_rooftop_1.jpg",
+  "--image",
+  "../../refs/anime_rooftop_2.jpg",
+  "--image",
+  "../../refs/anime_rooftop_3.jpg",
+  "--image",
+  "../../refs/anime_rooftop_4.jpg",
+  "--height",
+  "1536",
+  "--width",
+  "2720",
+  "--seed",
+  "42"
+ ]
+}

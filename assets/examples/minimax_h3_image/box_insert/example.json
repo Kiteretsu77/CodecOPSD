@@ -1,0 +1,19 @@
+{
+ "label": "Add a chair in the red box: 2 pictures",
+ "order": 23,
+ "source": "pictures generated (red box drawn)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/box_insert_1.jpg",
+  "--image",
+  "../../refs/box_insert_2.jpg",
+  "--height",
+  "1664",
+  "--width",
+  "2496",
+  "--seed",
+  "42"
+ ]
+}

@@ -1,0 +1,52 @@
+# On-Policy Codec Distillation for Efficient All-in-One Video Generation (CodecOPSD).
+#
+# Authors: Boyang Wang, Kevin Blackburn-Matzen, Oindrila Saha, Matheus Gadelha, Zezhou Cheng
+#
+# Copyright (c) 2026 The CodecOPSD Authors. All rights reserved.
+
+# Cosmos 3 (Nano, Omni) + CodecOPSD student: the settings of Cosmos3CodecOPSDPipeline. They follow the released model and the
+# official Cosmos 3 framework (cosmos-framework inference defaults), which the CodecOPSD students were trained to match.
+
+flow_shift: 10.0                # UniPC shift at every resolution tier (the framework's presets); Karras sigmas off
+num_inference_steps:            # per task family
+  transfer: 50
+  generation: 35                # image -> video, continuation, video -> audio
+  inverse_dynamics: 30
+guidance_scale:                 # text guidance per task family (1 = one pass, no negative prompt)
+  transfer: 3.0
+  generation: 6.0
+  inverse_dynamics: 1.0
+control_guidance:               # transfer control guidance, the framework's form: v = v_text_guided + (cg - 1) (v_ctrl - v_no_ctrl);
+  edge: 1.5                     # the released diffusers loop nests it inside the text guidance, so the pipeline passes
+  blur: 1.5                     # 1 + (cg - 1) / guidance_scale (1.5 -> 1.1667, 2.0 -> 1.3333 at guidance 3)
+  depth: 1.5
+  seg: 2.0
+  multi: 1.5                    # two or more controls (each control's attention pass weighted equally)
+negative_prompt: cosmos3_negative_prompt.json   # the framework's default negative prompt (JSON), followed by the
+                                                # sample's duration and resolution sentences
+
+sizes:                          # the released resolution tiers (height x width per aspect ratio)
+  480: [[480, 832], [544, 736], [640, 640], [736, 544], [832, 480]]
+  720: [[720, 1280], [832, 1104], [960, 960], [1104, 832], [1280, 720]]
+default_tier: {transfer: 720, i2v: 720, continuation: 720, v2a: 480}   # without height / width: the size of the
+                                                                       # input's aspect ratio at this tier
+num_frames: {transfer: 121, i2v: 121, continuation: 121}   # default output frames (4n + 1); v2a: the input's
+
+gaze_kinds:                     # codec gazer settings (configs/codec_gazer.yaml) of each condition, as trained
+  edge: video
+  blur: degradation             # a finer x264 motion search (preset veryfast) for degraded real video
+  depth: video
+  seg: video
+  video: video                  # the given image / frames (i2v, continuation), the input video (v2a, id_droid)
+
+continuation:
+  given_latent_frames: 2        # the released default: 5 given pixel frames
+  keep_last_given: true         # CodecOPSD inference: the last given latent frame is given whole (the frame the generated
+                                # video continues from); the earlier given frames are gazed
+
+id_droid:                       # DROID robot inverse dynamics: 17 frames of the three-view canvas -> 16 actions
+  canvas: [540, 640]            # wrist view 360 x 640 on top, the two exterior views 180 x 320 each below
+  chunk: 16
+  fps: 15.0
+  view_description: The top row is from the wrist-mounted camera. The bottom row contains two horizontally concatenated
+    third-person perspective views of the scene from opposite sides, with the robot visible.

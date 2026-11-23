@@ -1,0 +1,23 @@
+{
+ "label": "Orchard harvest: 4 pictures",
+ "order": 0.61,
+ "source": "pictures: Aesthetic-4K photos (paper supplementary)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/supp_orchard_1.jpg",
+  "--image",
+  "../../refs/supp_orchard_2.jpg",
+  "--image",
+  "../../refs/supp_orchard_3.jpg",
+  "--image",
+  "../../refs/supp_orchard_4.jpg",
+  "--height",
+  "2048",
+  "--width",
+  "2048",
+  "--seed",
+  "3001"
+ ]
+}

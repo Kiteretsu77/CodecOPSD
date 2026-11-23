@@ -1,0 +1,19 @@
+subject_definitions:
+<Subject 1> is the girl in <Picture 1>, with short black hair, a red headband with long ties, a white karate uniform with a black belt, red hand wraps and bare feet.
+<Subject 2> is the wooden training hall in <Picture 2>, with cream walls between dark wooden posts, a polished wooden floor, paper sliding doors, sunlight falling across the floor and a red maple tree outside the open door on the right.
+<Video 1> is the motion reference: only the karate routine of the person is reproduced, move for move: a knee lift, steps, punches and a high side kick; the dark silhouette, the loft with large windows and the backlight are not used.
+
+summary:
+[reference generation] In one continuous shot inside <Subject 2> with a steady camera, <Subject 1> practises the karate routine of <Video 1>. The video is silent.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the face, short black hair, red headband, white karate uniform, black belt and red hand wraps are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the layout, colours and lighting of the wooden training hall, the paper sliding doors and the red maple tree outside are retained.
+<Video 1> (motion reference): reference - only the karate routine of the person is reproduced, move for move: a knee lift, steps, punches and a high side kick; the dark silhouette, the loft with large windows and the backlight are not used.
+
+detailed_description:
+The target video is a silent 5.2-second single continuous shot in 2D anime style, with clean line art, soft colours and warm afternoon sunlight. There is no text, lettering or logo anywhere.
+[Shot 1] A steady full shot shows <Subject 2>, the wooden training hall with sunlight falling across the polished floor and the red maple tree outside the open door. <Subject 1>, the girl with short black hair, a red headband and a white karate uniform with a black belt, stands in a fighting stance in the middle of the floor and performs the routine of <Video 1> move for move: she lifts one knee, steps across the floor, throws punches and ends with a high side kick, the ties of her headband swinging with every move. The camera stays still from the first frame to the last.
+
+overall_soundscape:
+This is a silent video.

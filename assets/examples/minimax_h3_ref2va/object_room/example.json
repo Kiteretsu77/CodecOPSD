@@ -1,0 +1,27 @@
+{
+ "label": "Objects in a room: 4 pictures",
+ "order": 8.4,
+ "source": "pictures generated",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/object_room_1.jpg",
+  "--reference",
+  "../../refs/object_room_2.jpg",
+  "--reference",
+  "../../refs/object_room_3.jpg",
+  "--reference",
+  "../../refs/object_room_4.jpg",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "threshold",
+  "--seed",
+  "42"
+ ]
+}

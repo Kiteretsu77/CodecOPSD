@@ -1,0 +1,14 @@
+{
+ "label": "Line art to photo: 1 picture",
+ "order": 6,
+ "source": "picture Wikimedia Commons",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/lineart_to_photo_1.png",
+  "--reference-aspect",
+  "--seed",
+  "42"
+ ]
+}

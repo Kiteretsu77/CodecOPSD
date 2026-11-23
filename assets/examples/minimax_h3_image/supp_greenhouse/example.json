@@ -1,0 +1,21 @@
+{
+ "label": "Greenhouse: 3 pictures",
+ "order": 0.67,
+ "source": "pictures: Aesthetic-4K photos (paper supplementary)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/supp_greenhouse_1.jpg",
+  "--image",
+  "../../refs/supp_greenhouse_2.jpg",
+  "--image",
+  "../../refs/supp_greenhouse_3.jpg",
+  "--height",
+  "2048",
+  "--width",
+  "2048",
+  "--seed",
+  "3007"
+ ]
+}

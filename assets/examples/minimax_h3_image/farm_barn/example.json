@@ -1,0 +1,31 @@
+{
+ "label": "Farm animals at a barn: 8 pictures",
+ "order": 3,
+ "source": "pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/farm_barn_1.jpg",
+  "--image",
+  "../../refs/farm_barn_2.jpg",
+  "--image",
+  "../../refs/farm_barn_3.jpg",
+  "--image",
+  "../../refs/farm_barn_4.jpg",
+  "--image",
+  "../../refs/farm_barn_5.jpg",
+  "--image",
+  "../../refs/farm_barn_6.jpg",
+  "--image",
+  "../../refs/farm_barn_7.jpg",
+  "--image",
+  "../../refs/farm_barn_8.jpg",
+  "--height",
+  "1536",
+  "--width",
+  "2720",
+  "--seed",
+  "42"
+ ]
+}

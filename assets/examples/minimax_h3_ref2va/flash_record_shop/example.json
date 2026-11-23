@@ -1,0 +1,28 @@
+{
+ "label": "Record-shop dance: 2 pictures + 1 video",
+ "order": 11,
+ "source": "Pika-Labs/Pika-H3-Flex showcase, motion transfer (prompt cut to 5 s)",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/flash_record_shop_1.jpg",
+  "--reference",
+  "../../refs/flash_record_shop_2.jpg",
+  "--reference",
+  "../../refs/flash_record_shop_3.mp4",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ],
+ "demo": false
+}

@@ -1,0 +1,21 @@
+subject_definitions:
+<Subject 1> is the older woman in <Picture 1>, with short grey hair, wearing a dark green top and a long wooden bead necklace.
+<Subject 2> is the wooden stool in <Picture 2>, covered with a cream cushion with red and blue stripes.
+<Subject 3> is the cream knitted blanket in <Picture 3>.
+<Subject 4> is the living room in <Picture 4>, with a sofa piled with yellow and cream cushions and an orange throw, surrounded by many green plants and pink orchids.
+
+summary:
+[reference generation] In one continuous shot inside <Subject 4> with a steady camera, <Subject 1> lays <Subject 3> over <Subject 2>. The video is silent.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the short grey hair, dark green top and long wooden bead necklace are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the wooden legs and the cream cushion with red and blue stripes are retained.
+<Subject 3> (appears in [Shot 1]): fully_preserved - the cream knitted texture of the blanket is retained.
+<Subject 4> (appears in [Shot 1]): fully_preserved - the sofa with yellow and cream cushions, the orange throw, the green plants and the pink orchids are retained.
+
+detailed_description:
+The target video is a silent, 5.2-second single continuous shot with soft daylight and a steady camera.
+[Shot 1] A steady wide shot shows <Subject 4>, the living room with the sofa piled with yellow and cream cushions, the orange throw, the green plants and the pink orchids. At 00:02.000, <Subject 1>, the older woman with short grey hair in the dark green top and long wooden bead necklace, lays <Subject 3>, the cream knitted blanket, over <Subject 2>, the wooden stool with the striped cushion, beside the sofa, until 00:05.200.
+
+overall_soundscape:
+This is a silent video.

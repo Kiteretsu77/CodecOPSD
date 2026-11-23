@@ -1,0 +1,19 @@
+subject_definitions:
+<Subject 1> is the masked mystic in <Picture 1>, in black kimono robes with a paper talisman over the face and clawed hands.
+<Subject 2> is the weathered combat robot in <Picture 2>, in a frayed canvas poncho, with an optical sensor and a double-barrel sidearm.
+
+summary:
+[reference generation] A cinematic dark-fantasy film in three cuts in a ruined stone temple courtyard at dusk: <Subject 1> sets dozens of paper charms alight, <Subject 2> steps out of drifting smoke, and the two turn back to back as charms swirl around them.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1], [Shot 3]): fully_preserved - the talisman mask, black kimono robes and clawed hands are retained.
+<Subject 2> (appears in [Shot 2], [Shot 3]): fully_preserved - the weathered metal body, frayed canvas poncho, optical sensor and double-barrel sidearm are retained.
+
+detailed_description:
+The target video is a moody cinematic dark-fantasy film in blue and amber light.
+[Shot 1] Dusk in a ruined stone temple courtyard. <Subject 1> raises clawed hands and dozens of paper charms spiral into the air; the camera makes a fast low-angle push-in as the charms ignite with blue light.
+[Shot 2] At 00:01.700, a whip pan to <Subject 2> stepping out of drifting smoke, its optical sensor glowing, raising its double-barrel sidearm; the camera orbits around it in a tight half circle.
+[Shot 3] At 00:03.400, a wide crane shot rises over both as they turn back to back, charms swirling around them and sparks falling.
+
+overall_soundscape:
+Rustling paper, heavy servo whirs and a deep metallic boom on the final beat, over a low taiko pulse.

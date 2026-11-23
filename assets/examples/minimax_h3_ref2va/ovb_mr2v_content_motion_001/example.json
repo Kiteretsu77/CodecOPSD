@@ -1,0 +1,30 @@
+{
+ "label": "Content + motion: 3 pictures + 1 video",
+ "order": 5,
+ "source": "OmniVBench mr2v_content_motion/001",
+ "demo": true,
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/ovb_mr2v_content_motion_001_1.png",
+  "--reference",
+  "../../refs/ovb_mr2v_content_motion_001_2.png",
+  "--reference",
+  "../../refs/ovb_mr2v_content_motion_001_3.png",
+  "--reference",
+  "../../refs/ovb_mr2v_content_motion_001_4.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--video-drop",
+  "0.7",
+  "--video-drop-select",
+  "exact",
+  "--seed",
+  "42"
+ ]
+}
