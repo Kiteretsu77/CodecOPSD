@@ -1,0 +1,20 @@
+subject_definitions:
+<Subject 1> is the knight in full polished silver plate armour with a closed rounded helmet topped by a crimson plume, a long flowing crimson cape and brown leather gloves in <Picture 1>.
+<Video 1> is the source video for the target video edit.
+
+summary:
+[video editing + reference generation] In <Video 1>, the man in the grey hooded sweatshirt is replaced by <Subject 1>, who walks the golden retriever along the park path with exactly the same path, pace and timing; everything else in <Video 1> stays the same.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the polished silver armour, the closed helmet with the crimson plume, the crimson cape and the brown gloves are retained.
+<Video 1> (source video): fully_preserved - the park, the path, the autumn trees, the green bench, the golden retriever with its red leash, the static camera and the walking path, pace and timing are retained; only the man is replaced by <Subject 1>.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Sunny autumn afternoon in a city park.
+[Shot 1] The same static shot as <Video 1>: a paved path crosses the park from left to right, with a green lawn in front, tall orange and yellow autumn trees behind and a green bench on the far side. <Subject 1> walks along the path from the left side of the frame to the right side at a steady, relaxed pace, exactly where and when the man walks in <Video 1>, holding the red leash of the golden retriever that trots just ahead of him; his crimson cape sways and his armour glints in the sun. The camera does not move.
+
+overall_soundscape:
+The clink of armour plates with every step, the dog's paws on the path, rustling leaves and distant city sounds. No speech.
+
+non_diegetic_music:
+N/A

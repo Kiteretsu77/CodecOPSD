@@ -10,7 +10,7 @@ Tests of `codecopsd.codec_gazer.drop_mask` on synthetic inputs (CPU only, no mod
 
     python tests/test_drop_mask.py        # or: pytest tests/test_drop_mask.py
 
-Needs the H.264 reader (`bash scripts/build_codec_reader.sh`).
+Needs the H.264 reader (the package `codecopsd-codec`, installed with `pip install -e .`).
 """
 
 import sys

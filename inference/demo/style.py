@@ -16,7 +16,9 @@ INTRO = """
 <h1 class="hdr-name">CodecOPSD</h1>
 <div class="hdr-title">On-Policy Codec Distillation for Efficient All-in-One Video Generation</div>
 """
-SUMMARY = "We use codec pruning to drop the condition tokens and reach a much faster speed."
+# two lines on the page (split at "\n")
+SUMMARY = ("We use codec pruning to drop the condition tokens\n"
+           "and an on-policy self-distillation training paradigm, and reach a much faster speed.")
 
 # System fonts: the page loads nothing from outside the demo (the default theme fetches Google Fonts).
 THEME = gr.themes.Soft(primary_hue="blue", font=["ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto",
@@ -114,6 +116,27 @@ a.hdr-author {color: #1d4ed8; text-decoration: none} a.hdr-author:hover {text-de
 .examples .caption-label, .ref-input .caption-label {white-space: normal !important; overflow: visible !important;
   text-overflow: clip !important; max-width: calc(100% - 8px) !important; line-height: 1.3 !important}
 .ref-input .caption-label {font-size: 12px !important}
+.examples .caption-label {font-size: 11px !important; padding: 1px 5px !important; opacity: 0.92}
+/* every example thumbnail numbered in its top-left corner, in page order (1, 2, ...), to refer to an example by number */
+.examples .grid-container {counter-reset: example}
+.examples .thumbnail-item {counter-increment: example}
+.examples .thumbnail-item::before {content: counter(example); position: absolute; top: 5px; left: 5px; z-index: 5;
+  min-width: 18px; padding: 1px 5px; border-radius: 5px; background: rgba(17, 24, 39, 0.6); color: #fff;
+  font: 600 12px/1.35 ui-sans-serif, system-ui, sans-serif; text-align: center; pointer-events: none}
+/* the gallery's own label sits over its top-left corner: the tiles start below it */
+.examples .grid-wrap {padding-top: 30px !important}
+/* the example gallery as a mosaic: the fine grid the script in HEAD places every thumbnail on (its own aspect ratio, no
+   square crop); before the script runs, every thumbnail spans 6 of the 24 columns at about 16:9 */
+.examples .grid-container {grid-template-columns: repeat(24, minmax(0, 1fr)) !important; grid-template-rows: none !important;
+  grid-auto-rows: 8px !important; gap: 6px !important}
+.examples .grid-container > * {grid-column: span 6; grid-row: span 12; min-width: 0; min-height: 0}
+.examples .thumbnail-item {aspect-ratio: auto !important; width: 100% !important; height: 100% !important}
+.examples .thumbnail-item > img, .examples .thumbnail-item video {width: 100% !important; height: 100% !important;
+  object-fit: cover !important}
+@media (max-width: 640px) {.examples .grid-container {grid-template-columns: repeat(12, minmax(0, 1fr)) !important}}
+.stats-src {font-weight: 600; font-size: 11px}
+.stats-live {color: #15803d}
+.stats-precomputed {color: #7c3aed}
 /* the references as the model reads them, under the results */
 .refs {margin-top: 4px}
 .refs-title {font-size: 16px; font-weight: 600; margin: 2px 0 8px 0}
@@ -358,6 +381,87 @@ HEAD = """
     }
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+})();
+(() => {
+  // The example gallery as a mosaic (CSS ".examples .grid-container"): every thumbnail at its own aspect ratio, placed
+  // on a fine grid (24 columns, 12 on a phone; 8 px rows) by a skyline: each tile goes into the lowest free stretch, at
+  // a width from an uneven pattern (narrower for portrait and square pictures), or over the whole stretch when the rest
+  // would be too narrow; a tile whose bottom lands within a quarter of its height of a neighbour's is snapped to it
+  // (cover crop), and no tile may line every column up. So no gutter runs straight across (checked on the real
+  // thumbnails from 700 to 1400 px wide). Placement only: the DOM order (the numbers in the corners, the clicks) stays
+  // the page order.
+  const ROW = 8, GAP = 6, PATTERN = [6, 7, 5, 6, 8, 5, 7, 6, 5, 7];  // 4 to 5 tiles a row (user 11/23: smaller tiles)
+  const childOf = (grid, el) => { while (el && el.parentElement !== grid) el = el.parentElement; return el; };
+  const layout = grid => {
+    const tracks = getComputedStyle(grid).gridTemplateColumns.split(' ').map(parseFloat).filter(x => x > 0);
+    const cols = tracks.length, colW = tracks[0];
+    if (!cols || !colW) return;
+    const scale = cols / 24, minW = Math.max(2, Math.round(4 * scale)), maxW = Math.max(minW + 1, Math.round(8 * scale));
+    const top = new Array(cols).fill(0);
+    grid.querySelectorAll('.thumbnail-item').forEach((thumb, i) => {
+      const cell = childOf(grid, thumb);
+      if (!cell) return;
+      const media = thumb.querySelector('img, video');
+      const mw = media ? (media.naturalWidth || media.videoWidth || 0) : 0;
+      const mh = media ? (media.naturalHeight || media.videoHeight || 0) : 0;
+      const ratio = mw && mh ? mw / mh : 16 / 9;
+      // the leftmost stretch whose top is near the lowest one (within about half a tile): the tiles fill the page
+      // left to right, band by band, so the numbers read in order; every stretch is filled at its own top (no holes)
+      const floor = Math.min(...top), near = Math.round(colW * 3 / (ROW + GAP));
+      const a = top.findIndex(t => t <= floor + near), low = top[a];  // the stretch [a, b)
+      let b = a;
+      while (b < cols && top[b] === low) b++;
+      const seg = b - a, shape = ratio < 0.9 ? 0.6 : ratio < 1.2 ? 0.8 : 1;
+      const want = Math.max(minW, Math.round(PATTERN[i % PATTERN.length] * scale * shape));
+      // a too narrow rest joins the tile only while the tile stays at most maxW wide; else it is left for a small tile
+      const w = Math.min(seg, seg - want >= minW ? want : seg <= maxW ? seg : Math.min(maxW, seg - minW));
+      let h = Math.max(3, Math.round(((w * colW + (w - 1) * GAP) / ratio + GAP) / (ROW + GAP)));
+      const x = a;  // always the stretch's left end: the numbers read left to right
+      const tol = Math.max(1, Math.round(h * 0.25));
+      for (const n of [x - 1, x + w]) {  // snap to a neighbour's bottom, unless that lines up every column
+        if (n < 0 || n >= cols) continue;
+        const d = top[n] - (low + h);
+        if (d === 0 || Math.abs(d) > tol) continue;
+        const next = top.map((t, c) => (c >= x && c < x + w ? low + h + d : t));
+        if (new Set(next).size > 1) { h += d; break; }
+      }
+      if (top.every((t, c) => (c >= x && c < x + w ? low + h : t) === low + h)) h += h > 6 ? -2 : 2;  // no line across
+      cell.style.gridColumn = `${x + 1} / span ${w}`;
+      cell.style.gridRow = `${low + 1} / span ${h}`;
+      for (let c = x; c < x + w; c++) top[c] = low + h;
+    });
+  };
+  // Laid out again only when something it reads changed (the gallery's width, its tiles, their pictures' sizes): the
+  // signature check keeps it from running on every update of the page (the progress line redraws every second).
+  const signature = grid => grid.clientWidth + '|' + [...grid.querySelectorAll('.thumbnail-item img, .thumbnail-item video')]
+    .map(m => (m.naturalWidth || m.videoWidth || 0) + 'x' + (m.naturalHeight || m.videoHeight || 0)).join(',');
+  const done = new WeakMap(), watched = new WeakSet();
+  let queued = false;
+  const run = () => {
+    queued = false;
+    document.querySelectorAll('.examples .grid-container').forEach(grid => {
+      watch(grid);
+      const sig = signature(grid);
+      const placed = [...grid.children].every(c => c.style.gridRow);  // tiles re-rendered by Gradio lose their place
+      if (done.get(grid) === sig && placed) return;
+      try { layout(grid); } catch (err) { console.warn('example mosaic', err); }
+      done.set(grid, sig);
+    });
+  };
+  const schedule = () => { if (!queued) { queued = true; setTimeout(run, 150); } };
+  // each gallery watched on its own (its tiles added or replaced); the page only for a gallery that appears
+  const watch = grid => {
+    if (watched.has(grid)) return;
+    watched.add(grid);
+    new MutationObserver(schedule).observe(grid, {childList: true, subtree: true, attributes: true, attributeFilter: ['src']});
+  };
+  new MutationObserver(records => {
+    for (const r of records) for (const n of r.addedNodes)
+      if (n.nodeType === 1 && (n.matches('.examples, .examples *') || n.querySelector('.examples'))) return schedule();
+  }).observe(document.body, {childList: true, subtree: true});
+  document.addEventListener('load', e => { if (e.target.closest && e.target.closest('.examples')) schedule(); }, true);
+  window.addEventListener('resize', schedule);
+  schedule();
 })();
 </script>
 <style>

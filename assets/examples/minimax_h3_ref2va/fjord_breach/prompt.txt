@@ -1,0 +1,22 @@
+subject_definitions:
+<Subject 1> is the humpback whale with very long white pectoral fins, a knobbly head with rows of bumps, a dark slate-grey back, a pale grooved throat, barnacle patches on its chin and a broad tail fluke with a white underside in <Picture 1>.
+<Subject 2> is the deep northern fjord in winter at golden hour with steep dark cliffs streaked with snow, a small village of red and ochre wooden fishing cabins on stilts with a white wooden church on the shore, and low golden sun on the peaks in <Picture 2>.
+<Video 1> is the motion reference: only the whale's movement is reproduced - it bursts straight up out of the water, rises almost fully clear, twists in the air and crashes back down on its side with a huge splash; its sea and its mountains are not used.
+
+summary:
+[reference generation] In the calm water of <Subject 2> at golden hour, <Subject 1> breaches as in <Video 1> in front of the fishing village, filmed from a static camera on the shore. A thunderous splash and crying seabirds.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the long white pectoral fins, the knobbly head, the slate-grey back, the grooved throat and the tail fluke of the humpback whale are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the snowy cliffs, the red and ochre cabins on stilts, the white church and the golden light of the fjord are retained.
+<Video 1> (motion reference): reference - only the whale's breach is reproduced, not its sea or its mountains.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Low golden sun on the snowy peaks, cold blue water and spray glowing gold against the dark cliffs.
+[Shot 1] A wide shot from a static camera on a tripod at the water's edge that does not move, pan or zoom from the first frame to the last, with <Subject 2> filling the background: the snowy cliffs, the red and ochre cabins on stilts and the white church on the shore. At 00:01.000 <Subject 1> bursts straight up out of the calm water in the middle distance as in <Video 1>, rising almost fully clear of the surface with its long white pectoral fins spread wide and water pouring off its knobbly head; it twists in the air and crashes back down on its side, throwing up a huge white splash that glows gold in the low sun, rains down and leaves a widening ring of foam. Seabirds scatter from the water.
+
+overall_soundscape:
+The deep whoosh of the whale rising and a thunderous splash as it crashes back, spray raining down, waves slapping the shore and the cries of seabirds over the fjord. No speech.
+
+non_diegetic_music:
+N/A

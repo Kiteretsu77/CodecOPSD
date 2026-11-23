@@ -1,0 +1,29 @@
+{
+ "label": "Bait Ball Dive: 2 pictures + 1 video",
+ "order": 26,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: Bait Ball Dive",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/bait_ball_dive_1.jpg",
+  "--reference",
+  "../../refs/bait_ball_dive_2.jpg",
+  "--reference",
+  "../../refs/bait_ball_dive_3.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "2026"
+ ]
+}

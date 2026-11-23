@@ -34,7 +34,7 @@ class Refused(Exception):
 REQUESTS = itertools.count(1)
 
 
-PARTS = ("Encoding (VAE + VLM && Codec Pruning)", "Denoising", "Decoding")  # the progress bar's three stages
+PARTS = ("Init: encoding the references (VAE + VLM, codec pruning)", "Denoise: step", "Decode: VAE")  # the bar's three stages
 DECODE_STAGES = ("VAE decode", "frames to the CPU", "image to the CPU", "audio VAE decode")  # `codecopsd.stats` stages of part 3
 
 
@@ -83,7 +83,7 @@ class Report:
 
     def waiting(self, ahead, holder):
         left = getattr(holder, "left", None)
-        text = "Queued behind another request" + (f" (about {left:.0f} s left)" if left else "")
+        text = "Waiting: queued behind another request" + (f" (about {left:.0f} s left)" if left else "")
         if ahead:
             text += f", {ahead} more before this one"
         self.progress(None, text)
@@ -131,7 +131,7 @@ class Report:
             elif self.clock is not None or enc[1]:
                 part, value, unit = 1, count(*enc), ""
             else:  # before the pipeline call: the model is loaded onto the GPU (first use of the tab)
-                self.progress(None, self.phase[0] if self.phase is not None else "Starting")
+                self.progress(None, self.phase[0] if self.phase is not None else "Init: starting")
                 return
             done = f" {value[0]}/{value[1]}" if value else ""  # the bar itself shows a percentage
             self.progress(value, PARTS[part - 1] + done, unit)

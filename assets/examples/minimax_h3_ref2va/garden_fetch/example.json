@@ -1,0 +1,31 @@
+{
+ "label": "Garden Fetch: 4 pictures",
+ "order": 19,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: Garden Fetch",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/garden_fetch_1.jpg",
+  "--reference",
+  "../../refs/garden_fetch_2.jpg",
+  "--reference",
+  "../../refs/garden_fetch_3.jpg",
+  "--reference",
+  "../../refs/garden_fetch_4.jpg",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "2026"
+ ]
+}

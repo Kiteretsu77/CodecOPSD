@@ -1,0 +1,24 @@
+subject_definitions:
+<Subject 1> is the female violinist with short silver-grey hair and dark-red lipstick, in a long flowing emerald-green velvet gown with long sleeves and a thin gold belt, holding a dark-varnished violin and bow in <Picture 1>.
+<Subject 2> is the baroque palace garden at night with a grand pale-stone palace with tall lit arched windows, a long rectangular reflecting pool with a carved stone rim, clipped hedges, cone-shaped topiary and warm lanterns on stone posts in <Picture 2>.
+<Video 1> is the effects reference: only its rhythmic water show is reproduced - a row of tall water jets that rise, sway and fall back in spray and a central jet that rockets far higher and bursts into mist, now rising from the reflecting pool; its plaza and its buildings are not used.
+<Video 2> is the camera reference: only its slow, steady push-in is reproduced, not its content.
+
+summary:
+[reference generation] At night in <Subject 2>, <Subject 1> plays her violin at the end of the reflecting pool while water jets rise and fall behind her in rhythm as in <Video 1>, and the camera slowly pushes in toward her as in <Video 2>. A soaring violin melody over splashing water.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the face, the short silver-grey hair, the emerald-green velvet gown with its gold belt and the violin of the violinist are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the lit palace front, the reflecting pool with its carved rim, the hedges, the topiary and the lanterns of the garden are retained.
+<Video 1> (effects reference): reference - only its rhythmic water jets are reproduced, in the reflecting pool.
+<Video 2> (camera reference): reference - only its slow, steady push-in is reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Warm lantern light and lit palace windows against a deep blue night sky, glittering spray and soft reflections on the water.
+[Shot 1] From the first frame to the last, the camera slowly and steadily pushes in along the reflecting pool toward <Subject 1> as in <Video 2>, from a wide view of <Subject 2> to a medium-wide view of her. <Subject 1> stands at the near end of the pool beside its stone rim, playing her violin with long, sweeping bow strokes, her velvet gown moving slightly. Behind her a row of tall water jets rises from the reflecting pool in rhythm with the music as in <Video 1>: the jets shoot up, sway left and right together and fall back in white spray, then a single central jet rockets up far higher than the others and bursts into glittering mist that catches the lantern light. The palace, the hedges and the topiary stay still; ripples spread across the pool.
+
+overall_soundscape:
+A soaring, emotional solo violin melody played live, layered with the rush and splash of the water jets rising and falling and the soft patter of spray on the pool. No speech.
+
+non_diegetic_music:
+N/A

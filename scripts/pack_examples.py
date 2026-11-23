@@ -40,7 +40,9 @@ def main():
             raise SystemExit(f"{name}: no stored example results in {cache.relative_to(ROOT)}/ (--build-cache of its "
                              "app)")
         path = out / archive_name("cache", name)
-        files = [f for f in sorted(cache.rglob("*")) if f.is_file() and f.name != ".release" and f.suffix != ".part"]
+        derived = (".fast.mp4", ".light.mp4", ".preview.mp4", ".preview.jpg", ".part")  # made again on first launch
+        files = [f for f in sorted(cache.rglob("*")) if f.is_file() and f.name != ".release" and ".before." not in f.name
+                 and not f.name.endswith(derived) and "previews" not in f.relative_to(cache).parts]
         with zipfile.ZipFile(path, "w", zipfile.ZIP_STORED) as z:
             for f in files:
                 z.write(f, f"cache/{name}/{f.relative_to(cache).as_posix()}")

@@ -216,9 +216,9 @@ def example_setting(name, ex, d, meta):
         return f"output {h} x {w}, {frames} frames{src}", parse_codec(*example_codec(spec))["text"]
     strategy, pm, pr, vlm, scale = example_codec(spec, video=False)
     ours = parse_codec(strategy, None, None, None, pm, pr, vlm, scale, video=False)["text"]
-    for who in ("student", "released"):  # the full-size result (the PNG) gives the output size
+    for who in ("student", "released"):  # the full-size result (PNG, or the full-size JPEG of a release) gives the size
         f = d / meta.get(who, {}).get("file", "")
-        if f.suffix == ".png" and f.exists():
+        if f.suffix in (".png", ".jpg") and f.exists():
             with Image.open(f) as image:
                 return f"output {image.height} x {image.width}{src}", ours
     return (f"output {flag_values(a, '--height')[0]} x {flag_values(a, '--width')[0]}{src}" if "--height" in a else None), ours
@@ -295,6 +295,10 @@ def gallery_items(name, rows):
             label = f"{label} · teacher out of memory"
         elif all(meta.get(w, {}).get("denoise") for w in ("student", "released")):
             label = f"{label} · {round(meta['released']['denoise'], 1) / round(meta['student']['denoise'], 1):.1f}x faster"
+        elif meta.get("student", {}).get("teacher_denoise") and meta["student"].get("denoise"):
+            # a precomputed (homepage) result: the Teacher's denoise seconds of the same run, no Teacher output stored
+            s = meta["student"]
+            label = f"{label} · {round(s['teacher_denoise'], 1) / round(s['denoise'], 1):.1f}x faster"
         items.append((thumb or values[1][0], label))
     return items
 

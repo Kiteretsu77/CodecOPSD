@@ -1,0 +1,33 @@
+{
+ "label": "Fox at the Snowy Cabin: 4 pictures",
+ "order": 13,
+ "gallery": true,
+ "source": "CodecOPSD homepage MiniMax-H3-Image gallery: Fox at the Snowy Cabin",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/fox_at_the_snowy_cabin_1.jpg",
+  "--image",
+  "../../refs/fox_at_the_snowy_cabin_2.jpg",
+  "--image",
+  "../../refs/fox_at_the_snowy_cabin_3.jpg",
+  "--image",
+  "../../refs/fox_at_the_snowy_cabin_4.jpg",
+  "--height",
+  "1760",
+  "--width",
+  "2368",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--vlm-drop",
+  "auto",
+  "--vlm-scale",
+  "0.25",
+  "--text-encoder",
+  "fp8",
+  "--seed",
+  "2026"
+ ]
+}

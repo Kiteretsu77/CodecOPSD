@@ -1,0 +1,33 @@
+{
+ "label": "Ramen Night: 4 pictures",
+ "order": 11,
+ "gallery": true,
+ "source": "CodecOPSD homepage MiniMax-H3-Image gallery: Ramen Night",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/ramen_night_1.jpg",
+  "--image",
+  "../../refs/ramen_night_2.jpg",
+  "--image",
+  "../../refs/ramen_night_3.jpg",
+  "--image",
+  "../../refs/ramen_night_4.jpg",
+  "--height",
+  "2048",
+  "--width",
+  "2048",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--vlm-drop",
+  "auto",
+  "--vlm-scale",
+  "0.25",
+  "--text-encoder",
+  "fp8",
+  "--seed",
+  "2026"
+ ]
+}

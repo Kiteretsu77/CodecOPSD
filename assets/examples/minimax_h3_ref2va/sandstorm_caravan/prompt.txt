@@ -1,0 +1,23 @@
+subject_definitions:
+<Subject 1> is the tall camel caravan leader in a long flowing indigo-blue robe, a wide indigo turban and face veil that leaves only his dark eyes visible and a leather belt with a silver-handled knife, together with his white dromedary camel wearing a red and orange woven saddle blanket with long tassels and a carved wooden saddle in <Picture 1>.
+<Subject 2> is the vast desert of tall golden sand dunes with sharp wind-sculpted crests and rippled slopes, with a colossal brown-orange wall of sandstorm on the horizon under a copper sky in <Picture 2>.
+<Video 1> is the camera reference: only its camera work is reproduced, not its content: a steady zoom-in on a wide view, then a hard cut to a closer view from a different angle that circles slowly around the subject.
+
+summary:
+[reference generation] In <Subject 2>, <Subject 1> leads a long caravan of camels along a dune crest as a colossal sandstorm rolls in behind them; the camera zooms in, then the view cuts closer and circles slowly around him as sand streams off the crests and his robe whips in the wind, following the camera work of <Video 1>. Roaring wind, hissing sand and camel bells.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1], [Shot 2]): fully_preserved - the indigo robe, turban and veil, the leather belt with the silver-handled knife of the caravan leader, and the white camel with its red and orange tasselled saddle blanket and carved saddle are retained.
+<Subject 2> (appears in [Shot 1], [Shot 2]): fully_preserved - the layout, colours and copper light of the golden dunes and the brown-orange wall of sandstorm are retained.
+<Video 1> (camera reference): reference - only its zoom-in, hard cut and slow circling camera work are reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second sequence of two shots of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Low copper-orange sunlight fading behind the storm, long shadows on the dunes, streams of blowing sand everywhere and rich detail in the fabric, the camel hair and the sand ripples.
+[Shot 1] A wide view of <Subject 2>: <Subject 1> walks along a sharp dune crest in the foreground, leading his white camel by its rope reins, and a long line of about ten loaded camels follows behind him along the crest. On the horizon behind them the colossal brown-orange wall of the sandstorm rolls toward them, swallowing the dunes one after another. The camera zooms in steadily as in <Video 1>.
+[Shot 2] At 00:02.583, the view cuts to a closer view of <Subject 1> and his white camel from a lower angle, and the camera circles slowly around them as in <Video 1>. The wind rises, sand streams off the dune crest in long hissing ribbons, his indigo robe and veil whip and flutter, the tassels of the saddle blanket fly sideways, and the camel lowers its head and half-closes its eyes. He turns his face toward the approaching storm and pulls his veil tighter, while the towering brown wall fills the sky behind him and darkens the sun.
+
+overall_soundscape:
+A rising, roaring desert wind, the dry hiss of sand blowing across the dunes, the soft thud of camel feet in deep sand, the low groan of a camel and the clinking of small brass bells on the harness. No speech.
+
+non_diegetic_music:
+N/A

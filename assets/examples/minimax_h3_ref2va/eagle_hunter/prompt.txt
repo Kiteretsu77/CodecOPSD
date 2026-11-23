@@ -1,0 +1,25 @@
+subject_definitions:
+<Subject 1> is the elderly eagle hunter with a weathered, sun-tanned face and a long white beard, a tall round hat of red fox fur, a long deep-blue felt coat embroidered with gold patterns and trimmed with fur, a wide belt with a silver buckle and a thick brown leather gauntlet in <Picture 1>.
+<Subject 2> is the golden eagle with dark brown plumage, golden feathers on its nape, a hooked yellow-and-black beak and amber eyes in <Picture 2>.
+<Subject 3> is the vast snowy steppe valley under a deep blue morning sky with wind-sculpted snow, a frozen river, a long ridge in the foreground and jagged white mountains on the horizon in <Picture 3>.
+<Video 1> is the camera reference: only its camera work is reproduced, not its content: a steady zoom-in on a wide view, then a hard cut to a closer view from a different angle that circles slowly around the subject.
+
+summary:
+[reference generation] On a ridge of <Subject 3>, <Subject 1> launches <Subject 2> from his gauntlet in a blast of powder snow while the camera zooms in, then the view cuts closer and circles slowly around him as the eagle soars low across the valley behind him, following the camera work of <Video 1>. Howling wind, wingbeats and the eagle's piercing cry.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1], [Shot 2]): fully_preserved - the face, the white beard, the red fox fur hat, the embroidered deep-blue coat with fur trim, the silver buckle and the leather gauntlet of the eagle hunter are retained.
+<Subject 2> (appears in [Shot 1], [Shot 2]): fully_preserved - the dark brown plumage, the golden nape, the hooked beak and the amber eyes of the golden eagle are retained.
+<Subject 3> (appears in [Shot 1], [Shot 2]): fully_preserved - the layout, colours and morning lighting of the snowy steppe valley, the frozen river and the mountains are retained.
+<Video 1> (camera reference): reference - only its zoom-in, hard cut and slow circling camera work are reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second sequence of two shots of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Crisp low morning sun, a deep blue sky, sparkling powder snow blowing off the crests and every fur and feather sharply detailed.
+[Shot 1] A wide view of <Subject 3>: <Subject 1> stands on the snowy ridge in the foreground with his right arm raised, <Subject 2> perched on his leather gauntlet, the frozen river and the mountains spread out behind them. The camera zooms in steadily as in <Video 1>. He swings his arm forward and up, and the eagle spreads its huge wings and launches into the air; the downdraft of its first wingbeats blasts a cloud of glittering powder snow off the ridge around him.
+[Shot 2] At 00:02.583, the view cuts to a closer view of <Subject 1> from a lower angle, and the camera circles slowly around him as in <Video 1>. Behind him <Subject 2> soars low across the valley with its wings fully spread, its golden nape catching the sun, then banks and turns back toward him. He raises his gauntlet again and calls out with a sharp, ringing cry, the fur of his fox hat and the fur trim of his coat rippling in the wind while snow streams off the crests behind him.
+
+overall_soundscape:
+A cold, howling steppe wind, the crunch of snow under boots, the heavy whoosh of large wingbeats at take-off, the eagle's high, piercing cry echoing across the valley and the hunter's sharp, wordless call. No speech.
+
+non_diegetic_music:
+N/A

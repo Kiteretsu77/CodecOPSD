@@ -1,0 +1,29 @@
+{
+ "label": "Meteor Night: 2 pictures + 1 video",
+ "order": 22,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: Meteor Night",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/meteor_night_1.jpg",
+  "--reference",
+  "../../refs/meteor_night_2.jpg",
+  "--reference",
+  "../../refs/meteor_night_3.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "42"
+ ]
+}

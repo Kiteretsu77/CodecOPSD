@@ -8,6 +8,8 @@ The page layout: the header, the inputs and Settings, the Student / Teacher caro
 the example with its stored results), and `build`, which puts the page of `state.PAGE` together.
 """
 
+import html as h
+
 import gradio as gr
 
 from . import state
@@ -22,6 +24,18 @@ from .stats import stats_summary
 from .style import ICONS, INTRO, PAPER, SUMMARY
 
 SIZES_IMAGE = ["2048 x 2048", "1536 x 1536", "1024 x 1024", "1536 x 2720", "2720 x 1536", "first picture's aspect"]
+
+
+LINKED = {"Pika H3 Flex": "https://huggingface.co/Pika-Labs/Pika-H3-Flex",
+          "HyperFlow H3 Flash": "https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash"}
+
+
+def linked(text):
+    """A heading, escaped, with the model names of LINKED as links to their model pages."""
+    out = h.escape(text)
+    for name, url in LINKED.items():
+        out = out.replace(h.escape(name), f'<a href="{h.escape(url, quote=True)}" target="_blank" rel="noopener">{h.escape(name)}</a>')
+    return out
 
 
 def examples_gallery(demo, name, inputs, outputs, last, run_event):
@@ -146,8 +160,8 @@ def intro_html():
     repo = (f'<a href="{h.escape(code, quote=True)}" target="_blank" rel="noopener">GitHub repo</a>' if code
             else "GitHub repo")
     return (INTRO + f'<div class="hdr-links">{"".join(links)}</div><div class="hdr-authors">{authors}</div>'
-            + f'<p class="intro-line">{h.escape(SUMMARY)}</p>'
-            + f'<p class="page-head"><b>{h.escape(state.PAGE["heading"])}</b></p>'
+            + f'<p class="intro-line">{"<br>".join(h.escape(line) for line in SUMMARY.split(chr(10)))}</p>'
+            + f'<p class="page-head"><b>{linked(state.PAGE["heading"])}</b></p>'
             + f'<p class="star-line">⭐ <b>If you like CodecOPSD, please help ⭐⭐star⭐⭐ the {repo}. Thanks!</b> 🤗</p>'
             + f'<div class="hdr-demos"><span class="hdr-demos-label">Demos:</span>{"".join(demos)}</div></div>')
 

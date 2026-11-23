@@ -1,0 +1,29 @@
+{
+ "label": "Loft at Sunset: 2 pictures",
+ "order": 15,
+ "gallery": true,
+ "source": "CodecOPSD homepage MiniMax-H3-Image gallery: Loft at Sunset",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/loft_at_sunset_1.jpg",
+  "--image",
+  "../../refs/loft_at_sunset_2.jpg",
+  "--height",
+  "1760",
+  "--width",
+  "2368",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--vlm-drop",
+  "auto",
+  "--vlm-scale",
+  "0.25",
+  "--text-encoder",
+  "fp8",
+  "--seed",
+  "42"
+ ]
+}

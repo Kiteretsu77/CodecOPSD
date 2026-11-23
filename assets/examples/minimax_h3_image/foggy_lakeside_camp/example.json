@@ -1,0 +1,33 @@
+{
+ "label": "Foggy Lakeside Camp: 4 pictures",
+ "order": 20,
+ "gallery": true,
+ "source": "CodecOPSD homepage MiniMax-H3-Image gallery: Foggy Lakeside Camp",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/foggy_lakeside_camp_1.jpg",
+  "--image",
+  "../../refs/foggy_lakeside_camp_2.jpg",
+  "--image",
+  "../../refs/foggy_lakeside_camp_3.jpg",
+  "--image",
+  "../../refs/foggy_lakeside_camp_4.jpg",
+  "--height",
+  "1760",
+  "--width",
+  "2368",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--vlm-drop",
+  "auto",
+  "--vlm-scale",
+  "0.25",
+  "--text-encoder",
+  "fp8",
+  "--seed",
+  "2026"
+ ]
+}

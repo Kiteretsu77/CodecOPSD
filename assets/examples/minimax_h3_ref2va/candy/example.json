@@ -23,12 +23,6 @@
   "1344",
   "--frames",
   "124",
-  "--vlm-drop",
-  "dit",
-  "--video-drop",
-  "0.9",
-  "--video-drop-select",
-  "exact",
   "--seed",
   "42"
  ]

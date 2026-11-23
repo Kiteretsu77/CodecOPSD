@@ -1,0 +1,29 @@
+{
+ "label": "Fjord Breach: 2 pictures + 1 video",
+ "order": 4,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: Fjord Breach",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/fjord_breach_1.jpg",
+  "--reference",
+  "../../refs/fjord_breach_2.jpg",
+  "--reference",
+  "../../refs/fjord_breach_3.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "2026"
+ ]
+}

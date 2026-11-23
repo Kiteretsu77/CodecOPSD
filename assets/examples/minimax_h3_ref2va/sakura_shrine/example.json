@@ -1,0 +1,29 @@
+{
+ "label": "Sakura Shrine: 2 pictures + 1 video",
+ "order": 10,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: Sakura Shrine",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/sakura_shrine_1.jpg",
+  "--reference",
+  "../../refs/sakura_shrine_2.jpg",
+  "--reference",
+  "../../refs/sakura_shrine_3.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "2026"
+ ]
+}

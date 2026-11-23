@@ -1,0 +1,33 @@
+{
+ "label": "Jelly Rider: 3 pictures + 2 videos",
+ "order": 8,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: Jelly Rider",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/jelly_rider_1.jpg",
+  "--reference",
+  "../../refs/jelly_rider_2.jpg",
+  "--reference",
+  "../../refs/jelly_rider_3.jpg",
+  "--reference",
+  "../../refs/jelly_rider_4.mp4",
+  "--reference",
+  "../../refs/jelly_rider_5.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "2026"
+ ]
+}

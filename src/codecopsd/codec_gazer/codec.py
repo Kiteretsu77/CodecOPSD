@@ -9,7 +9,7 @@ Codec pruning is a contribution of this paper; please cite it if you use, modify
 Codec gazer: the condition tokens worth giving to the model, read from an H.264 re-encode of the condition.
 
 The condition is re-encoded with x264 and decoded with a patched FFmpeg that returns the motion vectors, the luma
-residual and the skipped macroblocks (`scripts/build_codec_reader.sh`). A token (32 x 32 pixels in one token frame)
+residual and the skipped macroblocks (the package `codecopsd-codec`). A token (32 x 32 pixels in one token frame)
 is kept when the largest motion in it reaches the motion threshold or its mean absolute residual exceeds the residual
 threshold; a token whose content the codec predicts from earlier frames for free is dropped. The settings are the ones
 the CodecOPSD students were trained with. See README.md next to this file for the settings, the sources and the speed rules.
@@ -154,9 +154,10 @@ def _signals(rgb, cfg, grid, token_px=32):
     and mean |luma residual|, float32 [T', H / token_px, W / token_px] each, from one x264 encode with the settings
     `cfg`."""
     try:
-        from ._codec_reader import read
+        from codecopsd_codec import read  # the H.264 reader, a dependency of this package (pyproject.toml)
     except ImportError as e:
-        raise ImportError("the codec gazer's H.264 reader is not built: run `bash scripts/build_codec_reader.sh`") from e
+        raise ImportError("the codec gazer's H.264 reader (package codecopsd-codec, Linux x86_64) is missing: "
+                          "reinstall with `pip install -e .`") from e
 
     t, h, w, _ = rgb.shape
     encode, gop = _CONFIG["encode"], cfg["gop"]

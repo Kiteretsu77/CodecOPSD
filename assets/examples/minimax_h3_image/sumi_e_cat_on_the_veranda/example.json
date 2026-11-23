@@ -1,0 +1,31 @@
+{
+ "label": "Sumi-e Cat on the Veranda: 3 pictures",
+ "order": 26,
+ "gallery": true,
+ "source": "CodecOPSD homepage MiniMax-H3-Image gallery: Sumi-e Cat on the Veranda",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/sumi_e_cat_on_the_veranda_1.jpg",
+  "--image",
+  "../../refs/sumi_e_cat_on_the_veranda_2.jpg",
+  "--image",
+  "../../refs/sumi_e_cat_on_the_veranda_3.jpg",
+  "--height",
+  "2048",
+  "--width",
+  "2048",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--vlm-drop",
+  "auto",
+  "--vlm-scale",
+  "0.25",
+  "--text-encoder",
+  "fp8",
+  "--seed",
+  "2026"
+ ]
+}

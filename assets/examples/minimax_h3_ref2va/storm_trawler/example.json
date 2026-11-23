@@ -1,0 +1,27 @@
+{
+ "label": "Storm Trawler: 1 picture + 1 video",
+ "order": 15,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: Storm Trawler",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/storm_trawler_1.jpg",
+  "--reference",
+  "../../refs/storm_trawler_2.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "2026"
+ ]
+}

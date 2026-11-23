@@ -95,14 +95,14 @@ def load(name, report=None):
                 PARKED[STATE["name"]].cpu()
                 torch.cuda.empty_cache()
             if report:
-                report.stage("Switching the model on the GPU (1-2 s)")
+                report.stage("Init: switching the model on the GPU (1-2 s)")
             PARKED[name].gpu()
             STATE.update(name=name, pipe=PIPES[name])
         return PIPES[name]
     if STATE["name"] == name:
         return STATE["pipe"]
     if report:
-        report.stage(f"Loading the {LABELS[name]} model onto the GPU (first use of this tab, 1-2 min)")
+        report.stage(f"Init: loading the {LABELS[name]} model onto the GPU (1-2 min)")
     if STATE["name"] in PARKED:
         PARKED[STATE["name"]].cpu()
     STATE.update(name=None, pipe=None)

@@ -1,0 +1,31 @@
+{
+ "label": "Stained-Glass Owl: 3 pictures",
+ "order": 28,
+ "gallery": true,
+ "source": "CodecOPSD homepage MiniMax-H3-Image gallery: Stained-Glass Owl",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/stained_glass_owl_1.jpg",
+  "--image",
+  "../../refs/stained_glass_owl_2.jpg",
+  "--image",
+  "../../refs/stained_glass_owl_3.jpg",
+  "--height",
+  "2368",
+  "--width",
+  "1760",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--vlm-drop",
+  "auto",
+  "--vlm-scale",
+  "0.25",
+  "--text-encoder",
+  "fp8",
+  "--seed",
+  "2026"
+ ]
+}

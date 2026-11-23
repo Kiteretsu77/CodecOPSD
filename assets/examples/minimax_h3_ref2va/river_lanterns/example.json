@@ -1,0 +1,29 @@
+{
+ "label": "River Lanterns: 2 pictures + 1 video",
+ "order": 2,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: River Lanterns",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/river_lanterns_1.jpg",
+  "--reference",
+  "../../refs/river_lanterns_2.jpg",
+  "--reference",
+  "../../refs/river_lanterns_3.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "2026"
+ ]
+}

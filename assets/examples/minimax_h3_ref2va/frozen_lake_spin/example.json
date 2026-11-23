@@ -1,0 +1,31 @@
+{
+ "label": "Frozen Lake Spin: 2 pictures + 2 videos",
+ "order": 13,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: Frozen Lake Spin",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/frozen_lake_spin_1.jpg",
+  "--reference",
+  "../../refs/frozen_lake_spin_2.jpg",
+  "--reference",
+  "../../refs/frozen_lake_spin_3.mp4",
+  "--reference",
+  "../../refs/frozen_lake_spin_4.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "2026"
+ ]
+}

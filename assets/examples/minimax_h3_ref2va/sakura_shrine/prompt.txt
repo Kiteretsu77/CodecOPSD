@@ -1,0 +1,22 @@
+subject_definitions:
+<Subject 1> is the anime shrine maiden with long straight black hair tied low with a white paper ribbon, a white kimono top with wide sleeves, bright vermilion-red hakama trousers and a red paper umbrella in <Picture 1>.
+<Subject 2> is the anime mountain shrine at golden hour with mossy stone steps, stone lanterns, a tall vermilion torii gate, a wooden shrine hall and blooming cherry trees in <Picture 2>.
+<Video 1> is the effects reference: only its gusts of swirling pink cherry blossom petals is reproduced; its temple garden, its gravel, its lantern and its veranda are not used.
+
+summary:
+[reference generation] In <Subject 2>, <Subject 1> climbs the last stone steps to the torii and opens her red umbrella as a gust of cherry blossom petals swirls around her as in <Video 1>. Wind, rustling petals and a distant temple bell.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the face, the long black hair with the white ribbon, the white kimono top, the red hakama and the red umbrella of the shrine maiden are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the stone steps, the lanterns, the vermilion torii, the shrine hall and the cherry trees of the shrine are retained.
+<Video 1> (effects reference): reference - only its gusts of swirling pink cherry blossom petals is reproduced, not its scene.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of 2D hand-drawn anime in the style of a modern Japanese feature anime film, with clean confident line art, soft cel shading, painted backgrounds and bright clear colours; it is never photorealistic. There is no text, lettering, sign, logo or brand mark anywhere. Warm golden-hour light, soft pink glow from the blossoms, long gentle shadows on the stone steps.
+[Shot 1] A medium-wide shot from a static camera at the foot of the torii gate of <Subject 2>. <Subject 1> walks up the last mossy stone steps toward the camera, stops under the vermilion torii and opens her red paper umbrella above her head with a smile. A strong gust of wind sweeps thick swirling streams of pink cherry blossom petals across the frame from left to right as in <Video 1>; the petals spiral around her, her long hair, the white ribbon and her wide sleeves flutter, and petals settle on the steps and on her umbrella. The torii, the shrine hall and the stone lanterns stay still.
+
+overall_soundscape:
+A rushing gust of spring wind, the soft rustle of countless petals, the flutter of her sleeves and the deep ring of a distant temple bell. No speech.
+
+non_diegetic_music:
+N/A

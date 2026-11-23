@@ -1,0 +1,31 @@
+{
+ "label": "Gongbi Pheasant Garden: 3 pictures",
+ "order": 23,
+ "gallery": true,
+ "source": "CodecOPSD homepage MiniMax-H3-Image gallery: Gongbi Pheasant Garden",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/gongbi_pheasant_garden_1.jpg",
+  "--image",
+  "../../refs/gongbi_pheasant_garden_2.jpg",
+  "--image",
+  "../../refs/gongbi_pheasant_garden_3.jpg",
+  "--height",
+  "1760",
+  "--width",
+  "2368",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--vlm-drop",
+  "auto",
+  "--vlm-scale",
+  "0.25",
+  "--text-encoder",
+  "fp8",
+  "--seed",
+  "42"
+ ]
+}

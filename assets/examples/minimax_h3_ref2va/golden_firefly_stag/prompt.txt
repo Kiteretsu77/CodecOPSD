@@ -1,0 +1,24 @@
+subject_definitions:
+<Subject 1> is the pure white stag with a huge crown of branching antlers wrapped in green moss and tiny white flowers, a thick white neck ruff and dark eyes in <Picture 1>.
+<Subject 2> is the ancient enchanted forest at dusk with giant mossy trees, twisted roots, a small clear stream, ferns, glowing pale blue mushrooms and a grassy clearing in <Picture 2>.
+<Subject 3> is the same stag after its transformation, a shining golden stag with radiant glowing gold fur, a bright gold neck ruff and huge polished gold antlers with tiny golden sparkles, in <Picture 3>.
+<Video 1> is the effects reference: only its thousands of blinking yellow-green fireflies rising through the air is reproduced; its garden, its stone wall, its gate and its trees are not used.
+
+summary:
+[reference generation] At dusk in <Subject 2>, <Subject 1> steps into the clearing and lowers its head to the stream while thousands of fireflies rise around it as in <Video 1>; at 00:02.500 a burst of golden light runs over its fur and from then on it is <Subject 3>, glowing among the fireflies. A quiet forest with trickling water.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1] until 00:02.500): fully_preserved - the white coat, the mossy flowered antlers and the neck ruff of the stag are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the giant mossy trees, the roots, the stream, the ferns and the glowing mushrooms of the forest are retained.
+<Subject 3> (appears in [Shot 1] from 00:02.500): fully_preserved - the glowing gold fur, the gold neck ruff and the shining gold antlers of the golden stag are retained.
+<Video 1> (effects reference): reference - only its thousands of blinking yellow-green fireflies rising through the air is reproduced, not its scene.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema filmed on a full-frame cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Deep blue dusk light, the glow of the mushrooms and thousands of warm firefly lights on the white coat, then on the golden one.
+[Shot 1] A wide shot from a static camera in <Subject 2>. <Subject 1> steps slowly out from between the giant mossy trees into the clearing, walks to the clear stream and lowers its head to drink. At 00:02.500 it lifts its head and a burst of warm golden light runs over its fur from its antlers down to its hooves, and from then on it is <Subject 3>: the same stag in the same place and pose, now shining gold with glowing gold fur and polished gold antlers, golden sparkles drifting off its coat, standing calmly by the stream and looking around. Thousands of fireflies rise out of the grass and ferns all around it and drift upward between the trees as in <Video 1>, each a tiny warm yellow-green light blinking on and off, some circling its antlers. The trees and the mushrooms stay still; the stream ripples.
+
+overall_soundscape:
+A gently trickling stream, soft hoof steps on moss, a soft shimmering chime as the golden light runs over the stag, crickets and a distant owl in a quiet forest. No speech.
+
+non_diegetic_music:
+N/A

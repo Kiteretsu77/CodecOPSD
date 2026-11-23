@@ -5,6 +5,8 @@ __pycache__/
 *.so
 .venv/
 build/
+dist/
+*.whl
 
 # Archives (code drops, release packs)
 *.zip

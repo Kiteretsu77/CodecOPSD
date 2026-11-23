@@ -5,15 +5,16 @@ through the download statistics of GitHub and Hugging Face.
 
 ## Versions
 
-- Each release is a tag `vX.Y.Z` on `main`. `version` in `pyproject.toml` matches the tag.
-- Build the codec reader first (`bash scripts/build_codec_reader.sh`). The wheel must contain
-  `codecopsd/codec_gazer/_codec_reader.abi3.so` (listed in `package-data` of `pyproject.toml`); without it, codec
-  pruning stops with an ImportError. The reader links FFmpeg statically, so the wheel is a Linux x86_64 wheel.
-- Build the wheel with `pip wheel . --no-deps -w dist/` and attach it to the GitHub Release of that tag.
-- The README installs the library from that asset, so its download count is the number of installs:
-  `pip install https://github.com/Kiteretsu77/CodecOPSD/releases/download/vX.Y.Z/<wheel file>`
-- The demo and the command lines need `app.py` and `inference/`, which are not in the wheel. They clone the same tag
-  (`git clone --branch vX.Y.Z https://github.com/Kiteretsu77/CodecOPSD.git`).
+- Each release is a tag `vX.Y.Z` on `main` with two assets: the small wheel `codecopsd-codec` for Linux x86_64 and for
+  ARM (aarch64), which holds only the H.264 reader of codec pruning. Its source, its build script and its packaging
+  are not in this repo; they stay in our internal repo (`scripts/build_codec_wheel.sh` there writes
+  `dist/codecopsd_codec-X.Y.Z-cp310-abi3-linux_<arch>.whl`; build the ARM one with gcc in a manylinux_2_28 aarch64
+  container, never with a Cray `cc` wrapper).
+- The reader links FFmpeg statically and uses the stable ABI of CPython 3.10, so one wheel per CPU architecture serves
+  Python 3.10 and later with glibc 2.28 or newer. Both give bit-identical outputs.
+- `pyproject.toml` of this repo depends on those asset URLs, so every `pip install -e .` downloads it and its download
+  count is the number of installs; pip picks the wheel of the machine's architecture. Update both URLs there with
+  each new version of the reader.
 - Any code change, the codec included, ships as a new tag. Nothing downloads code at run time. Only data (example
   archives, LoRA weights) is fetched, always at a pinned version.
 

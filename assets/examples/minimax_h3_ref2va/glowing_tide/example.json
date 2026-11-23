@@ -1,0 +1,29 @@
+{
+ "label": "Glowing Tide: 2 pictures + 1 video",
+ "order": 27,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: Glowing Tide",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/glowing_tide_1.jpg",
+  "--reference",
+  "../../refs/glowing_tide_2.jpg",
+  "--reference",
+  "../../refs/glowing_tide_3.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "42"
+ ]
+}

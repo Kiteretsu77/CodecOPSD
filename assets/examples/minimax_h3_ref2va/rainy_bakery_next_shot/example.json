@@ -1,0 +1,25 @@
+{
+ "label": "Rainy Bakery Next Shot: 1 video",
+ "order": 20,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: Rainy Bakery Next Shot",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/rainy_bakery_next_shot_1.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "2026"
+ ]
+}

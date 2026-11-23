@@ -17,8 +17,9 @@ section 3.
 3. Third-party parts keep their own licenses:
    - src/codecopsd/models/transformers/hyperflow_flash/: the model code of HyperFlow H3 Flash (Video Rebirth), under
      the Apache License 2.0 (its LICENSE file).
-   - src/codecopsd/codec_gazer/csrc/ffmpeg-5.1.patch modifies FFmpeg 5.1; FFmpeg and the patched FFmpeg are under the
-     GNU Lesser General Public License 2.1 or later.
+   - codecopsd-codec, the prebuilt reader of codec pruning (GitHub Release of this repo), contains FFmpeg 5.1 changed
+     by a patch; FFmpeg and the patched FFmpeg are under the GNU Lesser General Public License 2.1 or later (the
+     NOTICE, license text and patch are inside that package).
    - The models and weights this code runs (MiniMax-H3, MiniMax-H3-Image and the weights built on them) are not
      covered by this license; they keep the licenses of their releases.
 

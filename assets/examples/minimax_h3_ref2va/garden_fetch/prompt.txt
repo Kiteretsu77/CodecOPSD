@@ -1,0 +1,24 @@
+subject_definitions:
+<Subject 1> is the woman in her seventies with silver hair in a neat bun, a lavender knitted shawl over a cream blouse, a long navy-blue skirt and grey canvas shoes in <Picture 1>.
+<Subject 2> is the boy about eight years old with messy brown hair, an orange and white striped t-shirt, blue denim shorts, white sneakers and a plain red baseball cap in <Picture 2>.
+<Subject 3> is the tricolour beagle with long floppy brown ears, a white tail tip and a red collar in <Picture 3>.
+<Subject 4> is the sunny back garden with a green lawn, a white picket fence, a raised vegetable bed on the left, a lemon tree, a weathered wooden bench and terracotta pots of red geraniums on the right in <Picture 4>.
+
+summary:
+[reference generation] In <Subject 4>, <Subject 1> sits on the wooden bench and tosses a ball across the lawn, and <Subject 2> and <Subject 3> race after it.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - her silver bun, lavender shawl, cream blouse, navy skirt and grey shoes are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - his messy brown hair, orange and white striped t-shirt, denim shorts, white sneakers and red cap are retained.
+<Subject 3> (appears in [Shot 1]): fully_preserved - the brown, black and white coat, the floppy ears, the white tail tip and the red collar of the beagle are retained.
+<Subject 4> (appears in [Shot 1]): fully_preserved - the lawn, the picket fence, the vegetable bed, the lemon tree, the bench and the geranium pots of the garden are retained in the same layout.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Bright summer afternoon sun, soft shadows on the lawn.
+[Shot 1] A static wide shot of <Subject 4>, with the vegetable bed on the left, the lemon tree and the wooden bench on the right and the white picket fence behind. <Subject 1> sits on the bench holding a yellow tennis ball, while <Subject 2> and <Subject 3> wait on the lawn in front of her. She tosses the ball gently across the lawn to the left, and <Subject 2> and <Subject 3> race after it side by side, the beagle's ears flapping; the boy laughs, the dog reaches the ball first and trots back with it while <Subject 1> claps her hands. The camera does not move.
+
+overall_soundscape:
+Children's laughter, an excited bark, the soft thump of the ball on the grass, birdsong and a light breeze in the lemon tree. No speech.
+
+non_diegetic_music:
+N/A

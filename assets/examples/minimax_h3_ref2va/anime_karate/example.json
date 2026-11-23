@@ -23,5 +23,6 @@
   "exact",
   "--seed",
   "42"
- ]
+ ],
+ "demo": false
 }

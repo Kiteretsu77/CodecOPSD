@@ -1,0 +1,28 @@
+subject_definitions:
+<Subject 1> is the martial artist with a long grey ponytail and a short grey beard in a loose white linen tunic with wide sleeves, a black sash, loose black trousers and black cloth shoes in <Picture 1>.
+<Subject 2> is the red-crowned crane with white plumage, black secondary feathers, a black neck, a red crown patch and long black legs in <Picture 2>.
+<Subject 3> is the stone terrace on a high mountain cliff at sunrise with grey flagstones, a twisted pine on the right and a sea of clouds with granite peaks below in <Picture 3>.
+<Video 1> is the motion reference of <Subject 1> only: only the motion of its man, throwing a high kick at 00:00.700, spinning around once on the spot at 00:01.500 and settling into a low wide stance with one palm pushed forward at 00:03.000, holding it, with the same timing, is reproduced; its grey training clothes, its gym and its white wall are not used.
+<Video 2> is the motion reference of <Subject 2> only: only the motion of its crane, spreading its wide wings fully at 00:01.500, leaping up into the air flapping at 00:02.200, landing at 00:03.000 and dancing on with its wings open, bowing its head low at the end, with the same timing, is reproduced; its wetland and its brown grass are not used.
+<Video 3> is the camera reference: only its camera move, a slow, steady straight descent with the camera looking level, is reproduced with the same speed and direction; its tea plantation, its tea rows and its hills are not used.
+
+summary:
+[reference generation] On <Subject 3>, <Subject 1> on the left kicks, spins and settles into a stance exactly as the man of <Video 1> does, while <Subject 2> on the right spreads its wings, leaps and bows exactly as the crane of <Video 2> does, and the camera descends exactly as in <Video 3>.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - his grey ponytail and beard, the white linen tunic, the black sash, the black trousers and shoes are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the white plumage, the black neck and wing feathers and the red crown of the crane are retained.
+<Subject 3> (appears in [Shot 1]): fully_preserved - the flagstones, the twisted pine, the sea of clouds and the granite peaks are retained.
+<Video 1> (motion reference): reference - only the front kick, the spin and the low stance with the same timing are reproduced, by <Subject 1>, not its performer or its scene.
+<Video 2> (motion reference): reference - only the wing spread, the leap, the landing and the bow with the same timing are reproduced, by <Subject 2>, not its performer or its scene.
+<Video 3> (camera reference): reference - only its camera move, a slow, steady straight descent with the camera looking level, is reproduced, not its scene.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Golden sunrise light from the side, glowing clouds below, the linen and the feathers lit at the edges.
+[Shot 1] A wide shot of <Subject 3>. <Subject 1> stands in full body in the left half of the frame, facing the camera; <Subject 2> stands in full body in the right half of the frame, side-on and facing left. At 00:00.700 <Subject 1> throws a high kick, spins around once on the spot at 00:01.500 and settles into a low wide stance with one palm pushed forward at 00:03.000. Meanwhile <Subject 2> spreads its wide wings at 00:01.500, leaps up flapping at 00:02.200, lands at 00:03.000 and dances on with its wings open, bowing its head low at the end. The man never flaps his arms like wings and the crane never kicks. From the first frame to the last the camera descends slowly and steadily straight down as in <Video 3>, looking level without turning or moving forward, so the terrace and the pine slide steadily up through the frame and the far peaks sink behind the terrace edge.
+
+overall_soundscape:
+Mountain wind, the rustle of the linen and the beat of wide wings, a single crane call. No speech.
+
+non_diegetic_music:
+N/A

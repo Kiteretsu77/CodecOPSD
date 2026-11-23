@@ -7,73 +7,84 @@
 <div align="center">
 
 [![Paper](https://img.shields.io/badge/arXiv-Paper%20(TODO)-b31b1b?logo=arxiv&logoColor=white)](#)
-[![Website](https://img.shields.io/badge/Project-Website%20(TODO)-pink?logo=googlechrome&logoColor=white)](#)
+[![Website](https://img.shields.io/badge/Project-Website-pink?logo=googlechrome&logoColor=white)](https://kiteretsu77.github.io/CodecOPSD_website/)
 <a href="#"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20HF%20Space&message=Online+Demo+(TODO)&color=orange"></a>
 <a href="#"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20Hugging%20Face&message=Model+(TODO)&color=orange"></a>
 
 </div>
 
-Every reference picture or video enters the generator as condition tokens, so their cost grows sharply as the
-references gain resolution and frames.
+Sequence-wise generators (MiniMax-H3 Ref2VA, MiniMax-H3-Image, Qwen-Image 2.1, FLUX 3 Image Klein) append every
+reference picture or video to the input token sequence, so the token cost grows sharply as more references are added.
 
-**CodecOPSD** prunes the redundant condition tokens with a video codec and distills a small LoRA on-policy, so that the
-pruned model matches the teacher that sees every token.
+We propose **CodecOPSD** to prune the redundant condition tokens with a video codec, and we train a small LoRA on the
+kept tokens via on-policy self-distillation.
 
-On average, CodecOPSD drops 66% of the condition tokens over 16 condition types on our own video model (2x faster
-denoising), 71.6% on MiniMax-H3 Ref2VA (1.87x faster denoising), and about half on MiniMax-H3-Image (1.36x faster
-denoising with one picture, 2.99x faster denoising with twelve), while the quality stays almost unchanged. In the
-extreme setting (several high-resolution video references, 90% of their tokens dropped), denoising becomes up to 8.4x
-faster.
+On average, CodecOPSD drops about 70% of the condition tokens on MiniMax-H3 Ref2VA with almost unchanged quality and
+1.87x faster denoising, and up to 8.4x faster with more conditions (three reference videos, higher-resolution
+references, more frames, and a higher drop rate).
 
-🎬 [Visualization](#visualization) **|** 🔥 [News & TODO](#news) **|** 🔧 [Installation](#installation) **|**
+On MiniMax-H3-Image, it drops about 65% of the reference tokens and makes denoising about 2x faster.
+
+🎬 [Visualization](#visualization) **|** 🖼️ [Gallery](#gallery) **|** 🔥 [News & TODO](#news) **|** 🔧 [Installation](#installation) **|**
 ⚡ [Quick Start](#quick_start) **|** 🚀 [Inference](#inference) **|** 🧩 [Codec Pruning](#codec_pruning) **|**
 🏋️ [Training](#training) **|** 📜 [License and Citation](#license)
 
+⭐ **If you like CodecOPSD, please help ⭐⭐star⭐⭐ this repo. Thanks!** 🤗
+
 ## <a name="visualization"></a> Visualization 🎬
 
-Teacher = the released model with every condition token. CodecOPSD = the same model + the CodecOPSD LoRA, after codec
-pruning. Same references, prompt, seed, and sampler. The times and speed-ups are for denoising only, not end to end.
+Teacher = the released model with every condition token. **+ CodecOPSD** = the same model with codec pruning and the
+CodecOPSD LoRA. Same references, prompt, seed, and sampler. The times and speed-ups are for denoising only, not end to
+end. More cases, with the kept tokens of every reference: [project page](https://kiteretsu77.github.io/CodecOPSD_website/).
 
 ### MiniMax-H3 Ref2VA (reference-to-video generation)
 
 **Silver wolf in a dusk desert**: 2 pictures + 3 videos -> 1 video (Pika H3 Flex, distilled 6 steps), 768 x 1344, 243
-frames, 1x B200
+frames, 1x B200. Extreme setting: 90% priority-based pruning on the effect, motion, and camera videos, also applied in
+the VLM encoder.
 
-<img src="assets/readme/vis/hp_wolf/refs.jpg" width="100%">
+<img src="assets/readme/vis/wolf/refs.jpg" width="100%">
 
-| Teacher (all tokens) | CodecOPSD (8.4x faster denoising): condition tokens 232,064 -> 24,153 (-90%) |
+| Teacher (all tokens)<br>denoising 1013 s | **+ CodecOPSD**<br>denoising 121 s (**8.4x faster**)<br>condition tokens 232,064 -> 24,153 (-90%)<br>VLM reference tokens 47,670 -> 10,996 (-77%) |
 |:---:|:---:|
-| <img src="assets/readme/vis/hp_wolf/out_0.webp" width="100%"> | <img src="assets/readme/vis/hp_wolf/out_1.webp" width="100%"> |
+| <img src="assets/readme/vis/wolf/out_0.webp" width="100%"> | <img src="assets/readme/vis/wolf/out_1.webp" width="100%"> |
 
 **Anime duel in two shots**: 3 pictures + 3 videos -> 1 video (Pika H3 Flex, distilled 6 steps), 768 x 1344, 124
-frames, 1x B200
+frames, 1x H200. Extreme setting: 90% priority-based pruning on the two effect videos, also applied in the VLM encoder.
 
-<img src="assets/readme/vis/hp_anime_duel/refs.jpg" width="100%">
+<img src="assets/readme/vis/anime_duel/refs.jpg" width="100%">
 
-| Teacher (all tokens), denoising 396 s | CodecOPSD, denoising 61.0 s (6.5x faster denoising): condition tokens 133,392 -> 22,329 (-83%) |
+| Teacher (all tokens)<br>denoising 731 s | **+ CodecOPSD**<br>denoising 108 s (**6.8x faster**)<br>condition tokens 133,392 -> 22,329 (-83%) |
 |:---:|:---:|
-| <img src="assets/readme/vis/hp_anime_duel/out_0.webp" width="100%"> | <img src="assets/readme/vis/hp_anime_duel/out_1.webp" width="100%"> |
+| <img src="assets/readme/vis/anime_duel/out_0.webp" width="100%"> | <img src="assets/readme/vis/anime_duel/out_1.webp" width="100%"> |
+
+<a name="gallery"></a>**H3 Ref2VA Gallery** (click to open it)
+
+<a href="https://kiteretsu77.github.io/CodecOPSD_website/#gallery"><img src="assets/readme/gallery/gallery_ref2va.jpg" width="100%"></a>
 
 ### MiniMax-H3-Image (reference-to-image generation)
 
-**Desk setup with edits** (example `desk_setup_edit`): "Put the laptop \<Picture 1\>, lamp \<Picture 2\>, plant
-\<Picture 3\>, mug \<Picture 4\> and headphones \<Picture 5\> on the desk in \<Picture 6\> in the evening. The mug stands on
-the left part of the desk, in front of the lamp. The lamp is on and casts warm light on the desk. Print a big white
-"CodecOPSD" logo on the mug that wraps around its curved side." -> image (6 steps), 1664 x 2496, 1x B200
+**6 references -> 1 desk scene**: 6 pictures -> image (distilled 6 steps), 1664 x 2496, 1x H200. Put the "laptop",
+"lamp", "plant", "mug", and "headphones" onto the "desk" in the evening, in the same camera view, with a "CodecOPSD"
+logo printed on the mug.
 
-<img src="assets/readme/vis/desk_setup_edit_v4/refs.jpg" width="80%">
+<img src="assets/readme/vis/desk/refs.jpg" width="80%">
 
-| Teacher (all tokens), denoising 17.5 s | CodecOPSD, denoising 6.7 s (2.6x faster denoising): reference tokens 17,280 -> 3,648 (-79%) |
+| Teacher (all tokens)<br>denoising 29.7 s | **+ CodecOPSD**<br>denoising 9.5 s (**3.1x faster**)<br>reference tokens 17,280 -> 4,006 (-77%) |
 |:---:|:---:|
-| <img src="assets/readme/vis/desk_setup_edit_v4/out_0.jpg" width="100%"> | <img src="assets/readme/vis/desk_setup_edit_v4/out_1.jpg" width="100%"> |
+| <img src="assets/readme/vis/desk/out_0.jpg" width="100%"> | <img src="assets/readme/vis/desk/out_1.jpg" width="100%"> |
 
-**Sixteen references, one group photo**: 16 pictures -> image (6 steps), 2048 x 3072, 1x H200
+**16 references -> 1 group photo**: 16 pictures -> image (distilled 6 steps), 2048 x 3072, 1x H200
 
-<img src="assets/readme/vis/groupQ/refs.jpg" width="100%">
+<img src="assets/readme/vis/group16/refs.jpg" width="100%">
 
-| Teacher (all tokens), denoising 303 s | CodecOPSD, denoising 45.7 s (6.6x faster denoising): reference tokens 98,624 -> 18,512 (-81%) |
+| Teacher (all tokens)<br>denoising 302.9 s | **+ CodecOPSD**<br>denoising 39.6 s (**7.6x faster**)<br>reference tokens 98,624 -> 17,108 (-83%) |
 |:---:|:---:|
-| <img src="assets/readme/vis/groupQ/out_0.jpg" width="100%"> | <img src="assets/readme/vis/groupQ/out_1.jpg" width="100%"> |
+| <img src="assets/readme/vis/group16/out_0.jpg" width="100%"> | <img src="assets/readme/vis/group16/out_1.jpg" width="100%"> |
+
+<a name="gallery_image"></a>**H3-Image Gallery** (click to open it)
+
+<a href="https://kiteretsu77.github.io/CodecOPSD_website/#gallery-h3img"><img src="assets/readme/gallery/gallery_image.jpg" width="100%"></a>
 
 ### 16 conditions, mixed together
 
@@ -96,15 +107,14 @@ on its own rollouts from the teacher, which sees every condition token:
   inference, and Gradio demos.
 - **2026-11**: MiniMax-H3 Ref2VA on a 32 GB GPU: [HyperFlow H3 Flash](https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash)
   with the CodecOPSD LoRA at 480p (`python app.py ref2va_extreme`, `--sampler flash`).
-- [ ] Paper (arXiv) and project page
+- **2026-11**: [Project page](https://kiteretsu77.github.io/CodecOPSD_website/) with the Ref2VA and image galleries.
+- [ ] Paper (arXiv)
 - [ ] CodecOPSD model on Hugging Face
 - [ ] Hugging Face Space demo
 - [ ] Training code check
 - [ ] CodecOPSD on Cosmos 3 Nano
 - [ ] CodecOPSD on Qwen-Image 2.1
 - [ ] CodecOPSD on FLUX 3 Image Klein
-
-:star: **If you like CodecOPSD, please help ⭐⭐star⭐⭐ this repo. Thanks!** :hugs:
 
 ## <a name="installation"></a> Installation 🔧
 
@@ -116,11 +126,8 @@ Linux x86_64, Python 3.12, and an NVIDIA GPU with 80 GB or more (141 GB or more 
 git clone https://github.com/Kiteretsu77/CodecOPSD.git && cd CodecOPSD
 conda create -n codecopsd python=3.12 -y && conda activate codecopsd
 pip install -e ".[app]"                 # PyTorch 2.8, diffusers 0.43, transformers 5.14.1; [app] adds Gradio
-bash scripts/build_codec_reader.sh      # the H.264 reader of codec pruning (FFmpeg 5.1 + a patch), about a minute
 ```
 
-- The reader build needs curl, bzip2, patch, a C compiler, make, and the Python headers
-  (`sudo apt-get install -y curl bzip2 patch build-essential python3-dev`).
 - `transformers` 5.14.1 and `imageio-ffmpeg` 0.7.0 are pinned: the LoRAs were trained on that text encoder's vision
   features, and the x264 build is part of codec pruning.
 - The models download on first use (see [Quick Start](#quick_start)); `python -m codecopsd.download` downloads them ahead
@@ -130,19 +137,25 @@ bash scripts/build_codec_reader.sh      # the H.264 reader of codec pruning (FFm
 
 Every demo prints a public link when it starts: open it and click an example. The first launch downloads the models.
 
-**Video:** MiniMax-H3 $\color{#4493F8}{\textsf{Ref2VA}}$ (reference-to-video generation), 80 GB GPUs and more
+| Demo | GPU | CPU memory | Disk |
+|---|---|---|---|
+| Video: `python app.py ref2va` | 80 GB or more | 128 GB | 115 GB |
+| Image: `python app.py ref2image` | 80 GB or more | 128 GB | 104 GB |
+| Consumer GPUs: `python app.py ref2va_extreme` | 12 to 32 GB | 64 GB | 62 GB |
+
+**Video:** MiniMax-H3 $\color{#4493F8}{\textsf{Ref2VA}}$ (reference-to-video generation)
 
 ```bash
 python app.py ref2va
 ```
 
-**Image:** MiniMax-H3-Image (reference-to-image generation)
+**Image:** MiniMax-H3 $\color{#F0883E}{\textsf{Image}}$ (reference-to-image generation)
 
 ```bash
 python app.py ref2image
 ```
 
-### <a name="consumer_gpus"></a> Consumer GPUs on **Ref2VA**: optimized for RTX 3090, 4090 and 5090
+<a name="consumer_gpus"></a>**Consumer GPUs:** MiniMax-H3 $\color{#4493F8}{\textsf{Ref2VA}}$, optimized for RTX 3090, 4090 and 5090
 
 ```bash
 python app.py ref2va_extreme
@@ -237,12 +250,12 @@ export_to_video(video, "out.mp4", fps=24)
 | Time per stage | `--stats` | off: prints where the seconds went, stage by stage |
 | Mode | `--mode` | `compress`: CodecOPSD (`baseline`: the teacher, every token) |
 
-Bundled video examples: every folder in `assets/examples/minimax_h3_ref2va/` (`dog_frisbee`, `dolly_zoom_desert`, `wolf`, `clash`,
+Bundled video examples: every folder in `assets/examples/minimax_h3_ref2va/` (`dog_frisbee`, `dolly_zoom_desert`, `wolf`,
 `candy`, `deep_sea`, `qinglong`, `blanket`, ...).
 
 </details>
 
-**Image:** MiniMax-H3-Image (reference-to-image generation)
+**Image:** MiniMax-H3 $\color{#F0883E}{\textsf{Image}}$ (reference-to-image generation)
 
 ```bash
 python inference/generate.py minimax_h3_image --example desk_setup_edit    # a bundled example -> outputs/
@@ -392,7 +405,7 @@ inference/
 assets/examples/                  bundled examples: <model>/<name>/example.json + prompt.txt (media downloaded on first use)
 docs/                             codec_pruning.md, mask_settings.md, training.md, consumer_gpus.md
 src/codecopsd/
-  codec_gazer/                    codec pruning: drop_mask, submit_gaze; its H.264 reader (C), the FFmpeg 5.1 patch, README
+  codec_gazer/                    codec pruning: drop_mask, submit_gaze, README
   configs/                        every setting, commented (codec_gazer.yaml: the thresholds and the priority drop)
   download.py                     the first-use download into models/ and assets/examples/refs/
   attention.py                    attention kernels of the transformer
@@ -405,7 +418,6 @@ scripts/
   train_minimax_h3_ref2va.py      training for MiniMax-H3 Ref2VA (encode, train)
   train_minimax_h3_image.py       training for MiniMax-H3-Image (encode, train)
   convert_minimax_h3_lora.py      training checkpoint -> LoRA (.safetensors), both models
-  build_codec_reader.sh           builds the H.264 reader of codec pruning
 tests/test_drop_mask.py           drop_mask on synthetic inputs (CPU, about 20 s)
 ```
 

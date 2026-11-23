@@ -1,0 +1,22 @@
+subject_definitions:
+<Subject 1> is the red paper sky lantern with a gold cloud pattern and a small flame in <Picture 1>.
+<Subject 2> is the green river town below tall steep karst peaks, with white-walled houses along both banks in <Picture 2>.
+<Video 1> is the effects reference: only the rising paths, positions, sizes and timing of its sky lanterns is reproduced; its bridge, its houses, its canal and the colour of its lanterns are not used.
+
+summary:
+[reference generation] Above <Subject 2> at dusk, many copies of <Subject 1> rise along the paths of the lanterns of <Video 1>.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the red paper, the gold cloud pattern and the flame of the lantern are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the tall karst peaks, the river and the white-walled houses are retained.
+<Video 1> (effects reference): reference - only the rising paths, positions, sizes and timing of its sky lanterns is reproduced, not its scene.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema filmed on a full-frame cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Blue dusk with the peaks still clearly visible and the warm red glow of the lanterns on the water.
+[Shot 1] A wide shot from a static camera on a tripod; the camera does not move. <Subject 2> fills the frame, its karst peaks against a dark blue dusk sky. Red lanterns that all look like <Subject 1>, gold clouds on red paper, rise at the positions and speeds of <Video 1>, two large ones nearest to the camera. There is no arched bridge.
+
+overall_soundscape:
+Quiet river water and soft wind. No speech.
+
+non_diegetic_music:
+N/A

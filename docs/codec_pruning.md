@@ -38,15 +38,12 @@ which tokens are dropped and the students were trained on exactly those masks.
 | Half | What it is | Version | Pinned by |
 |---|---|---|---|
 | Encoder | x264 inside the static FFmpeg binary that the `imageio-ffmpeg` package ships | `imageio-ffmpeg` 0.7.0, which ships FFmpeg 7.0.2 (static, with libx264) | `pyproject.toml`: `imageio-ffmpeg==0.7.0` |
-| Decoder (the reader) | the FFmpeg 5.1 H.264 decoder, patched to export the motion vectors, the luma residual and the skipped macroblocks, linked statically into `src/codecopsd/codec_gazer/_codec_reader.abi3.so` | `ffmpeg-5.1.tar.bz2` from ffmpeg.org, sha256 `32b56fb01ce90d452958ae25e91c9564abf49ed5453c127bec23c63e530aa8fa` | `scripts/build_codec_reader.sh` (URL and sha256) and `src/codecopsd/codec_gazer/csrc/ffmpeg-5.1.patch` |
+| Decoder (the reader) | the FFmpeg 5.1 H.264 decoder, patched to export the motion vectors, the luma residual and the skipped macroblocks, linked statically into the prebuilt package `codecopsd-codec` | FFmpeg 5.1 | `pyproject.toml`: `codecopsd-codec` 0.1.0, the wheel of the GitHub Release v0.1.0 |
 
 Steps (Linux x86_64, Python 3.12):
 
 ```bash
-# tools the reader build needs (Debian / Ubuntu; a conda Python already ships Python.h)
-sudo apt-get install -y curl bzip2 patch build-essential python3-dev
-pip install -e .                      # torch, numpy, imageio-ffmpeg 0.7.0, ...
-bash scripts/build_codec_reader.sh    # about a minute; ends with "built .../_codec_reader.abi3.so"
+pip install -e .                      # torch, numpy, imageio-ffmpeg 0.7.0, the reader (codecopsd-codec), ...
 ```
 
 Check the install:
@@ -62,10 +59,7 @@ Rules for the install:
 
 - Encode with the FFmpeg of `imageio-ffmpeg` 0.7.0 (`codec.py` calls `imageio_ffmpeg.get_ffmpeg_exe()`), never with a
   system FFmpeg or another x264 build.
-- Build the reader from FFmpeg 5.1 with the patch and without assembly (`--disable-asm`, as the script does): the SIMD
-  IDCTs would replace the patched C ones.
-- Without internet access to ffmpeg.org, put `ffmpeg-5.1.tar.bz2` into the build directory (default `build/ffmpeg/`);
-  the script still checks its sha256.
+- Decode with the reader of `codecopsd-codec` only.
 
 ## 1. Get codec pruning running
 

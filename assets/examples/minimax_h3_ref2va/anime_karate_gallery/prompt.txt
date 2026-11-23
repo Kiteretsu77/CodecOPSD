@@ -1,0 +1,24 @@
+subject_definitions:
+<Subject 1> is the anime girl with a short black bob, amber eyes, a red headband, a white karate uniform with a black belt and red hand wraps in <Picture 1>.
+<Subject 2> is the anime wooden training hall with a polished wooden floor, plaster walls, a dark wooden ceiling and open sliding doors to a garden with a red maple tree in <Picture 2>.
+<Video 1> is the motion reference: only the karate movement of the practitioner, move for move is reproduced; his person, his uniform and his temple courtyard are not used.
+<Video 2> is the camera reference: only its camera move, a slow, steady orbit to the right around the centre of the scene, turning to keep the centre in frame, is reproduced with the same speed and direction; its plaza, its fountain and its houses are not used.
+
+summary:
+[reference generation] In <Subject 2>, <Subject 1> practises the karate kata of <Video 1> move for move: a high knee lift, two fast punches, a step forward and a high side kick, while the camera orbits around her exactly as in <Video 2>. Sharp shouts and the snap of her uniform.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the face, the black bob, the red headband, the white uniform with the black belt and the red hand wraps of the girl are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the wooden floor, the plaster walls, the ceiling and the open sliding doors with the red maple of the hall are retained.
+<Video 1> (motion reference): reference - only the karate movement of the practitioner, move for move is reproduced, not its scene.
+<Video 2> (camera reference): reference - only its camera move, a slow, steady orbit to the right around the centre of the scene, turning to keep the centre in frame, is reproduced, not its scene.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of 2D hand-drawn anime in the style of a modern Japanese feature anime film, with clean confident line art, soft cel shading, painted backgrounds and bright clear colours; it is never photorealistic. There is no text, lettering, sign, logo or brand mark anywhere. Warm afternoon sunlight from the open doors, soft shadows on the wooden floor, a few dust motes in the air.
+[Shot 1] A full shot in <Subject 2>. <Subject 1> stands in the middle of the wooden floor and performs the kata of <Video 1> move for move: she lifts one knee high, throws two fast straight punches, steps forward and finishes with a high side kick that she holds for a moment, her sleeves and trousers snapping and her headband ends flying. From the first frame to the last the camera orbits slowly to the right around her as in <Video 2>, turning to keep her in the centre, so the sliding doors and the red maple behind her slide steadily from left to right while the wooden floor in front slides the other way. She keeps her look from <Picture 1> in every frame.
+
+overall_soundscape:
+Sharp kiai shouts, the crisp snap of her karate uniform with every punch and kick, bare feet on the wooden floor and birds outside the open doors. No speech.
+
+non_diegetic_music:
+N/A

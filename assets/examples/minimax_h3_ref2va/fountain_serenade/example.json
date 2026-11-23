@@ -1,0 +1,31 @@
+{
+ "label": "Fountain Serenade: 2 pictures + 2 videos",
+ "order": 18,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: Fountain Serenade",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/fountain_serenade_1.jpg",
+  "--reference",
+  "../../refs/fountain_serenade_2.jpg",
+  "--reference",
+  "../../refs/fountain_serenade_3.mp4",
+  "--reference",
+  "../../refs/fountain_serenade_4.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "2026"
+ ]
+}

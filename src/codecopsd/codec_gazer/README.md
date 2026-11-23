@@ -19,7 +19,7 @@ g = gaze(video, drop=0.7, vlm=True)             # g.keep (transformer) and g.vlm
 
 ## Decision
 
-1. Re-encode the reference with x264 (settings below) and decode it with the patched FFmpeg of `csrc/`, which
+1. Re-encode the reference with x264 (settings below) and decode it with a patched FFmpeg (`codecopsd-codec`), which
    returns, per frame and 16 x 16 macroblock, the largest motion vector, the sum of |luma residual| and whether the
    macroblock was skipped.
 2. A skipped macroblock counts as no motion and no residual.
@@ -110,11 +110,7 @@ for every RGB video reference.
 | File | Contents |
 |---|---|
 | `codec.py` | quantization, x264 call, token decision, priority / elastic drop, the text encoder mask |
-| `csrc/codec_reader.c` | Python extension (abi3, CPython >= 3.10): decodes an H.264 file with the patched FFmpeg and returns the motion, residual and skip arrays per macroblock; runs without the interpreter lock, frame-threaded |
-| `csrc/ffmpeg-5.1.patch` | FFmpeg 5.1 patch: the H.264 IDCT writes 128 + residual instead of prediction + residual, uncoded blocks write 128, and skipped macroblocks are flagged in the exported motion vectors |
-
-`bash scripts/build_codec_reader.sh` downloads FFmpeg 5.1, applies the patch, builds a minimal FFmpeg (H.264 decoder,
-no assembly: SIMD IDCTs would bypass the patched C ones) and links it statically into `_codec_reader.abi3.so`.
+| `codecopsd-codec` (prebuilt dependency) | the reader, a Python extension (abi3, CPython >= 3.10, Linux x86_64): FFmpeg 5.1 linked statically, with the H.264 IDCT writing 128 + residual instead of prediction + residual, uncoded blocks writing 128, and skipped macroblocks flagged in the exported motion vectors; returns the motion, residual and skip arrays per macroblock; runs without the interpreter lock, frame-threaded |
 
 ## Speed
 

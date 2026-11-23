@@ -1,0 +1,29 @@
+{
+ "label": "Balloon over the Canyon: 2 pictures",
+ "order": 17,
+ "gallery": true,
+ "source": "CodecOPSD homepage MiniMax-H3-Image gallery: Balloon over the Canyon",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/balloon_over_the_canyon_1.jpg",
+  "--image",
+  "../../refs/balloon_over_the_canyon_2.jpg",
+  "--height",
+  "1760",
+  "--width",
+  "2368",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--vlm-drop",
+  "auto",
+  "--vlm-scale",
+  "0.25",
+  "--text-encoder",
+  "fp8",
+  "--seed",
+  "2026"
+ ]
+}

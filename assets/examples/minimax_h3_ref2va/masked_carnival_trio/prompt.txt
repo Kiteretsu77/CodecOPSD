@@ -1,0 +1,30 @@
+subject_definitions:
+<Subject 1> is the carnival dancer in a long flowing gold brocade gown with wide skirts and a gold feathered half-mask in <Picture 1>.
+<Subject 2> is the carnival dancer in a black and white harlequin diamond costume with a short black cape, a white full-face mask and a black cap in <Picture 2>.
+<Subject 3> is the carnival dancer in a deep blue velvet frock coat with silver embroidery, white breeches, black buckled shoes, a black tricorne hat and a silver half-mask in <Picture 3>.
+<Subject 4> is the stone piazza beside a canal at blue dusk with pastel palazzo facades, mooring poles, warm lanterns and wet flagstones in <Picture 4>.
+<Video 1> is the motion reference of <Subject 1> only: only the motion of its woman, spinning around slowly with her arms stretched out wide from 00:00.700 to 00:03.000, then sinking into a low curtsy at 00:04.300 and holding it, with the same timing, is reproduced; its grey skirt and its plain hall are not used.
+<Video 2> is the motion reference of <Subject 2> only: only the motion of its man, doing a small star jump at 00:01.500, a high star jump with arms and legs spread wide at 00:02.900, and dropping onto one knee with both arms raised high at 00:04.300, with the same timing, is reproduced; its black clothes and its plain hall are not used.
+<Video 3> is the motion reference of <Subject 3> only: only the motion of its man, raising both hands high above the head and clapping three times from 00:01.500 to 00:03.000, then pointing one arm straight out to the side at 00:04.300 and holding it, with the same timing, is reproduced; its dark coat and its plain hall are not used.
+
+summary:
+[reference generation] In <Subject 4>, <Subject 1> on the left twirls and curtsies exactly as the woman of <Video 1> does, <Subject 2> in the centre does two star jumps and kneels exactly as the man of <Video 2> does, and <Subject 3> on the right claps and points exactly as the man of <Video 3> does.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the gold brocade gown, the wide skirts and the gold feathered half-mask are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the black and white diamond costume, the black cape, the white full-face mask and the black cap are retained.
+<Subject 3> (appears in [Shot 1]): fully_preserved - the blue velvet coat with silver embroidery, the breeches, the buckled shoes, the tricorne and the silver mask are retained.
+<Subject 4> (appears in [Shot 1]): fully_preserved - the canal, the palazzo facades, the mooring poles, the lanterns and the wet flagstones are retained.
+<Video 1> (motion reference): reference - only the twirl and the curtsy with the same timing are reproduced, by <Subject 1>, not its performer or its scene.
+<Video 2> (motion reference): reference - only the two star jumps and the kneel with raised arms with the same timing are reproduced, by <Subject 2>, not its performer or its scene.
+<Video 3> (motion reference): reference - only the three claps above the head and the pointing arm with the same timing are reproduced, by <Subject 3>, not its performer or its scene.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Blue dusk with warm lantern light, glossy reflections on the wet stones, brocade and velvet shimmering.
+[Shot 1] A static wide shot of <Subject 4>; the camera does not move. <Subject 1> stands in full body in the left third of the frame, <Subject 2> in the centre and <Subject 3> in the right third, all facing the camera. From 00:00.700 to 00:03.000 <Subject 1> spins around slowly with her arms out wide, then sinks into a low curtsy at 00:04.300. At the same time <Subject 2> does a small star jump at 00:01.500 and a high one at 00:02.900, then drops onto one knee with both arms raised high at 00:04.300. At the same time <Subject 3> raises both hands above the tricorne and claps three times from 00:01.500 to 00:03.000, then points one arm straight out to the side at 00:04.300. Each dancer does only their own move: the gold dancer never jumps, the harlequin never twirls and the blue dancer never kneels.
+
+overall_soundscape:
+Lapping canal water, distant church bells, three sharp claps and the swish of the gown. No speech.
+
+non_diegetic_music:
+N/A

@@ -1,0 +1,31 @@
+{
+ "label": "Treehouse at Dusk: 3 pictures",
+ "order": 8,
+ "gallery": true,
+ "source": "CodecOPSD homepage MiniMax-H3-Image gallery: Treehouse at Dusk",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/treehouse_at_dusk_1.jpg",
+  "--image",
+  "../../refs/treehouse_at_dusk_2.jpg",
+  "--image",
+  "../../refs/treehouse_at_dusk_3.jpg",
+  "--height",
+  "1760",
+  "--width",
+  "2368",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--vlm-drop",
+  "auto",
+  "--vlm-scale",
+  "0.25",
+  "--text-encoder",
+  "fp8",
+  "--seed",
+  "2026"
+ ]
+}

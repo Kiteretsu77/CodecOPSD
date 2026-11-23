@@ -1,0 +1,22 @@
+subject_definitions:
+<Subject 1> is the compact four-door rally car painted glossy white with a bold geometric livery of teal and bright orange stripes and triangles, a roof air scoop, four round auxiliary lights on the bonnet, black gravel wheels, orange mud flaps and a big rear wing in <Picture 1>.
+<Subject 2> is the gravel rally road through a dense misty pine forest that dips down into a wide, shallow stream ford with clear rippling water over smooth stones, ferns and mossy boulders on the banks and shafts of morning sunlight between the trunks in <Picture 2>.
+<Video 1> is the motion reference: only the path and timing of its vehicle are reproduced - it appears far down the road in the middle of the frame, drives toward the camera, enters the water at about one second, crosses it throwing spray and passes close by the camera on the right; its truck, its grassy valley and its stream are not used.
+
+summary:
+[reference generation] In <Subject 2>, <Subject 1> comes down the gravel road toward the low static camera, splashes through the ford and roars past on the right, moving exactly like the truck in <Video 1>. Screaming engine, a loud splash and flying gravel.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the shape, the glossy white paint with teal and orange geometric livery, the roof scoop, the four auxiliary lights, the black wheels, the orange mud flaps and the rear wing of the rally car are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the layout, colours and misty morning light of the forest road, the stream ford, the ferns, the boulders and the sunbeams are retained.
+<Video 1> (motion reference): reference - only the vehicle's path toward the camera, through the water and past the camera on the right, with the same timing, is reproduced.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Misty morning forest light with bright shafts of sun between dark pine trunks, wet glistening surfaces and sharp detail in every droplet, stone and fern.
+[Shot 1] The camera is static, low at the edge of the ford, and does not move or zoom. <Subject 1> appears far down the gravel road of <Subject 2> in the middle of the frame and comes toward the camera exactly like the truck in <Video 1>, its four auxiliary lights blazing and gravel spraying from its tyres. At about 00:01.000 it enters the ford and drives through it, throwing white spray and long rooster tails of water from all four wheels, then climbs out and passes close by the camera on the right side, leaving the frame at the right edge, its orange mud flaps flapping. The churned water settles and mist drifts through the sunbeams.
+
+overall_soundscape:
+The screaming, high-revving rally engine with crackling backfires, a loud splash and hiss of spray as the car crosses the water, gravel rattling against the bodywork and birds scattering in the forest. No speech.
+
+non_diegetic_music:
+N/A

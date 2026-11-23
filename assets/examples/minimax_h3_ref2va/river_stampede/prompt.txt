@@ -1,0 +1,22 @@
+subject_definitions:
+<Subject 1> is the wild black-and-white paint stallion with large irregular black and white patches, a very long flowing white mane and tail and a black face with a white blaze in <Picture 1>.
+<Subject 2> is the wide, shallow braided river with gravel bars in a broad mountain valley in autumn, with golden cottonwoods and aspens, tall dry grass, dark pine slopes and snow-dusted peaks under low golden evening sun in <Picture 2>.
+<Video 1> is the motion reference: only its galloping run seen from the side, with the camera tracking alongside, and the leap over a fallen log are reproduced; its animal, its gravel plain and its grey sky are not used.
+
+summary:
+[reference generation] At golden hour, <Subject 1> leads a herd of wild horses at full gallop through the shallow river of <Subject 2>, every hoof throwing glittering spray into the backlight, while the camera tracks alongside him from the side as in <Video 1>; at the end he leaps over a fallen tree trunk on a gravel bar. Thundering hooves, splashing water and snorting horses.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the black-and-white paint coat with its large patches, the long flowing white mane and tail and the black face with the white blaze of the stallion are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the layout, colours and golden evening light of the braided river, the gravel bars, the autumn trees, the pine slopes and the peaks are retained.
+<Video 1> (motion reference): reference - only its side-on galloping run with the camera tracking alongside and the leap over a fallen log are reproduced, not its animal, gravel plain or sky.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Low golden evening sun backlights the water, the spray and the dust, with rim light on every mane and tail and rich detail in the wet coats, the gravel and the autumn leaves.
+[Shot 1] <Subject 1> gallops from left to right through the shallow river of <Subject 2> at full speed, seen from the side, his long white mane and tail streaming. From the first frame to the last, the camera tracks alongside him at the same speed as in <Video 1>, keeping him near the centre of the frame while the golden trees and the river banks rush past behind him. Behind and beside him a herd of about twenty wild horses, bays, chestnuts and greys, gallops through the water in a tight group. Every hoof strike throws up bursts of white spray and glittering droplets that hang in the backlight, and long trails of water stream from the horses' bellies and legs. At 00:03.500 the stallion reaches a gravel bar where a fallen tree trunk lies across his path, gathers himself and leaps over it as in <Video 1>, landing in a splash of gravel and water and galloping on, while the herd follows him over the trunk.
+
+overall_soundscape:
+The deep, rolling thunder of dozens of galloping hooves, heavy splashing water, the clatter of hooves on gravel, snorting breath and a few shrill whinnies, with wind and the rush of the river underneath. No speech.
+
+non_diegetic_music:
+N/A

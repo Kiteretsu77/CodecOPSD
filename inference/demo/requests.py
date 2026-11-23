@@ -93,7 +93,7 @@ def run_one(name, who, report, call, steps_key):
         seen = read_references(pipe, name) if who == "student" else []  # CPU copies; drawn after the GPU is free
         pipe._last_encode = None
     if seen:
-        report.stage("drawing the kept tokens")
+        report.stage("Finish: drawing the kept tokens")
     t = time.perf_counter()
     refs, share = draw_references(seen)
     drawn = time.perf_counter() - t
@@ -178,8 +178,8 @@ def run_image_raw(prompt, files, size, strategy, picture_motion, picture_residua
         def go(pipe):
             STATE["images"], STATE["sources"] = images, sources
             # Ours: codec pruning with this request's thresholds and VLM mode; the Teacher (gaze off) reads every token
-            return pipe(prompt, images, height=height, width=width, gaze=who == "student", vlm_drop=vlm != "off",
-                        vlm_picture_scale="dit" if vlm == "dit" else codec["vlm_scale"],  # "off": vlm_drop False
+            return pipe(prompt, images, height=height, width=width, gaze=who == "student", vlm_drop=codec["vlm"] != "off",
+                        vlm_picture_scale="dit" if codec["vlm"] == "dit" else codec["vlm_scale"],  # "off": vlm_drop False
                         gaze_overrides=codec["overrides"],
                         generator=torch.Generator().manual_seed(seed)).images[0]
         return go
@@ -189,7 +189,7 @@ def run_image_raw(prompt, files, size, strategy, picture_motion, picture_residua
         for who in order:
             run = run_one("minimax_h3_image", who, report, call(who), lambda pipe: "minimax_h3_image")
             path = OUT / f"h3_image_{who}_{int(time.time())}"
-            report.stage("writing the image files")
+            report.stage("Finish: writing the image files")
             t = time.perf_counter()
             run["result"].save(path.with_suffix(".png"))  # the full result; the page shows a 1536 px JPEG copy
             display_copy(run["result"], path.with_suffix(".jpg"))
@@ -296,7 +296,7 @@ def run_video_raw(prompt, files, size, frames, strategy, video_drop, video_motio
                        # Ours: codec pruning with this request's setting (video_drop None = the threshold decision
                        # alone); the Teacher (gaze off) reads every token
                        gaze=who == "student", video_drop=codec["video_drop"], gaze_overrides=codec["overrides"],
-                       vlm_drop={"dit": "dit", "off": False}.get(vlm, codec["vlm_scale"]),
+                       vlm_drop={"dit": "dit", "off": False}.get(codec["vlm"], codec["vlm_scale"]),  # the mode the setting resolved
                        generator=torch.Generator().manual_seed(seed), **({"audio": True} if audio else {}),
                        **({"num_inference_steps": state.ARGS.steps} if getattr(pipe, "sampler", None) == "flash" else {}))
             return (out.frames[0], out.audio, out.sampling_rate) if audio else out.frames[0]
@@ -314,7 +314,7 @@ def run_video_raw(prompt, files, size, frames, strategy, video_drop, video_motio
                 yield out(who == order[-1])
                 continue
             path = str(OUT / f"{state.VIDEO}_{who}_{int(time.time())}.mp4")
-            report.stage("writing the video file")
+            report.stage("Finish: writing the video file")
             t = time.perf_counter()
             if audio:  # the frames, then the soundtrack muxed in (AAC)
                 from codecopsd.pipelines.minimax_h3_ref2va import add_audio_track

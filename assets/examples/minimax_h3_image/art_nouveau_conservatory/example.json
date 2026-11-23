@@ -1,0 +1,31 @@
+{
+ "label": "Art Nouveau Conservatory: 3 pictures",
+ "order": 10,
+ "gallery": true,
+ "source": "CodecOPSD homepage MiniMax-H3-Image gallery: Art Nouveau Conservatory",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/art_nouveau_conservatory_1.jpg",
+  "--image",
+  "../../refs/art_nouveau_conservatory_2.jpg",
+  "--image",
+  "../../refs/art_nouveau_conservatory_3.jpg",
+  "--height",
+  "1760",
+  "--width",
+  "2368",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--vlm-drop",
+  "auto",
+  "--vlm-scale",
+  "0.25",
+  "--text-encoder",
+  "fp8",
+  "--seed",
+  "2026"
+ ]
+}

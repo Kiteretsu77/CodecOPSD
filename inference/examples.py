@@ -29,9 +29,10 @@ def example_folder(name):
 def examples_of(name, chosen=None):
     """[(folder, example.json)] of the examples of `name`: every folder of assets/examples/<name>/ in their "order"
     (without those marked "demo": false, which only the command line runs), or the folders `chosen`, in that order."""
-    def order(folder):  # "order" in example.json, else the place in EXAMPLE_NAMES
+    def order(folder):  # the homepage gallery cases ("gallery": true) first, then "order", else the place in EXAMPLE_NAMES
         spec = json.loads((folder / "example.json").read_text()) if (folder / "example.json").exists() else {}
-        return spec.get("order", list(EXAMPLE_NAMES).index(folder.name) if folder.name in EXAMPLE_NAMES else 999), folder.name
+        place = spec.get("order", list(EXAMPLE_NAMES).index(folder.name) if folder.name in EXAMPLE_NAMES else 999)
+        return not spec.get("gallery", False), place, folder.name
     folders = ([EXAMPLES / example_folder(name) / ex for ex in chosen] if chosen is not None
                else sorted((EXAMPLES / example_folder(name)).glob("*"), key=order))
     out = []

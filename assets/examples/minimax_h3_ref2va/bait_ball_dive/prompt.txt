@@ -1,0 +1,16 @@
+subject_definitions:
+<Subject 1> is the female free diver with a long black braid, a white wetsuit with bright orange bands on the arms and legs, a black mask pushed up on her forehead, a black weight belt and very long black carbon-fibre fins in <Picture 1>.
+<Subject 2> is the whale shark with dark blue-grey skin covered in a dense pattern of white spots and pale stripes and a wide flat head in <Picture 2>.
+<Video 1> is the motion reference: only the swirling motion of the fish school is reproduced: hundreds of small silver fish swirl into a tight tornado-shaped vortex, spin faster and then split apart; its dark water is not used.
+
+summary:
+[reference generation] In clear blue open ocean full of sunbeams, a huge ball of silver sardines swirls into a spinning vortex as in <Video 1>; <Subject 1> glides into it with slow, powerful fin kicks and the fish part around her, then <Subject 2> rises from the deep with its mouth wide open and the school bursts apart. Muffled underwater ambience and the rush of the school.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1] The camera is static and does not move or zoom. For the WHOLE shot, a huge school of thousands of small silver sardines fills most of the frame and moves exactly like the school of <Video 1>, frame by frame: it starts as a dense round ball, opens into a ring-shaped vortex with a hollow dark-blue centre that keeps turning, and at the end splits apart into two halves; the fish never disappear and the vortex stays in the centre of the frame, flashing silver in the sunbeams. At 00:01.500 <Subject 1> glides in from the left with slow dolphin kicks of her long black fins, her braid streaming behind her and the orange bands of her white wetsuit bright against the blue, and swims through the hollow centre of the ring. At 00:03.000 <Subject 2> passes slowly far below the school, its spotted back and wide flat head clearly visible, while the school splits apart above it.
+
+overall_soundscape:
+A muffled, deep underwater ambience with a low hum, the shimmering whoosh of thousands of fish turning at once, a few small bubbles rising from the diver, and a deep, soft rush of water as the whale shark passes. No speech.
+
+non_diegetic_music:
+N/A

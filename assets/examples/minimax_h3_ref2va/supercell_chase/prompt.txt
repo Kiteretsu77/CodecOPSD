@@ -1,0 +1,22 @@
+subject_definitions:
+<Subject 1> is the weathered mustard-yellow 1970s pickup truck with a white camper shell, a black steel push bar, round headlights and a black roof rack of weather instruments with a three-cup anemometer, a white radar dome and whip antennas in <Picture 1>.
+<Video 1> is the effects reference: only its jagged electric-blue lightning bolts striking down from the sky and their bright impact flashes are reproduced, striking the wheat fields behind <Subject 1>.
+<Video 2> is the camera reference: only its dolly zoom is reproduced, not its content: the subject stays the same size in the centre of the frame while the background stretches and looms larger behind it.
+
+summary:
+[reference generation] On a straight prairie road under a colossal rotating supercell, <Subject 1> stands with its headlights on while lightning bolts as in <Video 1> hammer the wheat fields behind it and hail bounces on the asphalt; the camera performs a slow dolly zoom as in <Video 2>, so the storm wall looms larger and larger behind the truck. Thunder, roaring wind and drumming hail.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the shape, the mustard-yellow paint, the white camper shell, the push bar, the round headlights and the roof rack of weather instruments of the pickup truck are retained.
+<Video 1> (effects reference): reference - only its jagged electric-blue lightning bolts and impact flashes are reproduced, in the fields behind the truck.
+<Video 2> (camera reference): reference - only its dolly zoom is reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. The light is a sickly green-grey storm light under a black sky, with dust, flying straw, rain curtains and hailstones in the air.
+[Shot 1] A straight two-lane asphalt road with a yellow centre line runs through endless golden wheat fields toward the horizon, where a colossal supercell thunderstorm rotates, its green-black core and low wall cloud spanning the whole sky. <Subject 1> stands in the middle of the road facing the camera, its headlights on, the cups of the anemometer on its roof spinning furiously and the antennas whipping in the wind. From the first frame to the last, the camera performs a slow, steady dolly zoom as in <Video 2>: the truck keeps the same size in the centre of the frame while the road, the fields and the storm wall behind it stretch and loom larger and closer. Wind drives waves through the wheat on both sides. Again and again, jagged electric-blue lightning bolts strike down into the wheat fields behind the truck as in <Video 1>, each bolt lighting the whole scene in a white flash and throwing a burst of sparks and dust where it lands. Hailstones the size of marbles start to bounce off the asphalt and the truck's hood, and a gust carries a sheet of dust and straw across the road.
+
+overall_soundscape:
+Sharp, deafening cracks of thunder right after each lightning flash, rolling into long rumbles. A roaring, gusting wind, the rustle of the wheat, the rattle of the spinning anemometer and hailstones drumming hard on the metal roof and the camper shell of the truck, with the low idle of its engine underneath. No speech.
+
+non_diegetic_music:
+N/A

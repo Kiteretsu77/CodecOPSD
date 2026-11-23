@@ -17,6 +17,9 @@ dependencies = [
     "imageio==2.38.1",  # reads the reference videos (FFMPEG plugin)
     "imageio-ffmpeg==0.7.0",  # its ffmpeg 7.0.2 / x264 build re-encodes the references for the codec gazer
     "pyyaml",
+    # the H.264 reader of codec pruning, prebuilt for Linux x86_64 and aarch64, from the GitHub Release of this repo
+    "codecopsd-codec @ https://github.com/Kiteretsu77/CodecOPSD/releases/download/v0.1.0/codecopsd_codec-0.1.0-cp310-abi3-linux_x86_64.whl ; sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "codecopsd-codec @ https://github.com/Kiteretsu77/CodecOPSD/releases/download/v0.1.0/codecopsd_codec-0.1.0-cp310-abi3-linux_aarch64.whl ; sys_platform == 'linux' and platform_machine == 'aarch64'",
 ]
 
 [project.optional-dependencies]

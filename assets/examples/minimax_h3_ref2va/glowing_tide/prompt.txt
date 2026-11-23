@@ -1,0 +1,22 @@
+subject_definitions:
+<Subject 1> is the fluffy white Samoyed dog with a thick bright white coat, a curled plumed tail and a happy smile in <Picture 1>.
+<Subject 2> is the small tropical cove at night with a curved pale sand beach, leaning coconut palms, a dark rocky headland, a calm black sea and a thin crescent moon in <Picture 2>.
+<Video 1> is the effects reference: only its breaking waves that glow bright electric blue with bioluminescent plankton is reproduced; its rocky shore, its boulders, its driftwood and its pebbles are not used.
+
+summary:
+[reference generation] At night in <Subject 2>, <Subject 1> plays and leaps in the shallow surf while every breaking wave glows electric blue as in <Video 1>. Waves, splashing paws and happy panting.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the thick white coat, the curled tail and the happy face of the Samoyed are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the pale sand, the leaning palms, the rocky headland and the crescent moon of the cove are retained.
+<Video 1> (effects reference): reference - only its breaking waves that glow bright electric blue with bioluminescent plankton is reproduced, not its scene.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema filmed on a full-frame cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Night, lit by the crescent moon, the stars and the electric blue glow of the waves on the white fur.
+[Shot 1] A medium-wide shot from a static camera on the beach of <Subject 2> at night, close to the water. <Subject 1> stays in the middle of the frame for the whole shot, playing in the shallow surf: it bounds back and forth through the ankle-deep water, leaps at each incoming wave and splashes through it, then turns and jumps again. Again and again small waves roll in and break around the dog, and wherever the water breaks it glows bright electric blue from bioluminescent plankton as in <Video 1>: glowing foam swirls around its legs and every splash throws up sparkling blue droplets that light up its white fur. The palms and the headland stay still.
+
+overall_soundscape:
+Small waves breaking and hissing on the sand, splashing paws, the dog's happy panting and a warm night breeze in the palms. No speech.
+
+non_diegetic_music:
+N/A

@@ -1,0 +1,24 @@
+subject_definitions:
+<Subject 1> is the male figure skater with dark curly hair and a short trimmed beard, wearing a fitted midnight-blue skating costume with silver crystal embroidery spiralling over the shoulders and chest, black trousers and black figure skates with silver blades in <Picture 1>.
+<Subject 2> is the frozen alpine lake at blue hour in <Picture 2>: a large oval of smooth, dark, clear ice with fine white blade scratches, framed by a ring of warm string lights on wooden poles, deep snow banks, snowy pines and mountain peaks with pink alpenglow.
+<Video 1> is the motion reference: only the skater's movement is reproduced - gliding in, a very fast upright scratch spin, a low sit spin and the finish with both arms raised; its person, its outfit and its indoor ice rink are not used.
+<Video 2> is the camera reference: only its slow, smooth quarter orbit around the centre of the frame is reproduced, not its content.
+
+summary:
+[reference generation] On the dark ice of <Subject 2> at blue hour, <Subject 1> glides into the middle of the oval and performs the spin sequence of <Video 1>, warmly lit and seen clearly, while the camera slowly orbits around him as in <Video 2>. Blades carving the ice and a cold wind in the pines.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the face, the curly hair and beard, the midnight-blue costume with silver embroidery and the black skates of the skater are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the dark ice oval, the ring of string lights, the snow banks, the snowy pines and the pink-lit peaks of the frozen lake are retained.
+<Video 1> (motion reference): reference - only the skater's movement is reproduced, not the person or the rink.
+<Video 2> (camera reference): reference - only its slow quarter orbit is reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of real photographic live-action footage filmed on location with a full-frame cinema camera and a 50 mm lens, with natural film grain and real materials. There is no text, lettering, sign, logo or brand mark anywhere. Cold blue twilight over the mountains, pink alpenglow on the peaks, and the skater lit warmly and clearly from the front by the string lights and a soft warm floodlight at the edge of the ice, so his face, his curly hair and beard and every silver crystal on his costume are sharp and bright against the blue background.
+[Shot 1] A medium-wide shot from a camera held low just above the ice, about five metres from <Subject 1>, who fills about two thirds of the frame height and stays on the smooth dark ice of the lake for the whole shot, never on the snow. From the first frame to the last, the camera makes one slow, smooth orbit of about a quarter circle around him as in <Video 2>, keeping him in the centre of the frame while the string lights, the snow banks, the pines and the mountains of <Subject 2> slide past behind him. <Subject 1> glides into the centre of the ice oval, pulls into a very fast upright scratch spin that blurs his arms, drops into a low sit spin with one leg stretched out over the ice, rises again and finishes facing the camera with both arms raised and a proud smile, following the movement of <Video 1>. Fine ice spray flies from his blades and sparkles in the warm light, fresh white scratch marks appear on the dark ice, and his reflection moves on its glossy surface.
+
+overall_soundscape:
+The hiss and scrape of skate blades carving the ice, the rhythmic whoosh of the spin, the crunch of ice spray and a soft cold wind in the pines. No speech.
+
+non_diegetic_music:
+N/A

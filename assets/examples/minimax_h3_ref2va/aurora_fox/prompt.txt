@@ -1,0 +1,22 @@
+subject_definitions:
+<Subject 1> is the white arctic fox with a thick fluffy winter coat, a bushy tail, small rounded ears and dark amber eyes in <Picture 1>.
+<Subject 2> is the black volcanic sand beach in Iceland with glossy wet black sand, chunks of clear blue glacier ice along the shore, gentle surf, dark basalt sea stacks and snow-dusted cliffs in <Picture 2>.
+<Video 1> is the effects reference: only its bright green and violet northern lights rippling across the sky is reproduced; its hamlet, its cabins, its trees, its river and its mountains are not used.
+
+summary:
+[reference generation] At night on <Subject 2>, <Subject 1> trots between the glacier ice and stops to look up while green and violet northern lights ripple across the sky as in <Video 1>. Gentle surf and soft wind.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the white fur, the bushy tail, the rounded ears and the amber eyes of the arctic fox are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the black sand, the glacier ice chunks, the surf, the basalt sea stacks and the snowy cliffs of the beach are retained.
+<Video 1> (effects reference): reference - only its bright green and violet northern lights rippling across the sky is reproduced, not its scene.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema filmed on a full-frame cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Night, lit only by the northern lights and the stars: the green and violet glow reflects on the glossy wet sand and shines through the clear ice.
+[Shot 1] A low wide shot from a static camera on the sand of <Subject 2> at night. <Subject 1> trots in from the right between the glittering chunks of glacier ice, leaving small paw prints in the wet black sand, then stops in the centre of the frame, sits down and lifts its head to the sky. Above the basalt sea stacks, bright curtains of green and violet northern lights ripple, fold and dance across the whole sky as in <Video 1>, swelling brighter and fading again, and their glow shimmers on the wet sand, the ice and the fox's white fur. Small waves wash over the sand.
+
+overall_soundscape:
+Gentle surf washing over black sand and ice, a soft cold wind, the light patter of paws, and a deep calm silence. No speech.
+
+non_diegetic_music:
+N/A

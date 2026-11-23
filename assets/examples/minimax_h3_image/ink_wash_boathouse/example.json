@@ -1,0 +1,29 @@
+{
+ "label": "Ink-Wash Boathouse: 2 pictures",
+ "order": 7,
+ "gallery": true,
+ "source": "CodecOPSD homepage MiniMax-H3-Image gallery: Ink-Wash Boathouse",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--image",
+  "../../refs/ink_wash_boathouse_1.jpg",
+  "--image",
+  "../../refs/ink_wash_boathouse_2.jpg",
+  "--height",
+  "2560",
+  "--width",
+  "1152",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--vlm-drop",
+  "auto",
+  "--vlm-scale",
+  "0.25",
+  "--text-encoder",
+  "fp8",
+  "--seed",
+  "2026"
+ ]
+}

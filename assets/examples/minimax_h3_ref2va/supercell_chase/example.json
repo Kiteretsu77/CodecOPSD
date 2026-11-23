@@ -1,0 +1,29 @@
+{
+ "label": "Supercell Chase: 1 picture + 2 videos",
+ "order": 7,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: Supercell Chase",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/supercell_chase_1.jpg",
+  "--reference",
+  "../../refs/supercell_chase_2.mp4",
+  "--reference",
+  "../../refs/supercell_chase_3.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "2026"
+ ]
+}

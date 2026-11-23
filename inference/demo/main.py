@@ -25,6 +25,35 @@ from .style import CSS, HEAD, THEME
 from .ui import build
 
 
+class NoTransformStreams:
+    """ASGI middleware: the page's live streams (text/event-stream: progress, results, the heartbeat) are marked
+    `Cache-Control: no-transform`. A proxy that compresses responses (code-server's port proxy, used to reach the demo
+    from VS Code) otherwise holds the small stream messages in its compression buffer: the page then sees no progress
+    while a request runs, and its heartbeat stops, so it takes the connection for lost and reloads."""
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] != "http":
+            return await self.app(scope, receive, send)
+
+        async def sending(message):
+            if message["type"] == "http.response.start":
+                headers = list(message.get("headers", []))
+                if any(k.lower() == b"content-type" and v.lower().startswith(b"text/event-stream") for k, v in headers):
+                    cache = [v for k, v in headers if k.lower() == b"cache-control"]
+                    headers = [(k, v) for k, v in headers if k.lower() != b"cache-control"]
+                    value = b", ".join(cache) if cache else b"no-cache"
+                    if b"no-transform" not in value.lower():
+                        value += b", no-transform"
+                    headers.append((b"cache-control", value))
+                    message = {**message, "headers": headers}
+            await send(message)
+
+        return await self.app(scope, receive, sending)
+
+
 def main(page):
     """Run the demo page `page`: dict(model ("minimax_h3_ref2va", "h3_flash_ref2va" or "minimax_h3_image"), title (browser tab),
     heading (one line under the summary), sizes and frames (video pages), size (a fixed output size), examples (the
@@ -108,14 +137,17 @@ def main(page):
         return fill_cache([name])
     if args.offload == "none":
         preload([name])
-        load(name)
+    load(name)  # loaded before the page opens: no request waits for the model to load
     demo = state.DEMO = build()
     if name == "minimax_h3_image" and name in PIPES:  # CPU only, a few seconds
         threading.Thread(target=upgrade_stored_refs, args=(name,), daemon=True).start()
     threading.Thread(target=warm_light, args=([name],), daemon=True).start()  # CPU: light copies of the examples
     if args.fill_cache:
         threading.Thread(target=fill_cache, args=([name],), daemon=True).start()
-    demo.queue(default_concurrency_limit=1).launch(server_name="0.0.0.0", server_port=args.port,
+    from starlette.middleware import Middleware
+
+    demo.queue(default_concurrency_limit=1).launch(app_kwargs={"middleware": [Middleware(NoTransformStreams)]},
+                                                   server_name="0.0.0.0", server_port=args.port,
                                                    share=args.share, allowed_paths=[str(EXAMPLES), str(OUT), str(CACHE)],
                                                    theme=THEME, css=CSS, head=HEAD, max_file_size="1gb",
                                                    show_error=True)

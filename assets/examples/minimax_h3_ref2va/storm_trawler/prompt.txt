@@ -1,0 +1,20 @@
+subject_definitions:
+<Subject 1> is the deep-sea fishing trawler with a rust-streaked crimson-red steel hull, a tall white wheelhouse with a row of square windows, yellow lifebuoys, black tyres along the sides, a steel A-frame with heavy nets and green floats at the stern, orange buoys on deck and a mast with antennas and work lights in <Picture 1>.
+<Video 1> is the camera reference: only its sweeping orbit around the subject, about ninety degrees over the shot, is reproduced, not its content.
+
+summary:
+[reference generation] At dusk in a violent storm on the open ocean, <Subject 1> plows through huge grey waves; its bow rises over a crest and slams down, throwing a massive burst of white spray over the wheelhouse, while the camera travels with the trawler and sweeps around it as in <Video 1>. Howling wind, crashing waves and a groaning hull.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the rust-streaked crimson-red hull, the white wheelhouse with its square windows, the yellow lifebuoys, the tyres, the A-frame with nets and green floats, the orange buoys and the mast of the trawler are retained.
+<Video 1> (camera reference): reference - only its sweeping orbit around the subject is reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Dark slate-blue storm light at dusk, low racing clouds, driving rain, foam streaks on the water and the warm glow of the trawler's work lights.
+[Shot 1] <Subject 1> fights its way through a heavy storm on the open ocean, its work lights and wheelhouse windows glowing warm. From the first frame to the last, the camera travels with the trawler and sweeps steadily around it as in <Video 1>, about ninety degrees over the shot: at the start the trawler is seen from its side, and by the end the camera has moved around toward its bow, so it is seen in a three-quarter front view. Huge grey waves with white foaming crests roll toward it. The bow climbs up the face of a towering wave, hangs over the crest, then slams down into the trough, and a massive burst of white spray explodes up and over the wheelhouse and blows back across the deck in the wind. Green water rushes along the deck and pours out through the scuppers, the nets and floats at the stern swing, and two fishermen in orange oilskins cling to the rail. Rain streaks sideways through the beams of the work lights and spindrift tears off the wave crests.
+
+overall_soundscape:
+A howling, gusting wind, the deep thunder of breaking waves, the heavy boom as the bow slams into the trough, the hiss of spray across the deck, the groan of the steel hull and the steady throb of the diesel engine underneath. No speech.
+
+non_diegetic_music:
+N/A

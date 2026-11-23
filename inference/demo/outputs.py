@@ -21,6 +21,13 @@ from .stats import stats_html
 from .views import drop_note, refs_html
 
 
+def short_gpu(name):
+    """A GPU's name as the page shows it: "RTX PRO 6000 Blackwell" for "NVIDIA RTX PRO 6000 Blackwell Server Edition"."""
+    for cut in ("NVIDIA ", " Server Edition", " Workstation Edition", " Max-Q Workstation Edition"):
+        name = name.replace(cut, "")
+    return name.strip()
+
+
 def outputs_of(runs, order, refs=None, extra=(), stored=(), model=None, setting=None, elsewhere=()):
     """The outputs so far. `runs`: every result on the page (this request's, earlier ones of this page with the same
     inputs, and results computed in advance: `stored`); `order`: the models this request runs, the ones still to run
@@ -45,10 +52,10 @@ def outputs_of(runs, order, refs=None, extra=(), stored=(), model=None, setting=
         else:
             labels[w] = NAME[w] + (" · not run for these inputs" if runs or pending else "")
     here = torch.cuda.get_device_name() if torch.cuda.is_available() else "this GPU"
-    gpus = {w: (r.get("gpu") or here).replace("NVIDIA ", "") for w, r in runs.items()}  # where each time was measured
+    gpus = {w: short_gpu(r.get("gpu") or here) for w, r in runs.items()}  # where each time was measured
     compare = len(set(gpus.values())) <= 1
     s, t = runs.get("student"), runs.get("released")
-    gpu = lambda w: f"1x {gpus[w]}"
+    gpu = lambda w: gpus[w]
     if refs is None:
         refs = (s or {}).get("refs") or []
     counted = [r for r in refs if r.get("total")]
@@ -56,25 +63,28 @@ def outputs_of(runs, order, refs=None, extra=(), stored=(), model=None, setting=
     parts = []  # ONE core line: condition tokens, then the denoising time (the part CodecOPSD speeds up)
     if s and counted:
         total, kept = sum(r["total"] for r in counted), sum(r["kept"] for r in counted)
-        parts.append(f"Condition tokens: {color('released', thousands(total))} → {color('student', thousands(kept))} "
+        parts.append(f"Tokens {color('released', thousands(total))} → {color('student', thousands(kept))} "
                      f"{drop_note(total, kept)}")
     elif s and s.get("drop"):
-        parts.append(f"Condition tokens: {color('student', format(s['drop'], '.0%'))} dropped")
+        parts.append(f"Tokens {color('student', format(s['drop'], '.0%'))} dropped")
     if s and t and compare:
         od, td = round(s["denoise"], 1), round(t["denoise"], 1)
-        parts.append(f"denoising: {color('released', f'{td:.1f} s')} → {color('student', f'{od:.1f} s')} "
-                     f'({gpu("student")}), <span class="speedup">{td / od:.1f}x faster</span>')
+        parts.append(f"Denoising {color('released', f'{td:.1f} s')} → {color('student', f'{od:.1f} s')} · "
+                     f'<span class="speedup">{td / od:.1f}x faster</span> ({gpu("student")})')
+    elif s and not t and s.get("teacher_denoise"):  # a precomputed result that comes with its Teacher's time only
+        od, td = round(s["denoise"], 1), round(s["teacher_denoise"], 1)
+        parts.append(f"Denoising {color('released', f'{td:.1f} s')} → {color('student', f'{od:.1f} s')} · "
+                     f'<span class="speedup">{td / od:.1f}x faster</span> ({gpu("student")})')
     else:
-        parts += [f"denoising ({SHORT[w]}): {color(w, format(runs[w]['denoise'], '.1f') + ' s')} ({gpu(w)})"
+        parts += [f"Denoising ({SHORT[w]}) {color(w, format(runs[w]['denoise'], '.1f') + ' s')} ({gpu(w)})"
                   for w in ("student", "released") if w in runs]
     if oom:
         parts += [f"{SHORT[w]}: out of GPU memory within the {budget_gib():g} GB budget" for w in sorted(oom)]
-    lines = [f'<span class="core">{"; ".join(parts)}</span>'] if parts else []
+    lines = [f'<span class="core">{part}</span>' for part in parts]  # one short line each
     shown_stored = [w for w in ("student", "released") if w in stored and w in runs]
     if shown_stored:  # results computed in advance for a bundled example
-        lines.insert(0, f'<span class="precomputed">Precomputed</span> '
-                        f'<span class="precomputed-note">{" and ".join(SHORT[w] for w in shown_stored)}, computed in '
-                        "advance; Generate runs it again</span>")
+        lines.insert(0, '<span class="precomputed">Precomputed</span> '
+                        '<span class="precomputed-note">· Generate runs it again</span>')
     # the setting, at the bottom of the page in small type
     base, ours_setting = setting if isinstance(setting, tuple) else (setting, None)
     foot = [SAMPLER[model]] if model in SAMPLER else []
@@ -91,7 +101,7 @@ def outputs_of(runs, order, refs=None, extra=(), stored=(), model=None, setting=
     if pending:
         lines.append(f"Running {NAME[pending[0]]} ...")
     return dict(student=fast_result((s or {}).get("result")), released=fast_result((t or {}).get("result")), refs=refs,
-                setting=note, stats=stats_html(runs),
+                setting=note, stats=stats_html(runs, stored),
                 info="  \n".join([*lines, *extra]), labels=labels, done="  \n".join(done))
 
 

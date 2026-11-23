@@ -1,0 +1,22 @@
+subject_definitions:
+<Subject 1> is the large round white canvas bell tent with a tall centre pole, open door flaps, a warm glow inside, two folding wooden chairs and a small copper lantern in <Picture 1>.
+<Subject 2> is the red rock desert at night with a sandy clearing, huge red sandstone arches and boulders, Joshua trees and a starry sky with the Milky Way in <Picture 2>.
+<Video 1> is the effects reference: only its bright shooting stars streaking across the sky is reproduced; its desert, its boulders, its plants and its mesa are not used.
+
+summary:
+[reference generation] At night in <Subject 2>, <Subject 1> stands with its door open and warm light glowing inside while shooting stars streak across the sky as in <Video 1>. A quiet desert night.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the white canvas, the centre pole, the open door flaps, the wooden chairs and the copper lantern of the bell tent are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the sandy clearing, the sandstone arches, the Joshua trees and the Milky Way of the desert are retained.
+<Video 1> (effects reference): reference - only its bright shooting stars streaking across the sky is reproduced, not its scene.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema filmed on a full-frame cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. A deep dark sky full of stars, the Milky Way arching over the red rocks, a warm glow from the tent.
+[Shot 1] A wide shot from a static camera in the sandy clearing of <Subject 2>, with <Subject 1> standing in the lower third of the frame below the sandstone arch, its door flaps open and warm light glowing from inside it. Again and again, bright shooting stars streak across the sky in long glowing white and green trails as in <Video 1>, sometimes several at once, each flaring and fading in under a second, and their flashes briefly light the red rocks and the white canvas of the tent. Everything else stays still.
+
+overall_soundscape:
+A deep desert silence, a soft dry breeze, crickets and the faint crackle of the lantern. No speech.
+
+non_diegetic_music:
+N/A

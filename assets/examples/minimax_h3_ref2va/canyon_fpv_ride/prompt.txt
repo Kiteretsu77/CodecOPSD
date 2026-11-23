@@ -1,0 +1,20 @@
+subject_definitions:
+<Subject 1> is the motocross rider in a bright magenta and mint-green riding kit, a glossy white helmet with one thick black stripe and mirrored blue goggles, on the dirt bike with magenta plastics, gold wheel rims and a gold chain in <Picture 1>.
+<Video 1> is the camera reference: only its fast, low first-person drone flight is reproduced, not its content: racing low over rolling dunes, diving down a dune face and banking into a narrow gap between two tall rock walls.
+
+summary:
+[reference generation] An FPV drone chases <Subject 1> as he races across sunlit desert dunes, throwing a rooster tail of sand, jumps a dune crest and dives with the drone into a narrow red sandstone canyon, following the flight of <Video 1>. Screaming two-stroke engine, rushing wind and spraying sand.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the magenta and mint-green riding kit, the white helmet with its black stripe, the blue goggles and the magenta dirt bike with gold rims and gold chain are retained.
+<Video 1> (camera reference): reference - only its fast, low first-person drone flight is reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Hard midday desert sun, deep blue sky, crisp shadows, rippled sand, layered red and ochre sandstone and drifting dust.
+[Shot 1] From the first frame to the last, the camera flies as a fast, low first-person drone exactly as in <Video 1>, chasing <Subject 1> from behind and slightly above. At the start he races at full throttle across rolling golden sand dunes, standing on the pegs, his rear wheel throwing a long rooster tail of sand into the air that the drone flies straight through. He launches off a dune crest, flies through the air with the bike level and lands smoothly on the far slope, and the drone dives down the dune face after him. Ahead, towering walls of striated red sandstone rise up, and he leans hard into a turn and shoots into a narrow slot canyon between two tall rock walls; the drone banks and follows him into the gap, the walls rushing past on both sides in a blur of red and orange layers while shafts of sunlight cut through floating dust. His magenta and mint-green kit and the gold rims of the bike flash in and out of the light.
+
+overall_soundscape:
+The high-pitched scream of a two-stroke engine revving hard through quick gear changes, the hiss and spray of sand thrown by the rear wheel, wind rushing past the drone and the thin whine of its propellers. Inside the canyon the engine roar echoes off the rock walls. No speech.
+
+non_diegetic_music:
+N/A

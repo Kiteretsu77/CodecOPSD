@@ -1,0 +1,29 @@
+{
+ "label": "Balloon Liftoff: 2 pictures + 1 video",
+ "order": 6,
+ "gallery": true,
+ "source": "CodecOPSD homepage Ref2VA gallery: Balloon Liftoff",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/balloon_liftoff_1.jpg",
+  "--reference",
+  "../../refs/balloon_liftoff_2.jpg",
+  "--reference",
+  "../../refs/balloon_liftoff_3.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "124",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "2026"
+ ]
+}
