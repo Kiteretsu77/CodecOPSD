@@ -11,7 +11,8 @@ text_encoder_layer: 50      # the text encoder's hidden_states[50]; later layers
 vlm_video_fps: 2.0          # reference videos are shown to the text encoder at 2 fps (one vision block per 2 sampled frames)
 fps: 24
 
-canvas:                     # output size and video references: short edge 768, area capped at 768 x 1344, multiples of 32
+canvas:                     # output size: short edge 768, area capped at 768 x 1344, multiples of 32 (video references:
+                            # references.video_tiers)
   multiple: 32
   short_edge: 768
   max_pixels: 1032192
@@ -36,7 +37,13 @@ samplers:                   # few-step versions of the released base; `weights` 
       8: [1.0, 0.931506, 0.839236, 0.703462, 0.5, 0.296538, 0.160764, 0.068494, 0.0]
 
 references:
-  picture_short_edge: 2048  # pictures are resized (LANCZOS) to this short edge, as released
+  picture_short_edge: [1024, 2048]  # a picture keeps its own short edge within this range: a smaller one is enlarged
+                            # to 1024, a larger one reduced to 2048 (LANCZOS, never cropped; sides multiples of 32).
+                            # Released MiniMax-H3 (diffusers) reads every picture at a 2048 short edge
+  video_tiers: [[480, 399360], [544, 522240], [768, 1032192]]  # a reference video is first resized onto the canvas of
+                            # its output's tier (short edge, area cap; Pika H3 Flex's tiers): the smallest tier whose
+                            # short edge reaches the output's (output 320-480 -> 480 x 832 area, 576-768 -> 768 x 1344),
+                            # then cut and gazed. Without an output size (training): the 768 canvas, as released
   noise_t: 0.999            # every reference row is noised to t = 0.999 (t = 1 - sigma) and held there, as released
   video_encode: mode        # CodecOPSD: videos are encoded as the VAE posterior mode; pictures as released (sampled, seed 42, float16)
   gaze_kinds:               # CodecOPSD: codec gazer kind per reference (configs/codec_gazer.yaml): plain RGB only

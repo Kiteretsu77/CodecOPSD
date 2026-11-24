@@ -70,8 +70,8 @@ student text encoder's picture mask scales the same threshold (x 0.25).
 Why: an enlarged picture spreads the same detail over more pixels, so a token's residual falls roughly in proportion to
 the short side. A constant 1.5 then drops more and more as the picture grows; a threshold inversely proportional to the
 short side keeps the drop flat, but pictures whose residual falls more slowly (dark, noisy backgrounds) then keep
-background noise and drop less at a larger size. The square root lies between the two. MiniMax-H3 resizes picture
-references to short side 2048.
+background noise and drop less at a larger size. The square root lies between the two. Released MiniMax-H3 resizes
+picture references to short side 2048; this repo keeps a picture's own short side within 1024-2048.
 
 ## Priority drop (videos; the pipeline's default, 70 %)
 

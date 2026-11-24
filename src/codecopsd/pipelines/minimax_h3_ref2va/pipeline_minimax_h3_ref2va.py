@@ -67,6 +67,13 @@ REFERENCE_T = CONFIG["references"]["noise_t"]
 CANVAS = dict(canvas_multiple=CONFIG["canvas"]["multiple"], short_edge=CONFIG["canvas"]["short_edge"],
               max_pixels=CONFIG["canvas"]["max_pixels"])
 PICTURE_SHORT_EDGE = CONFIG["references"]["picture_short_edge"]
+VIDEO_TIERS = sorted(tuple(t) for t in CONFIG["references"]["video_tiers"])  # (short edge, area cap), Pika H3 Flex's
+
+
+def video_tier(height, width):
+    """(short edge, area cap) of the canvas a reference video is read on for an output of `height` x `width`: the
+    smallest of `VIDEO_TIERS` whose short edge reaches the output's, the largest when none does (Pika H3 Flex's rule)."""
+    return next((t for t in VIDEO_TIERS if t[0] >= min(height, width)), VIDEO_TIERS[-1])
 
 PICTURES = (".png", ".jpg", ".jpeg", ".webp", ".bmp")
 
@@ -336,25 +343,26 @@ class MiniMaxH3CodecOPSDPipeline(DiffusionPipeline):
     reference_sizes = None  # `set_reference_sizes`; None = the released sizes
 
     def set_reference_sizes(self, picture_short_edge=None, picture_long_edge=None, video_short_edge=None):
-        """Read the references at other sizes than released (pictures at a 2048 short edge, videos on the 768 canvas):
+        """Read the references at other sizes than the defaults (pictures at their own short edge within 1024-2048,
+        videos at their output's tier):
         pictures resized (LANCZOS) to `picture_short_edge`, either one size or a (low, high) range that keeps a
         picture's own short edge when it lies inside and brings it to the nearer bound otherwise, their long edge at
         most `picture_long_edge`; videos on the canvas of short edge `video_short_edge` (area capped at that edge's 16:9
-        frame, multiples of 32). None keeps a size as released. The extreme demo page reads pictures at a short edge
-        of 1024 to 1536 and videos at 480p, the sizes of everyday inputs for a 480p output. This changes what the model
-        reads (the CodecOPSD LoRA was trained at the released sizes), so it is off by default."""
+        frame, multiples of 32) instead of their output's tier. None keeps the default."""
         self.reference_sizes = dict(picture_short_edge=picture_short_edge, picture_long_edge=picture_long_edge,
                                     video_short_edge=video_short_edge)
 
-    def normalize_references(self, references, num_frames):
-        """References onto the released conventions: a picture at a 2048 short edge, a video at 24 fps on the canvas of
-        its own aspect ratio, cut to `num_frames` and then to the longest 17n + 5 frames the VAE encodes. Other sizes:
-        `set_reference_sizes`."""
+    def normalize_references(self, references, num_frames, height=None, width=None):
+        """References onto the model's conventions: a picture at its own short edge brought into 1024-2048
+        (references.picture_short_edge; released MiniMax-H3 reads every picture at 2048); a video first resized
+        onto the canvas of its own aspect ratio at the tier of the `height` x `width` output (`video_tier`, Pika H3
+        Flex's rule; without an output size the released 768 canvas), then at 24 fps, cut to `num_frames` and then to
+        the longest 17n + 5 frames the VAE encodes. Other sizes: `set_reference_sizes`."""
         sizes = self.reference_sizes or {}
         short_edge, long_edge = sizes.get("picture_short_edge") or PICTURE_SHORT_EDGE, sizes.get("picture_long_edge")
         video_edge = sizes.get("video_short_edge")
         canvas = ((video_edge, video_edge * ((video_edge * 16 // 9 + 31) // 32 * 32)) if video_edge
-                  else (CANVAS["short_edge"], CANVAS["max_pixels"]))
+                  else video_tier(height, width) if height and width else (CANVAS["short_edge"], CANVAS["max_pixels"]))
         out = []
         for ref in references:
             if ref.kind == "image":
@@ -385,7 +393,7 @@ class MiniMaxH3CodecOPSDPipeline(DiffusionPipeline):
 
     @torch.no_grad()
     def encode(self, prompt, references, num_frames, gaze=True, video_drop=None, vlm_drop=False, teacher_text=False,
-               gaze_overrides=None):
+               gaze_overrides=None, height=None, width=None):
         """Everything the transformer reads about one request.
 
         Args:
@@ -395,6 +403,8 @@ class MiniMaxH3CodecOPSDPipeline(DiffusionPipeline):
             vlm_drop: with `gaze`, the prompt embedding is the student's: the text encoder reads only the reference vision
                 tokens of the masks' `vlm_keep` (`vlm_drop.py`).
             teacher_text: also return the released prompt embedding (every vision token), for training.
+            height, width: the output size, which picks the canvas of the reference videos (`video_tier`); None = the
+                released 768 canvas (training).
 
         Returns:
             dict: "references" (normalized), "latents" ([1, 24, T', h, w] per reference), "masks" (the transformer's
@@ -415,7 +425,7 @@ class MiniMaxH3CodecOPSDPipeline(DiffusionPipeline):
         t0 = time.perf_counter()
         device = self._execution_device
         with self._stage("references: resize, copy to the GPU"):
-            references = self.normalize_references(references, num_frames)
+            references = self.normalize_references(references, num_frames, height, width)
             host = [torch.from_numpy(np.asarray(r.image)[None] if r.kind == "image" else np.ascontiguousarray(r.frames))
                     for r in references]
             vlm_drop = vlm_drop if gaze else False  # True / "dit" (the text encoder reads the transformer's tokens)
@@ -676,7 +686,8 @@ class MiniMaxH3CodecOPSDPipeline(DiffusionPipeline):
         self.clock = Clock(getattr(self, "moves", None))
 
         # 1. References (VAE latents, codec gazer masks) and the prompt (text encoder).
-        enc = self.encode(prompt, references, num_frames, gaze, video_drop, vlm_drop, gaze_overrides=gaze_overrides)
+        enc = self.encode(prompt, references, num_frames, gaze, video_drop, vlm_drop, gaze_overrides=gaze_overrides,
+                          height=height, width=width)
         references, latents, text = enc["references"], enc["latents"], enc["text"]
 
         # 2. Noise (one draw per reference, all its rows, then the video) and the packed layout of the kept rows.

@@ -58,8 +58,8 @@ the ref2va page is on (codec pruning, the CodecOPSD LoRA, VLM pruning, the FP8 t
 the attention kernel). Under the results, "Where the time went" lists every stage of the run; the panel at the bottom
 sums them over all requests.
 
-A reference picture is read at its own short edge, kept between 1024 and 2048 px (the ref2va page: always 2048, as
-released); videos as released. The bundled examples
+References are read as on the ref2va page: a picture at its own short edge, kept between 1024 and 2048 px, a video at
+the output's tier (480 for a 480p output, 768 for 768p). The bundled examples
 use everyday files: pictures with a short edge of 1024 to 1536 px, videos at 480p. The GPU memory plans are measured at
 480p; a larger output needs more memory.
 

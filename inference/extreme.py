@@ -17,7 +17,6 @@ path call `setup` (`python -m inference.hardware` reads the plans too); the norm
     flash_weights                       the default HyperFlow H3 Flash folder
     setup                               the process capped, the plan picked and printed with the hardware report
     taeh3_weights, use_taeh3_encoder    the references encoded by TAEH3 instead of the released VAE encoder
-    PICTURE_SHORT_EDGE, read_pictures   pictures read at their own short edge within 1024-2048 px (the standard path: 2048)
 
 Kept elsewhere on purpose: the INT8 GEMM kernel of Flash is picked in src (`transformer_h3_flash.int8_gemm_choice`,
 reported by inference/hardware.py). The demo's Audio switch (Settings, inference/demo/ui.py) is shown for Flash and for
@@ -73,18 +72,6 @@ def flash_weights():
     return model_dir("hyperflow-h3-flash") / "ref2va_int8_convrot"
 
 
-# The extreme path reads a reference picture at its own short edge, brought into 1024-2048 px: a smaller picture is
-# enlarged to 1024, a larger one reduced to 2048, one in between is kept (resized with LANCZOS, never cropped; sides
-# rounded to multiples of 32). The standard path reads every picture at a 2048 short edge, as released, so a 1024 px
-# picture there takes 4 times its tokens and a 512 px one 16 times, with no new detail. Videos as released (768 canvas).
-PICTURE_SHORT_EDGE = (1024, 2048)
-
-
-def read_pictures(pipe):
-    """Read the reference pictures of `pipe` (MiniMaxH3CodecOPSDPipeline) at `PICTURE_SHORT_EDGE`."""
-    pipe.set_reference_sizes(picture_short_edge=PICTURE_SHORT_EDGE)
-
-
 def setup(model, gpu_memory=None, offload="auto", prefix="", vlm=None, pin_vlm="auto"):
     """The start of a HyperFlow H3 Flash run, the demo page and the command line alike: the process capped to
     `gpu_memory` GB when that is below the first GPU's own (`hardware.cap_gpu_memory`, CUDA context included), the
@@ -127,11 +114,25 @@ TAEH3 = dict(url="https://raw.githubusercontent.com/madebyollin/taehv/9055eee039
              sha256="4fd022bfcab08772fe0536b17ea1a3bbb5625be11e397868d1c5d891863d4c13")
 
 
+def _fetch(url, path):
+    """`url` into `path`, checking HTTPS with certifi's certificates when present (huggingface_hub installs it; some
+    Python builds find no system certificates)."""
+    import shutil
+    import ssl
+    import urllib.request
+
+    try:
+        import certifi
+        context = ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        context = None
+    with urllib.request.urlopen(url, context=context, timeout=60) as r, open(path, "wb") as f:
+        shutil.copyfileobj(r, f, 1 << 20)
+
+
 def taeh3_weights(download=True):
     """models/taehv/taeh3.safetensors (23 MB), downloaded from the pinned taehv commit on first use."""
     import hashlib
-
-    from codecopsd.download import _download
 
     path = model_dir("taehv") / "taeh3.safetensors"
     if not path.exists():
@@ -139,7 +140,7 @@ def taeh3_weights(download=True):
             raise FileNotFoundError(f"no TAEH3 weights at {path}: run without --no-download, or with --vae-encoder released")
         path.parent.mkdir(parents=True, exist_ok=True)
         part = path.with_suffix(".part")
-        _download(TAEH3["url"], part)
+        _fetch(TAEH3["url"], part)
         if hashlib.sha256(part.read_bytes()).hexdigest() != TAEH3["sha256"]:
             part.unlink()
             raise RuntimeError(f"TAEH3 weights from {TAEH3['url']} do not match their sha256")

@@ -30,11 +30,9 @@ def build_pipe(name, text_encoder=None):
     pipe = build_pipeline(name, args.model, lora, text_encoder=args.text_encoder, sampler=getattr(args, "sampler", None),
                           sampler_weights=getattr(args, "flash_weights", None), shared_text_encoder=text_encoder,
                           text_encoder_path=getattr(args, "vlm_fp8", None))  # an FP8 VLM folder (main.py)
-    if name == "h3_flash_ref2va":  # the extreme path only
+    if name == "h3_flash_ref2va" and getattr(args, "vae_encoder", "released") == "taeh3":  # the extreme path only
         from .. import extreme
-        extreme.read_pictures(pipe)  # pictures at their own short edge within 1024-2048 px
-        if getattr(args, "vae_encoder", "released") == "taeh3":
-            extreme.use_taeh3_encoder(pipe, extreme.taeh3_weights(download=not args.no_download))
+        extreme.use_taeh3_encoder(pipe, extreme.taeh3_weights(download=not args.no_download))
     time_forward(pipe.transformer)  # before any offload hook, so that moving weights is not counted
     set_attention(pipe, "auto")  # cudnn on Hopper / Blackwell, sdpa on older GPUs
     capture_masks(pipe)

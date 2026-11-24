@@ -175,7 +175,6 @@ What the extreme app changes from the standard one ([docs/consumer_gpus.md](docs
 - **Transformer:** [HyperFlow H3 Flash](https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash) (INT8 and low rank,
   16 GB), 4 steps, instead of MiniMax-H3 with Pika H3 Flex, 6 steps; the same CodecOPSD LoRA.
 - **Reference encoder:** TAEH3, a small encoder, instead of the released VAE encoder; the released VAE still decodes.
-- **Reference pictures:** read at their own short edge within 1024 to 2048 px (the standard app: always 2048).
 - **GPU memory:** one plan per card size (12, 16, 24, 32 GB), picked automatically; only the running model sits on the
   GPU, and on 24 GB and smaller cards Flash's blocks are streamed in one by one.
 - **CPU memory:** the waiting models are page-locked; with less than 64 GB, the VLM is read from the page cache.
