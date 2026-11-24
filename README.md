@@ -2,9 +2,7 @@
   <img width="100%" src="assets/readme/codecopsd_header.gif" alt="CodecOPSD">
 </div>
 
-<h1 align="center">CodecOPSD</h1>
-
-<h3 align="center">On-Policy Codec Distillation<br>for Efficient All-in-One Video Generation</h3>
+<h1 align="center">On-Policy Codec Distillation<br>for Efficient All-in-One Video Generation</h1>
 
 <p align="center">
 <a href="https://kiteretsu77.github.io/BoyangWang/">Boyang Wang</a>,
@@ -14,14 +12,19 @@
 <a href="https://www.cs.virginia.edu/~zc3bp/">Zezhou Cheng</a>
 </p>
 
-<div align="center">
+<p align="center">
+<a href="#"><img src="https://img.shields.io/badge/arXiv-Paper%20(TODO)-b31b1b?logo=arxiv&logoColor=white"></a>
+<a href="https://kiteretsu77.github.io/CodecOPSD_website/"><img src="https://img.shields.io/badge/Project-Website-pink?logo=googlechrome&logoColor=white"></a>
+<a href="https://x.com/BoyangWang7"><img src="https://img.shields.io/badge/Follow-%40BoyangWang7-black?logo=x&logoColor=white"></a>
+<a href="https://github.com/Kiteretsu77/CodecOPSD"><img src="https://img.shields.io/github/stars/Kiteretsu77/CodecOPSD?style=social"></a>
+</p>
 
-[![Paper](https://img.shields.io/badge/arXiv-Paper%20(TODO)-b31b1b?logo=arxiv&logoColor=white)](#)
-[![Website](https://img.shields.io/badge/Project-Website-pink?logo=googlechrome&logoColor=white)](https://kiteretsu77.github.io/CodecOPSD_website/)
-<a href="#"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20HF%20Space&message=Online+Demo+(TODO)&color=orange"></a>
-<a href="#"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20Hugging%20Face&message=Model+(TODO)&color=orange"></a>
-
-</div>
+<p align="center">
+<a href="https://huggingface.co/HikariDawn/CodecOPSD-H3-Ref2VA"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20HF%20Models&message=H3-Ref2VA&color=orange"></a>
+<a href="https://huggingface.co/HikariDawn/CodecOPSD-H3-Image"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20HF%20Models&message=H3-Image&color=orange"></a>
+<a href="https://huggingface.co/spaces/HikariDawn/CodecOPSD-H3-Ref2VA"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20HF%20Space&message=H3-Ref2VA&color=orange"></a>
+<a href="https://huggingface.co/spaces/HikariDawn/CodecOPSD-H3-Image"><img src="https://img.shields.io/static/v1?label=%F0%9F%A4%97%20HF%20Space&message=H3-Image&color=orange"></a>
+</p>
 
 Sequence-wise generators (MiniMax-H3 Ref2VA, MiniMax-H3-Image, Qwen-Image 2.1, FLUX 3 Image Klein) append every
 reference picture or video to the input token sequence, so the token cost grows sharply as more references are added.
@@ -30,8 +33,10 @@ kept tokens via on-policy self-distillation.
 
 On average, CodecOPSD drops about 70% of the condition tokens on MiniMax-H3 Ref2VA with almost unchanged quality and
 1.87x faster denoising, and up to 8.4x faster with more conditions (three reference videos, higher-resolution
-references, more frames, and a higher drop rate). On MiniMax-H3-Image, it drops about 65% of the reference tokens and
-makes denoising about 2x faster. More cases are on the [project page](https://kiteretsu77.github.io/CodecOPSD_website/).
+references, more frames, and a higher drop rate).
+
+On MiniMax-H3-Image, it drops about 65% of the reference tokens and makes denoising about 2x faster. More cases are on
+the <a href="https://kiteretsu77.github.io/CodecOPSD_website/" target="_blank" rel="noopener">project page</a>.
 
 🎬 [Visualization](#visualization) **|** 🔥 [News](#news) **|** 🔧 [Installation](#installation) **|** ⚡ [Quickstart](#quick_start) **|** 🚀 [Inference](#inference) **|** 🧩 [Codec Pruning](#codec_pruning) **|** 🏋️ [Train](#training) **|** 📜 [License](#license)
 
@@ -65,7 +70,7 @@ Everything else is the same; only the number of condition tokens differs. Times 
 
 <a name="gallery"></a>**H3 Ref2VA Gallery** (click to open it)
 
-<a href="https://kiteretsu77.github.io/CodecOPSD_website/#gallery"><img src="assets/readme/gallery/gallery_ref2va.jpg" width="100%"></a>
+<a href="https://kiteretsu77.github.io/CodecOPSD_website/#gallery" target="_blank" rel="noopener"><img src="assets/readme/gallery/gallery_ref2va.webp" width="100%"></a>
 
 <br>
 
@@ -91,7 +96,7 @@ logo printed on the mug.
 
 <a name="gallery_image"></a>**H3-Image Gallery** (click to open it)
 
-<a href="https://kiteretsu77.github.io/CodecOPSD_website/#gallery-h3img"><img src="assets/readme/gallery/gallery_image.jpg" width="100%"></a>
+<a href="https://kiteretsu77.github.io/CodecOPSD_website/#gallery-h3img" target="_blank" rel="noopener"><img src="assets/readme/gallery/gallery_image.jpg" width="100%"></a>
 
 <br>
 
@@ -114,16 +119,16 @@ on its own rollouts from the teacher, which sees every condition token:
 
 - **2026-11**: Code release: inference and training of CodecOPSD for MiniMax-H3 Ref2VA and MiniMax-H3-Image, one-line
   inference, and Gradio demos.
-- **2026-11**: MiniMax-H3 Ref2VA on a 32 GB GPU: [HyperFlow H3 Flash](https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash)
-  with the CodecOPSD LoRA at 480p (`python app.py ref2va_extreme`, `--sampler flash`).
 - **2026-11**: [Project page](https://kiteretsu77.github.io/CodecOPSD_website/) with the Ref2VA and image galleries.
-- [ ] Paper (arXiv)
-- [ ] CodecOPSD model on Hugging Face
-- [ ] Hugging Face Space demo
-- [ ] Training code check
-- [ ] CodecOPSD on Cosmos 3 Nano
-- [ ] CodecOPSD on Qwen-Image 2.1
-- [ ] CodecOPSD on FLUX 3 Image Klein
+- **2026-11**: Models on Hugging Face ([H3-Ref2VA](https://huggingface.co/HikariDawn/CodecOPSD-H3-Ref2VA),
+  [H3-Image](https://huggingface.co/HikariDawn/CodecOPSD-H3-Image)) and Hugging Face Spaces
+  ([H3-Ref2VA](https://huggingface.co/spaces/HikariDawn/CodecOPSD-H3-Ref2VA),
+  [H3-Image](https://huggingface.co/spaces/HikariDawn/CodecOPSD-H3-Image)).
+- [ ] Release the paper (arXiv)
+- [ ] Check the training code
+- [ ] Extend to Cosmos 3 Nano
+- [ ] Extend to Qwen-Image 2.1
+- [ ] Extend to FLUX 3 Image Klein
 
 ## <a name="installation"></a> Installation 🔧
 
@@ -146,13 +151,8 @@ pip install -e ".[app]"                 # PyTorch 2.8, diffusers 0.43, transform
 
 Every demo prints a public link when it starts: open it and click an example. The first launch downloads the models.
 
-| Demo | GPU | CPU memory | Disk |
-|---|---|---|---|
-| Video: `python app.py ref2va` | 80 GB or more | 128 GB | 115 GB |
-| Image: `python app.py ref2image` | 80 GB or more | 128 GB | 104 GB |
-| Consumer GPUs: `python app.py ref2va_extreme` | 12 to 32 GB | 64 GB | 62 GB |
-
-**Video:** MiniMax-H3 $\color{#4493F8}{\textsf{Ref2VA}}$ (reference-to-video generation)
+**Video:** MiniMax-H3 $\color{#4493F8}{\textsf{Ref2VA}}$ (reference-to-video generation) with
+[Pika H3 Flex](https://huggingface.co/Pika-Labs/Pika-H3-Flex), 6 steps
 
 ```bash
 python app.py ref2va
@@ -170,44 +170,32 @@ python app.py ref2image
 python app.py ref2va_extreme
 ```
 
-What the extreme **Ref2VA** app changes from the standard `python app.py ref2va` above, which stays as it is:
+What the extreme app changes from the standard one ([docs/consumer_gpus.md](docs/consumer_gpus.md)):
 
 - **Transformer:** [HyperFlow H3 Flash](https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash) (INT8 and low rank,
-  16 GB) instead of the released MiniMax-H3 transformer, 4 sampling steps instead of 6; the same CodecOPSD LoRA.
+  16 GB), 4 steps, instead of MiniMax-H3 with Pika H3 Flex, 6 steps; the same CodecOPSD LoRA.
 - **Reference encoder:** TAEH3, a small encoder, instead of the released VAE encoder; the released VAE still decodes.
-- **VLM:** downloaded already in FP8. If that copy is gone, the bf16 release is converted at load, as in the standard
-  app.
-- **GPU memory:** one plan per card size (12, 16, 24, 32 GB and up), picked automatically. The models wait in CPU
-  memory and only the running one sits on the GPU; on 24 GB and smaller cards, Flash's blocks are streamed in one by
-  one at every step.
-- **CPU memory:** the waiting models are page-locked; with less than 64 GB, the VLM is read from the page cache instead.
+- **Reference pictures:** read at their own short edge within 1024 to 2048 px (the standard app: always 2048).
+- **GPU memory:** one plan per card size (12, 16, 24, 32 GB), picked automatically; only the running model sits on the
+  GPU, and on 24 GB and smaller cards Flash's blocks are streamed in one by one.
+- **CPU memory:** the waiting models are page-locked; with less than 64 GB, the VLM is read from the page cache.
 - **Kernels:** the attention, INT8 and FP8 kernels are chosen for each RTX generation (30, 40, 50).
-- **Output and references:** 480p by default. The bundled examples use smaller reference files than the standard app
-  (pictures with a short edge of 1024 or 1536 px, videos at 480p). Every plan gives the same video.
-
-Details of each point: [docs/consumer_gpus.md](docs/consumer_gpus.md).
 
 <details>
 <summary>Model weights and storage, demo options</summary>
 
-The first launch of a demo downloads the weights it needs into `models/` in the repo folder: the released
-models from the Hugging Face Hub at pinned revisions (written there directly, with no second copy in the Hugging Face
-cache) and the CodecOPSD LoRA. The example media and the stored example results come from this repo's GitHub
-Release. Later launches reuse everything. `python -m codecopsd.download --dry-run` lists each download and its size,
-and `models/` can be a symlink to a larger disk.
+| Demo | GPU | CPU memory | Disk |
+|---|---|---|---|
+| Video | 80 GB or more | 128 GB | 115 GB |
+| Image | 80 GB or more | 128 GB | 104 GB |
+| Consumer GPUs | 12 to 32 GB | 64 GB | 62 GB |
 
-| Demo | Downloads | Disk |
-|---|---|---|
-| Video | `MiniMax-H3-ModelOpt-Mixed9-Dynamic-FP8/` 31.7 GB (the FP8 text encoder, VLM), `MiniMax-H3-Ref2VA/` 77.4 GB (MiniMaxAI/MiniMax-H3 with only its Ref2VA transformer and without its bf16 text encoder: transformer 66.3 GB, VAE 10.4 GB), `Pika-H3-Flex/` 2.8 GB, `codecopsd_minimax_h3_ref2va.safetensors` 2.6 GB (TODO: Hugging Face), examples 0.3 GB | 115 GB |
-| Image | the FP8 VLM 31.7 GB (shared with the video demo), `MiniMax-H3-Image/` 68.7 GB (without its bf16 text encoder), `codecopsd_minimax_h3_image.safetensors` 2.6 GB (TODO: Hugging Face), examples 0.5 GB | 104 GB, or 72 GB more next to the video demo |
-| Consumer GPUs | the FP8 VLM 31.7 GB, `MiniMax-H3-Ref2VA/` without its transformer and bf16 text encoder 11.1 GB, `hyperflow-h3-flash/` 16.3 GB, the video LoRA 2.6 GB | 62 GB, or 16.3 GB more next to the video demo |
-
-All three demos together take about 203 GB. The text encoder (VLM) comes pre-quantized to FP8 from a pinned Hub copy;
-if that download fails, the released bf16 text encoder (66.7 GB) is downloaded and converted when loading, as before.
-
-- `--no-share`: a local page only (no public link); `--no-download`: no downloads.
-- Under every result, "Where the time went" lists each stage of the run with its GPU memory peak; the panel at the
-  bottom of the page sums the stages over every request, and outputs/app/stats.jsonl keeps one line per run.
+- Weights go to `models/` (a symlink to a larger disk works): the released models at pinned revisions, our LoRAs and
+  examples from [CodecOPSD-H3-Ref2VA](https://huggingface.co/HikariDawn/CodecOPSD-H3-Ref2VA) and
+  [CodecOPSD-H3-Image](https://huggingface.co/HikariDawn/CodecOPSD-H3-Image). All three demos share the FP8 VLM and
+  take 203 GB together; `python -m codecopsd.download --dry-run` lists every file.
+- `--no-share`: a local page only; `--no-download`: no downloads.
+- "Where the time went" under each result lists the stages; outputs/app/stats.jsonl keeps one line per run.
 
 </details>
 
@@ -216,9 +204,12 @@ if that download fails, the released bf16 text encoder (66.7 GB) is downloaded a
 **Video:** MiniMax-H3 $\color{#4493F8}{\textsf{Ref2VA}}$ (reference-to-video generation)
 
 ```bash
-python inference/generate.py minimax_h3_ref2va --example dog_frisbee       # a bundled example -> outputs/
-python inference/generate.py minimax_h3_ref2va --prompt-file prompt.txt --reference man.jpg --reference street.jpg \
-    --reference camera.mp4 --out out.mp4                             # <Picture 1>, <Picture 2>, <Video 1> in the prompt
+# a bundled example -> outputs/
+python inference/generate.py minimax_h3_ref2va --example dog_frisbee
+
+# your own inputs: <Picture 1>, <Picture 2>, <Video 1> in the prompt are the references in order
+python inference/generate.py minimax_h3_ref2va --prompt-file prompt.txt \
+    --reference man.jpg --reference street.jpg --reference camera.mp4 --out out.mp4
 ```
 
 On a 12 to 32 GB GPU: `python inference/generate.py h3_flash_ref2va` ([Consumer GPUs](docs/consumer_gpus.md)).
@@ -232,14 +223,19 @@ from diffusers.utils import export_to_video
 from codecopsd import MiniMaxH3CodecOPSDPipeline
 from codecopsd.pipelines.minimax_h3_ref2va import load_reference
 
-pipe = MiniMaxH3CodecOPSDPipeline.from_minimax_h3("models/MiniMax-H3-Ref2VA", text_encoder_fp8="fp8")  # sampler: Pika H3 Flex, 6 steps
-pipe.load_condition_lora("models/codecopsd_minimax_h3_ref2va.safetensors")
+pipe = MiniMaxH3CodecOPSDPipeline.from_minimax_h3(
+    "models/MiniMax-H3-Ref2VA", text_encoder_fp8="fp8",
+    text_encoder_path="models/MiniMax-H3-ModelOpt-Mixed9-Dynamic-FP8/Ref2VA/text_encoder")
+pipe.load_condition_lora("HikariDawn/CodecOPSD-H3-Ref2VA", weight_name="codecopsd_minimax_h3_ref2va.safetensors")
 pipe.enable_model_cpu_offload()
 
-prompt = "The man from <Picture 1> walks down the street of <Picture 2>; the camera follows him as in <Video 1>."
-references = [load_reference(f) for f in ["man.jpg", "street.jpg", "camera.mp4"]]
-video = pipe(prompt, references, generator=torch.Generator().manual_seed(42)).frames[0]  # 480 x 832, 124 frames
-export_to_video(video, "out.mp4", fps=24)
+video = pipe(
+    prompt="The golden retriever from <Picture 1> chases and catches a flying red frisbee on the park lawn of "
+           "<Picture 2>, running like the dog in <Video 1>. The camera tracks the dog.",
+    references=[load_reference(f) for f in ["dog.jpg", "park.jpg", "dog_running.mp4"]],
+    generator=torch.Generator().manual_seed(42),
+).frames[0]
+export_to_video(video, "output.mp4", fps=24)
 ```
 
 | Setting | Flag | Default (as the demo) |
@@ -267,7 +263,10 @@ Bundled video examples: every folder in `assets/examples/minimax_h3_ref2va/` (`d
 **Image:** MiniMax-H3 $\color{#F0883E}{\textsf{Image}}$ (reference-to-image generation)
 
 ```bash
-python inference/generate.py minimax_h3_image --example desk_setup_edit    # a bundled example -> outputs/
+# a bundled example -> outputs/
+python inference/generate.py minimax_h3_image --example desk_setup_edit
+
+# your own inputs: <Picture 1>, <Picture 2> in the prompt are the images in order
 python inference/generate.py minimax_h3_image --prompt "Put the lamp <Picture 1> on the desk in <Picture 2>." \
     --image lamp.jpg --image desk.jpg --out out.png
 ```
@@ -280,14 +279,18 @@ import torch
 from PIL import Image
 from codecopsd import MiniMaxH3ImageCodecOPSDPipeline
 
-pipe = MiniMaxH3ImageCodecOPSDPipeline.from_minimax_h3_image("models/MiniMax-H3-Image", text_encoder_fp8="fp8")
-pipe.load_condition_lora("models/codecopsd_minimax_h3_image.safetensors")
+pipe = MiniMaxH3ImageCodecOPSDPipeline.from_minimax_h3_image(
+    "models/MiniMax-H3-Image", text_encoder_fp8="fp8",
+    text_encoder_path="models/MiniMax-H3-ModelOpt-Mixed9-Dynamic-FP8/Ref2VA/text_encoder")
+pipe.load_condition_lora("HikariDawn/CodecOPSD-H3-Image", weight_name="codecopsd_minimax_h3_image.safetensors")
 pipe.enable_model_cpu_offload()
 
-prompt = "Put the lamp <Picture 1> on the desk in <Picture 2>."
-image = pipe(prompt, [Image.open("lamp.jpg"), Image.open("desk.jpg")],
-             generator=torch.Generator().manual_seed(42)).images[0]  # the first picture's aspect ratio, 2048 x 2048 area
-image.save("out.png")
+image = pipe(
+    prompt="Put the lamp <Picture 1> on the desk in <Picture 2>.",
+    images=[Image.open("lamp.jpg"), Image.open("desk.jpg")],
+    generator=torch.Generator().manual_seed(42),
+).images[0]
+image.save("output.png")
 ```
 
 | Setting | Flag | Default (as the demo) |

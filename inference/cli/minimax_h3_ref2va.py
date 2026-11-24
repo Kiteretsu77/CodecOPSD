@@ -158,8 +158,10 @@ def main(argv=None):
     references = [load_reference(path) for path in args.reference]
     pipe = build_pipeline("minimax_h3_ref2va", args.model, args.lora, args.lora_weight_name, args.text_encoder,
                           args.sampler, args.sampler_weights, text_encoder_path=vlm["path"])
-    if args.sampler == "flash" and args.vae_encoder == "taeh3":  # the extreme path only (inference/extreme.py)
-        extreme.use_taeh3_encoder(pipe, extreme.taeh3_weights())
+    if args.sampler == "flash":  # the extreme path only (inference/extreme.py)
+        extreme.read_pictures(pipe)  # pictures at their own short edge within 1024-2048 px
+        if args.vae_encoder == "taeh3":
+            extreme.use_taeh3_encoder(pipe, extreme.taeh3_weights())
     place(pipe, args.offload, stream_blocks, args.text_encoder_device, pin_vlm)
     args.attention = set_attention(pipe, args.attention)
     counts = track_drop(pipe)

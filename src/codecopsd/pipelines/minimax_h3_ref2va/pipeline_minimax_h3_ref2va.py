@@ -51,6 +51,7 @@ from transformers import (
 
 from ...codec_gazer import MINIMAX_H3, submit_gaze
 from ...configs import load
+from ...download import count_lora_load
 from ...models import H3FlashCodecOPSDTransformer3DModel, MiniMaxH3CodecOPSDTransformer3DModel, text_encoder_to_fp8
 from ...models.fp8_linear import load_fp8_text_encoder
 from ...offload import offload_all, pinned_model_offload
@@ -266,8 +267,15 @@ class MiniMaxH3CodecOPSDPipeline(DiffusionPipeline):
 
     def load_condition_lora(self, path_or_repo_id, weight_name=None):
         """Load a CodecOPSD student LoRA (local .safetensors or `weight_name` in a Hub repo): tensors
-        `transformer_blocks.{i}.{module}.lora_{A,B}.weight`, metadata `lora_alpha` and `gazer` ("codec")."""
-        path = path_or_repo_id if os.path.isfile(path_or_repo_id) else hf_hub_download(path_or_repo_id, weight_name)
+        `transformer_blocks.{i}.{module}.lora_{A,B}.weight`, metadata `lora_alpha` and `gazer` ("codec"). Every load
+        of one of our LoRAs counts once in its repository's Hugging Face download statistics: a local file through
+        `codecopsd.download.count_lora_load`, a Hub repository through the request for its .safetensors file (a HEAD
+        when it is cached), which the Hub counts."""
+        if os.path.isfile(path_or_repo_id):
+            path = path_or_repo_id
+            count_lora_load(path)
+        else:
+            path = hf_hub_download(path_or_repo_id, weight_name)
         with safe_open(path, framework="pt") as f:
             self.condition_lora_metadata = f.metadata()
         self.transformer.load_condition_lora(load_file(path), float(self.condition_lora_metadata["lora_alpha"]))

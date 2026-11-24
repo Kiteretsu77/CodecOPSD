@@ -1,13 +1,12 @@
-"""Pack the example media and the demo's stored example results into the zip archives of the GitHub Release
-`codecopsd.download.EXAMPLES_TAG`, written to release_assets/ (out of git). Upload the five files to that release; every
-install of the demo then downloads them once on its first launch (`codecopsd.download.ensure_examples`).
+"""Pack the example media and the demo's stored example results into the two archives the demo downloads
+(`codecopsd.download.EXAMPLE_ARCHIVES`), written at the repo root (out of git; paths as in the repo, so they unzip at
+the repo root). Upload each to assets/ of its LoRA repo on Hugging Face (`codecopsd.download.LORA_REPOS`, docs/releasing.md).
 
     python scripts/pack_examples.py
 
-Per model: codecopsd_refs_<model>_<tag>.zip (refs/<file>, the media its examples refer to) and
-codecopsd_cache_<model>_<tag>.zip (cache/<model>/..., the results the demo shows when an example is clicked, plus a
-cache/<model>/.release file naming the tag). A model that reuses another one's examples (`EXAMPLES_OF`: the extreme
-page) has no media archive of its own. Media and results are already compressed, so the archives store them.
+The video archive holds the media of the video examples and the stored results of the video page and of its 12-32 GB
+page; the image archive those of the image page. Media and results are already compressed, so the archives store
+them. Derived copies the demo makes again on first launch are left out.
 """
 
 import sys
@@ -15,39 +14,35 @@ import zipfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from codecopsd.download import EXAMPLES, EXAMPLES_OF, EXAMPLES_TAG, NEEDS, ROOT, archive_name, example_files  # noqa: E402
+from codecopsd.download import EXAMPLE_ARCHIVES, EXAMPLES, ROOT, example_files  # noqa: E402
+
+DERIVED = (".fast.mp4", ".light.mp4", ".preview.mp4", ".preview.jpg", ".part")
 
 
 def main():
-    out = ROOT / "release_assets"
-    out.mkdir(exist_ok=True)
-    for name in NEEDS:
-        refs = [] if name in EXAMPLES_OF else example_files([name])
-        missing = [n for n in refs if not (EXAMPLES / "refs" / n).is_file()]
+    archives = {}
+    for name, archive in EXAMPLE_ARCHIVES.items():
+        archives.setdefault(archive, []).append(name)
+    for archive, names in archives.items():
+        refs = example_files(names)
+        files = [EXAMPLES / "refs" / n for n in refs]
+        missing = [f for f in files if not f.is_file()]
         if missing:
-            raise SystemExit(f"{name}: {len(missing)} example media files missing in assets/examples/refs/ "
-                             f"(first: {missing[0]})")
-        if refs:
-            path = out / archive_name("refs", name)
-            with zipfile.ZipFile(path, "w", zipfile.ZIP_STORED) as z:
-                for n in refs:
-                    z.write(EXAMPLES / "refs" / n, f"refs/{n}")
-            print(f"{path.relative_to(ROOT)}: {len(refs)} files, {path.stat().st_size / 2**20:.0f} MB")
-
-        cache = EXAMPLES / "cache" / name
-        stored = sorted(cache.glob("*/meta.json"))
-        if not stored:
-            raise SystemExit(f"{name}: no stored example results in {cache.relative_to(ROOT)}/ (--build-cache of its "
-                             "app)")
-        path = out / archive_name("cache", name)
-        derived = (".fast.mp4", ".light.mp4", ".preview.mp4", ".preview.jpg", ".part")  # made again on first launch
-        files = [f for f in sorted(cache.rglob("*")) if f.is_file() and f.name != ".release" and ".before." not in f.name
-                 and not f.name.endswith(derived) and "previews" not in f.relative_to(cache).parts]
+            raise SystemExit(f"{archive}: {len(missing)} example media files missing in assets/examples/refs/ "
+                             f"(first: {missing[0].name})")
+        for name in names:
+            cache = EXAMPLES / "cache" / name
+            if not any(cache.glob("*/meta.json")):
+                raise SystemExit(f"{name}: no stored example results in {cache.relative_to(ROOT)}/ (--build-cache of "
+                                 "its app)")
+            files += [f for f in sorted(cache.rglob("*")) if f.is_file() and not f.name.endswith(DERIVED)
+                      and ".before." not in f.name and "previews" not in f.relative_to(cache).parts
+                      and f.name != ".release"]
+        path = ROOT / archive
         with zipfile.ZipFile(path, "w", zipfile.ZIP_STORED) as z:
             for f in files:
-                z.write(f, f"cache/{name}/{f.relative_to(cache).as_posix()}")
-            z.writestr(f"cache/{name}/.release", EXAMPLES_TAG + "\n")
-        print(f"{path.relative_to(ROOT)}: {len(stored)} examples, {len(files)} files, "
+                z.write(f, f.relative_to(ROOT).as_posix())
+        print(f"{archive}: {len(refs)} media files + {len(files) - len(refs)} result files, "
               f"{path.stat().st_size / 2**20:.0f} MB")
 
 

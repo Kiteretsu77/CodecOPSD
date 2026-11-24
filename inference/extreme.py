@@ -17,6 +17,7 @@ path call `setup` (`python -m inference.hardware` reads the plans too); the norm
     flash_weights                       the default HyperFlow H3 Flash folder
     setup                               the process capped, the plan picked and printed with the hardware report
     taeh3_weights, use_taeh3_encoder    the references encoded by TAEH3 instead of the released VAE encoder
+    PICTURE_SHORT_EDGE, read_pictures   pictures read at their own short edge within 1024-2048 px (the standard path: 2048)
 
 Kept elsewhere on purpose: the INT8 GEMM kernel of Flash is picked in src (`transformer_h3_flash.int8_gemm_choice`,
 reported by inference/hardware.py). The demo's Audio switch (Settings, inference/demo/ui.py) is shown for Flash and for
@@ -70,6 +71,18 @@ def flash_weights():
     """The default HyperFlow H3 Flash folder: ref2va_int8_convrot/ of `VideoRebirthAI/hyperflow-h3-flash`, next to
     the MiniMax-H3 folder in use (`codecopsd.download.model_dir`)."""
     return model_dir("hyperflow-h3-flash") / "ref2va_int8_convrot"
+
+
+# The extreme path reads a reference picture at its own short edge, brought into 1024-2048 px: a smaller picture is
+# enlarged to 1024, a larger one reduced to 2048, one in between is kept (resized with LANCZOS, never cropped; sides
+# rounded to multiples of 32). The standard path reads every picture at a 2048 short edge, as released, so a 1024 px
+# picture there takes 4 times its tokens and a 512 px one 16 times, with no new detail. Videos as released (768 canvas).
+PICTURE_SHORT_EDGE = (1024, 2048)
+
+
+def read_pictures(pipe):
+    """Read the reference pictures of `pipe` (MiniMaxH3CodecOPSDPipeline) at `PICTURE_SHORT_EDGE`."""
+    pipe.set_reference_sizes(picture_short_edge=PICTURE_SHORT_EDGE)
 
 
 def setup(model, gpu_memory=None, offload="auto", prefix="", vlm=None, pin_vlm="auto"):

@@ -4,9 +4,10 @@ Authors: Boyang Wang, Kevin Blackburn-Matzen, Oindrila Saha, Matheus Gadelha, Ze
 
 Copyright (c) 2026 The CodecOPSD Authors. All rights reserved.
 
-Everything the demo and the command line read, downloaded on first use into `models/` (the released models from the
-Hugging Face Hub at pinned revisions), `assets/examples/refs/` (the media of the bundled examples) and, for the demo,
-`assets/examples/cache/` (its stored example results); the last two come from a GitHub Release of this repository.
+Everything the demo and the command line read, downloaded on first use into `models/` (the released models and the
+CodecOPSD LoRAs from the Hugging Face Hub at pinned revisions), `assets/examples/refs/` (the media of the bundled
+examples) and, for the demo, `assets/examples/cache/` (its stored example results); the last two come as one zip
+archive per LoRA repository on the Hub (`EXAMPLE_ARCHIVES`).
 
     python -m codecopsd.download                       # both models + the example media
     python -m codecopsd.download --results             # + the demo's stored example results
@@ -24,21 +25,19 @@ releases only when that fails or a run reads the bf16 VLM (the teacher of `--mod
 import argparse
 import os
 import sys
-import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 MODELS_DIR = ROOT / "models"
 EXAMPLES = ROOT / "assets" / "examples"
 # The example media (assets/examples/refs/) and the demo's stored example results (assets/examples/cache/) stay out of
-# git. They come as zip archives attached to a GitHub Release of this repository, one pair per model, downloaded once
-# per install (the demo unpacks them before it starts), so the release's download counts show how many people run
-# the examples and the demo. New data = a new release tag here, which every install downloads again.
-# TODO: create the release EXAMPLES_TAG on GitHub (the repository must be public) and upload the five archives that
-# `python scripts/pack_examples.py` writes to release_assets/. Until then the download fails with a note: the demo
-# starts without the example media and computes an example's result only when asked.
-EXAMPLES_TAG = "examples-v1"
-EXAMPLES_RELEASE = f"https://github.com/Kiteretsu77/CodecOPSD/releases/download/{EXAMPLES_TAG}"
+# git. They come as one zip archive per LoRA repository on the Hugging Face Hub (`LORA_REPOS`), its paths as in this
+# repository (assets/examples/...), downloaded once per install (the demo unpacks it before it starts). New data = a new
+# archive name here (`python scripts/pack_examples.py` writes them at the repository root; upload them to assets/ of
+# the repository), which every install downloads again.
+EXAMPLE_ARCHIVES = {"minimax_h3_ref2va": "CodecOPSD_examples_video_20261123.zip",  # the video page and its 12-32 GB page
+                    "h3_flash_ref2va": "CodecOPSD_examples_video_20261123.zip",
+                    "minimax_h3_image": "CodecOPSD_examples_image_20261123.zip"}
 
 _META = ["processor/*", "tokenizer/*", "scheduler/*", "model_index.json", "modular_model_index.json"]
 # folder under models/: (Hub repo, pinned revision, files). MiniMax-H3-Ref2VA/ is MiniMaxAI/MiniMax-H3 with only its
@@ -71,8 +70,12 @@ NEEDS = {
 SKIP = {"h3_flash_ref2va": {"MiniMax-H3-Ref2VA": ["transformer_ref/*"]}}
 # model: the model whose example folders and media it reuses (the extreme page runs the video examples at 480p)
 EXAMPLES_OF = {"h3_flash_ref2va": "minimax_h3_ref2va"}
-# TODO: the CodecOPSD LoRAs on the Hugging Face Hub; until then they are placed by hand in models/
-LORA_REPO = None
+# The CodecOPSD LoRAs: their file under models/ -> (Hugging Face repository, pinned revision). Each repository also
+# holds a small config.json (counted downloads, `count_lora_load`) and the example archive of its model under assets/.
+LORA_REPOS = {
+    "codecopsd_minimax_h3_ref2va.safetensors": ("HikariDawn/CodecOPSD-H3-Ref2VA", "5e4de5d78e2cfad894c69954101878ddb7bedb94"),
+    "codecopsd_minimax_h3_image.safetensors": ("HikariDawn/CodecOPSD-H3-Image", "944e980d9c9cba38571b4de4e82d91a0ae535e85"),
+}
 
 # The text encoder (VLM) of every model: why it comes already converted to FP8. Converting the bf16 release at load
 # reads all 66 GB of it into CPU memory first (and, under strict overcommit, needs that much commit headroom), more
@@ -216,18 +219,48 @@ def vlm_fp8_source():
     return None, None
 
 
+_FETCHED = set()  # LoRA files this process downloaded (`ensure_lora`): the Hub counted that download already
+
+
+def count_lora_load(path):
+    """Count one load of a CodecOPSD LoRA in its repository's Hugging Face download statistics (docs/releasing.md): one
+    request for the repository's config.json, which the Hub counts (a cached copy still sends a HEAD request). A LoRA
+    this process just downloaded is not counted twice: the Hub counts that download itself (the count rule of the
+    minimax-h3 library takes the .safetensors files too). Other LoRA files are not ours and are not counted. Failures
+    (offline, no access, `HF_HUB_OFFLINE=1`) are ignored."""
+    entry = LORA_REPOS.get(Path(path).name)
+    if entry is None or str(Path(path).resolve()) in _FETCHED:
+        return
+    try:
+        from huggingface_hub import hf_hub_download
+
+        hf_hub_download(entry[0], "config.json")
+        print(f"[download] counted: one load of {entry[0]} (config.json request)", flush=True)
+    except Exception as e:
+        print(f"[download] not counted: one load of {entry[0]} ({type(e).__name__})", flush=True)
+
+
 def ensure_lora(name, dry_run=False):
-    """The CodecOPSD LoRA of `name`: its path, or None (with a note) when it is not there and cannot be downloaded."""
+    """The CodecOPSD LoRA of `name`: its path in models/, downloaded from its Hugging Face repository (`LORA_REPOS`) when
+    it is not there, or None (with a note) when it cannot be had. Every load is counted where the LoRA is loaded
+    (`count_lora_load`, called by the pipelines' `load_condition_lora`)."""
     path = lora_path(name)
     if path.is_file():
         return path
-    if LORA_REPO is None or dry_run:
-        print(f"[download] CodecOPSD LoRA {path.relative_to(ROOT)}: not on the Hub yet; place it there by hand "
-              "(without it, only the teacher runs)", flush=True)
-        return None
-    from huggingface_hub import hf_hub_download
+    repo, revision = LORA_REPOS[path.name]
+    print(f"[download] CodecOPSD LoRA {repo} -> {path.relative_to(ROOT)}", flush=True)
+    if dry_run:
+        return path
+    try:
+        from huggingface_hub import hf_hub_download
 
-    return Path(hf_hub_download(LORA_REPO, path.name, local_dir=MODELS_DIR))
+        path = Path(hf_hub_download(repo, path.name, revision=revision, local_dir=MODELS_DIR))
+    except Exception as e:  # no network, no access: the teacher still runs
+        print(f"[download] CodecOPSD LoRA {path.name}: failed ({e!r}); without it, only the teacher runs", flush=True)
+        return None
+    _FETCHED.add(str(path.resolve()))
+    print(f"[download] counted: one load of {repo} (the download of {path.name})", flush=True)
+    return path
 
 
 def example_files(names=None):
@@ -242,81 +275,73 @@ def example_files(names=None):
     return [n for n in dict.fromkeys(files) if n in listed]
 
 
-def archive_name(kind, name):
-    """The release archive of model `name`: kind "refs" (the example media) or "cache" (the demo's stored results)."""
-    return f"codecopsd_{kind}_{name}_{EXAMPLES_TAG}.zip"
+def archive_of(name):
+    """(Hub repository, pinned revision, path in it) of the example archive of model `name`."""
+    repo, revision = LORA_REPOS[NEEDS[name][1]]
+    return repo, revision, f"assets/{EXAMPLE_ARCHIVES[name]}"
 
 
-def _download(url, path):
-    """`url` into `path`, checking HTTPS with certifi's certificates when present (huggingface_hub installs it; some
-    Python builds find no system certificates)."""
-    import shutil
-    import ssl
-
-    try:
-        import certifi
-        context = ssl.create_default_context(cafile=certifi.where())
-    except ImportError:
-        context = None
-    with urllib.request.urlopen(url, context=context, timeout=60) as r, open(path, "wb") as f:
-        shutil.copyfileobj(r, f, 1 << 20)
-
-
-def fetch_archive(kind, name):
-    """Download one release archive and unpack it into assets/examples/ (its members are refs/... or cache/<name>/...).
-    Returns True when it is in place; a failure is reported and the caller goes on without it."""
+def fetch_archive(name, results):
+    """Download the example archive of model `name` and unpack its example media into assets/examples/refs/ and, with
+    `results`, its stored results of `name` into assets/examples/cache/<name>/ (marked with the archive's name in
+    cache/<name>/.release). Returns True when it is in place; a failure is reported and the caller goes on without
+    it. The archive stays in the Hugging Face cache, so another model of the same archive does not download it again."""
     import zipfile
 
-    file = archive_name(kind, name)
-    EXAMPLES.mkdir(parents=True, exist_ok=True)
-    part = EXAMPLES / f"{file}.part"
+    repo, revision, file = archive_of(name)
+    wanted = ("assets/examples/refs/",) + ((f"assets/examples/cache/{name}/",) if results else ())
     try:
-        print(f"[download] {EXAMPLES_RELEASE}/{file} -> {EXAMPLES}/", flush=True)
-        _download(f"{EXAMPLES_RELEASE}/{file}", part)
-        with zipfile.ZipFile(part) as z:
-            root = EXAMPLES.resolve()
-            for m in z.infolist():  # only files under refs/ or this model's cache folder
-                inside = (EXAMPLES / m.filename).resolve().is_relative_to(root)
-                if not inside or not m.filename.startswith(("refs/", f"cache/{name}/")):
+        from huggingface_hub import hf_hub_download
+
+        print(f"[download] {repo}/{file} -> {EXAMPLES.relative_to(ROOT)}/", flush=True)
+        archive = hf_hub_download(repo, file, revision=revision)
+        root = ROOT.resolve()
+        with zipfile.ZipFile(archive) as z:
+            members = [m for m in z.infolist() if m.filename.startswith(wanted) and not m.is_dir()]
+            for m in members:  # only files under refs/ or this model's cache folder, inside the repository
+                if not (ROOT / m.filename).resolve().is_relative_to(root):
                     raise zipfile.BadZipFile(f"unexpected member {m.filename!r}")
-            z.extractall(EXAMPLES)
+            for m in members:
+                if m.filename.startswith("assets/examples/refs/") and (ROOT / m.filename).exists():
+                    continue  # media already here (from another archive, or placed by hand)
+                z.extract(m, ROOT)
+        if results:
+            (EXAMPLES / "cache" / name).mkdir(parents=True, exist_ok=True)
+            (EXAMPLES / "cache" / name / ".release").write_text(EXAMPLE_ARCHIVES[name] + "\n")
         return True
-    except (OSError, zipfile.BadZipFile) as e:
-        print(f"[download] {file}: {e}", flush=True)
+    except Exception as e:  # no network, no access, a broken archive
+        print(f"[download] {file}: {e!r}", flush=True)
         return False
-    finally:
-        part.unlink(missing_ok=True)
 
 
 def results_wanted(name):
-    """Whether the demo's stored results of `name` should be downloaded: none there yet, or an archive of an older
-    release (cache/<name>/.release names it). Results computed here (no .release file) are kept."""
+    """Whether the demo's stored results of `name` should be downloaded: none there yet, or those of an older archive
+    (cache/<name>/.release names it). Results computed here (no .release file) are kept."""
     folder = EXAMPLES / "cache" / name
     tag = folder / ".release"
     if tag.is_file():
-        return tag.read_text().strip() != EXAMPLES_TAG
+        return tag.read_text().strip() != EXAMPLE_ARCHIVES[name]
     return not any(folder.glob("*/meta.json"))
 
 
 def ensure_examples(names=None, results=False, dry_run=False):
     """The media of the bundled examples of `names` (None = every model) into assets/examples/refs/ and, with
-    `results`, the demo's stored example results into assets/examples/cache/, from the release archives. What cannot
-    be downloaded is reported and skipped (the examples without media then fail alone)."""
+    `results`, the demo's stored example results into assets/examples/cache/, from the example archives on the Hub
+    (`fetch_archive`). What cannot be downloaded is reported and skipped (the examples without media then fail alone)."""
     out = EXAMPLES / "refs"
     for name in names or NEEDS:
         needed = example_files([name])
         missing = [n for n in needed if not (out / n).exists()]
+        wants = results and results_wanted(name)
         if missing:
             print(f"[download] example media of {name}: {len(missing)} of {len(needed)} files missing", flush=True)
-            if not dry_run and fetch_archive("refs", EXAMPLES_OF.get(name, name)):
-                still = [n for n in needed if not (out / n).exists()]
-                if still:
-                    print(f"[download] {len(still)} example files are not in the archive; their examples will not run",
-                          flush=True)
-        if results and results_wanted(name):
+        if wants:
             print(f"[download] stored example results of {name}", flush=True)
-            if not dry_run:
-                fetch_archive("cache", name)
+        if (missing or wants) and not dry_run and fetch_archive(name, wants):
+            still = [n for n in needed if not (out / n).exists()]
+            if still:
+                print(f"[download] {len(still)} example files are not in the archive; their examples will not run",
+                      flush=True)
     return out
 
 

@@ -49,8 +49,11 @@ the CodecOPSD LoRA and the released VAE decoder.
 6. **Kernels.** The attention, INT8 and FP8 kernels follow the GPU generation (sections below). Flash's INT8 kernel
    is chosen per generation because the faster one differs; both kernels give the same video.
 7. **Output and references.** 480p by default (`480 x 832`; portrait and larger sizes are offered, and a larger size
-   needs more GPU memory), 56, 90 or 124 frames. Uploaded references are read at whatever resolution they have, as in
-   the standard app. The bundled examples (ten cases of the standard app and cases published by others) use smaller
+   needs more GPU memory), 56, 90 or 124 frames. A reference picture is read at its own short edge, kept between
+   1024 and 2048 px: a smaller picture is enlarged to 1024, a larger one reduced to 2048, one in between is read as
+   uploaded (resized, never cropped; sides rounded to multiples of 32). The standard app reads every picture at a
+   2048 short edge, as released, so a 1024 px picture there takes 4 times as many tokens with no new detail. Reference
+   videos are read as in the standard app. The bundled examples (ten cases of the standard app and cases published by others) use smaller
    reference files than the standard app: pictures with a short edge of 1024 or 1536 px, videos at 480p.
 
 **Requirements:**

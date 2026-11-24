@@ -106,12 +106,10 @@ def main(page):
     if name == "h3_flash_ref2va":
         STEPS["flash"] = args.steps  # the live progress bar's count before the first run
     # First launch: the FP8 VLM (already converted, so the 66 GB bf16 one is neither downloaded nor read into CPU
-    # memory; codecopsd.download.ensure_vlm_fp8), the models, the LoRA, then the example media and the stored example
-    # results (zip archives of the GitHub Release codecopsd.download.EXAMPLES_TAG, out of git), unpacked into
-    # assets/examples/ before the demo starts. Every install downloads the archives once, so their download counts on
-    # GitHub tell how many people run the demo.
-    # TODO: the release does not exist yet (codecopsd/download.py, scripts/pack_examples.py); until then the demo starts
-    # without the example media and computes an example's result only when asked.
+    # memory; codecopsd.download.ensure_vlm_fp8), the models, the CodecOPSD LoRA (from its Hugging Face repository,
+    # codecopsd.download.LORA_REPOS; every load is counted there), then the example media and the stored example
+    # results (the example archive of that repository, out of git), unpacked into assets/examples/ before the demo
+    # starts.
     if not args.no_download:
         try:
             ensure([name], results=True, bf16_vlm=args.text_encoder == "bf16")

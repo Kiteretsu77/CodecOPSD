@@ -20,9 +20,12 @@ through the download statistics of GitHub and Hugging Face.
 
 ## Example media and stored results
 
-- `python scripts/pack_examples.py` writes the archives of every model to `release_assets/` (ignored by git).
-- Upload them to a release tagged `examples-vN` and set `EXAMPLES_TAG` in `src/codecopsd/download.py` to that tag.
-  Every install downloads them once before the demo starts. A new tag makes every install download them again.
+- `python scripts/pack_examples.py` writes two archives at the repo root (ignored by git):
+  `CodecOPSD_examples_video_<date>.zip` (the video page and its 12-32 GB page) and
+  `CodecOPSD_examples_image_<date>.zip`, paths as in the repo (unzip at the repo root).
+- Upload each to `assets/` of its LoRA repo on Hugging Face, set the names in `EXAMPLE_ARCHIVES` and the new commits
+  in `LORA_REPOS` (`src/codecopsd/download.py`). Every install downloads them once before the demo starts; a new
+  name makes every install download them again.
 
 ## LoRAs on Hugging Face
 
@@ -30,28 +33,32 @@ Each released CodecOPSD LoRA has its own model repo, which holds:
 
 - the LoRA `.safetensors`;
 - a small `config.json` with the base model, LoRA rank and alpha, and the version. The Hub counts GET and HEAD
-  requests to `config.json` as downloads. Requests for the weights alone are not counted.
-- a model card without `library_name`. In particular, do not set `diffusers`: that library has its own counting
-  rule, which may not count this `config.json`.
+  requests to `config.json` as downloads;
+- the example archive of its model under `assets/`;
+- a model card without `library_name`, with the tag `minimax-h3`, from which the Hub files the repo under the
+  `minimax-h3` library. Do not set `diffusers`: that library has its own counting rule, which may not count this
+  `config.json`.
 
-Set the repo in `src/codecopsd/download.py` (`LORA_REPO`) and pin its revision.
+Set the repo and its pinned revision in `src/codecopsd/download.py` (`LORA_REPOS`). The repos are
+`HikariDawn/CodecOPSD-H3-Ref2VA` and `HikariDawn/CodecOPSD-H3-Image`.
 
 ## Download count of every LoRA (required)
 
-Every code path that loads a CodecOPSD LoRA fetches the `config.json` of its repo with `hf_hub_download`. It does so
-on every load, also when the LoRA is already on disk. Failures are ignored, so offline runs still work. With a cached
-`config.json`, `huggingface_hub` still sends one HEAD request, so each launch counts once. `HF_HUB_OFFLINE=1` turns
-this off.
+Every load of a CodecOPSD LoRA counts once on the Hub. The Hub files both repos under the `minimax-h3` library (from
+the `minimax-h3` tag), whose count rule takes requests for `.safetensors` files and for `config.json`.
 
-The entry points that must do it:
+- Every load goes through `load_condition_lora()` of the pipelines (command lines, the app pages including the Flash
+  page, the Python API). For a local file of ours it calls `count_lora_load()` (`src/codecopsd/download.py`), which
+  requests the repo's `config.json` with `hf_hub_download`. A cached copy still sends one HEAD request, so every load
+  counts.
+- A LoRA that `ensure_lora()` has just downloaded is not counted again: the download itself counted.
+- Given a repo id, `load_condition_lora()` requests the `.safetensors` file, a HEAD when it is cached, and that
+  request counts.
+- Failures are ignored, so offline runs still work. `HF_HUB_OFFLINE=1` turns counting off.
+- Each count prints a `[download] counted: ...` line.
 
-- `ensure_lora()` in `src/codecopsd/download.py`, before its early return for a LoRA that is already on disk;
-- `inference/generate.py` (command lines);
-- the app pages (`inference/demo/main.py`, the Flash page included);
-- `load_condition_lora()` of the pipelines (Python API).
-
-Any new entry point that loads a LoRA must do it as well. After a LoRA repo goes up, load the LoRA once and check
-that the repo's download count on the Hub goes up.
+Any new entry point that loads a LoRA must go through `load_condition_lora()`. If the repos ever lose the
+`minimax-h3` library, a download no longer counts by itself: then call `count_lora_load()` after downloads too.
 
 ## GitHub traffic
 
