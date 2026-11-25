@@ -1,6 +1,7 @@
 {
  "label": "Master and Crane at Sunrise: 3 pictures + 3 videos",
  "order": 14,
+ "demo": false,
  "gallery": true,
  "source": "CodecOPSD homepage Ref2VA gallery: Master and Crane at Sunrise",
  "args": [

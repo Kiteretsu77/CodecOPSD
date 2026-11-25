@@ -21,7 +21,7 @@ from PIL import Image, ImageOps
 
 from ..examples import EXAMPLE_NAMES, example_folder, examples_of, flag_values
 from . import state
-from .media import display_copy, fast_result, light_view, original, preview
+from .media import display_copy, fast_result, light_view, original, preview, thumb_video
 from .outputs import outputs_of
 from .settings import example_codec, parse_codec
 from .state import CACHE, EXAMPLES, NAME, PIPES, VIDEO_MODELS, budget_gib, new_page
@@ -286,7 +286,8 @@ def upgrade_stored_refs(name):
 
 
 def gallery_items(name, rows):
-    """Thumbnails (the result when computed, else the first reference) with the label and the speed-up."""
+    """Thumbnails (the result when computed: a short silent loop of a stored video once `warm_light` made it, else the
+    picture; else the first reference) with the label and the speed-up."""
     items = []
     for ex, label, values in rows:
         thumb, r = cached(name, ex)
@@ -299,17 +300,23 @@ def gallery_items(name, rows):
             # a precomputed (homepage) result: the Teacher's denoise seconds of the same run, no Teacher output stored
             s = meta["student"]
             label = f"{label} · {round(s['teacher_denoise'], 1) / round(s['denoise'], 1):.1f}x faster"
-        items.append((thumb or values[1][0], label))
+        items.append((thumb_video(CACHE / name / ex) or thumb or values[1][0], label))
     return items
 
 
 def warm_light(models):
     """Make the light copies of every bundled example in the background, so that the first clicks are light too."""
+    for name in models:  # first the moving thumbnails of the gallery (small), shown from the next page load on
+        for d in sorted((CACHE / name).glob("*")):
+            if d.is_dir():
+                thumb_video(d, make=True)
     for name in models:
         for _, _, values in example_rows(name):
             pass  # example_rows makes the input previews
         for d in sorted((CACHE / name).glob("*")):
             for f in sorted(d.glob("*.mp4")):
+                if f.name == "thumb.preview.mp4":
+                    continue
                 if f.stem in ("student", "released"):
                     fast_result(f)
                 elif not f.stem.endswith((".light", ".fast", ".part")):

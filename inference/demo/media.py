@@ -161,3 +161,18 @@ def captioned(paths):
 def paths_of(files):
     """File paths of a Gallery value ((path, caption) pairs) or a File list (paths)."""
     return [f[0] if isinstance(f, (list, tuple)) else f for f in files or []]
+
+
+def thumb_video(folder, make=False):
+    """The moving thumbnail of a stored example (its tile in the example gallery): its stored result video (Ours, else
+    the Teacher) at most 640 px on the long side (360 px short edge at 16:9), silent, crf 30, about 0.2 MB, kept next to
+    it as thumb.preview.mp4 (made again on disk, never packed in the example archives). `make`: make it when it is
+    missing or older than the result. None when the example has no stored video or the copy is not made yet."""
+    folder = Path(folder)
+    src = next((folder / f"{who}.mp4" for who in ("student", "released") if (folder / f"{who}.mp4").is_file()), None)
+    if src is None:
+        return None
+    out = folder / "thumb.preview.mp4"
+    if make:
+        _light(src, out, lambda a, b: _ffmpeg(a, b, 640, 30))
+    return str(out) if out.is_file() and out.stat().st_mtime >= src.stat().st_mtime else None

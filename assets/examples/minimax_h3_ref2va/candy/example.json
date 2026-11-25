@@ -1,6 +1,7 @@
 {
  "label": "Jelly rider: 3 pictures + 3 videos",
  "order": 1.4,
+ "demo": false,
  "source": "pictures and videos generated with MiniMax-H3 (Pika H3 Flex)",
  "args": [
   "--prompt-file",

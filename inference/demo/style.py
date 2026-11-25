@@ -133,6 +133,8 @@ a.hdr-author {color: #1d4ed8; text-decoration: none} a.hdr-author:hover {text-de
 .examples .thumbnail-item {aspect-ratio: auto !important; width: 100% !important; height: 100% !important}
 .examples .thumbnail-item > img, .examples .thumbnail-item video {width: 100% !important; height: 100% !important;
   object-fit: cover !important}
+/* a moving thumbnail (a short silent loop of the stored result) is only a picture: the tile's button takes the click */
+.examples .thumbnail-item video {pointer-events: none}
 @media (max-width: 640px) {.examples .grid-container {grid-template-columns: repeat(12, minmax(0, 1fr)) !important}}
 .stats-src {font-weight: 600; font-size: 11px}
 .stats-live {color: #15803d}
@@ -436,11 +438,25 @@ HEAD = """
   const signature = grid => grid.clientWidth + '|' + [...grid.querySelectorAll('.thumbnail-item img, .thumbnail-item video')]
     .map(m => (m.naturalWidth || m.videoWidth || 0) + 'x' + (m.naturalHeight || m.videoHeight || 0)).join(',');
   const done = new WeakMap(), watched = new WeakSet();
+  // the moving thumbnails: silent loops without controls, playing only while on screen (a page of 40 tiles keeps
+  // only the visible ones busy)
+  const prepped = new WeakSet();
+  const onScreen = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+    for (const e of entries) { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); }
+  }, {threshold: 0.2}) : null;
+  const loops = grid => grid.querySelectorAll('.thumbnail-item video').forEach(v => {
+    if (prepped.has(v)) return;
+    prepped.add(v);
+    v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true; v.controls = false;
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.removeAttribute('controls');
+    if (onScreen) onScreen.observe(v); else v.play().catch(() => {});
+  });
   let queued = false;
   const run = () => {
     queued = false;
     document.querySelectorAll('.examples .grid-container').forEach(grid => {
       watch(grid);
+      loops(grid);
       const sig = signature(grid);
       const placed = [...grid.children].every(c => c.style.gridRow);  // tiles re-rendered by Gradio lose their place
       if (done.get(grid) === sig && placed) return;
@@ -459,7 +475,9 @@ HEAD = """
     for (const r of records) for (const n of r.addedNodes)
       if (n.nodeType === 1 && (n.matches('.examples, .examples *') || n.querySelector('.examples'))) return schedule();
   }).observe(document.body, {childList: true, subtree: true});
-  document.addEventListener('load', e => { if (e.target.closest && e.target.closest('.examples')) schedule(); }, true);
+  const loaded = e => { if (e.target.closest && e.target.closest('.examples')) schedule(); };
+  document.addEventListener('load', loaded, true);
+  document.addEventListener('loadedmetadata', loaded, true);  // a video tile's size is known
   window.addEventListener('resize', schedule);
   schedule();
 })();
