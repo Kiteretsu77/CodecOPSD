@@ -1,6 +1,7 @@
 {
  "label": "Drone follow: 1 picture + 1 video",
  "order": 26,
+ "demo": false,
  "source": "picture generated, video Pexels 13963645",
  "args": [
   "--prompt-file",

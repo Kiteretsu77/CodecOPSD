@@ -1,6 +1,7 @@
 {
  "label": "Fireworks effect: 1 picture + 1 video",
  "order": 51,
+ "demo": false,
  "source": "picture + video Pexels",
  "args": [
   "--prompt-file",

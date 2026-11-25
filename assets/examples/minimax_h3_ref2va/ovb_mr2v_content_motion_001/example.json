@@ -2,7 +2,7 @@
  "label": "Content + motion: 3 pictures + 1 video",
  "order": 5,
  "source": "OmniVBench mr2v_content_motion/001",
- "demo": true,
+ "demo": false,
  "args": [
   "--prompt-file",
   "prompt.txt",

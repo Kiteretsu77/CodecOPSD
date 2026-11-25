@@ -1,6 +1,7 @@
 {
  "label": "Crash zoom: 1 picture + 1 video",
  "order": 8.31,
+ "demo": false,
  "source": "picture generated, video Pexels 4917409 + digital zoom",
  "args": [
   "--prompt-file",
