@@ -1,1 +1,22 @@
-The black Friesian horse from <Picture 1> trots across the snowy paddock of <Picture 2> straight toward the camera. <Video 1> is a depth map: the video follows its layout, shapes and motion, but the depth map itself is never shown. Realistic, soft winter light.
+subject_definitions:
+<Subject 1> is the black Friesian horse with a glossy coat, a long wavy black mane, a long tail and feathered lower legs in <Picture 1>.
+<Subject 2> is the snowy paddock in <Picture 2>: a wide field of fresh, trampled snow, a dark wooden rail fence across the middle, a row of tall bare poplars dusted with snow and low hills under a pale winter sky.
+<Video 1> is the depth reference: a grey depth map whose layout, shapes and motion the video follows: a horse on a long lunge line trotting from the back of the paddock straight toward the camera and turning slightly to the right at the end, in front of a rail fence and a row of tall trees. The depth map itself is never shown.
+
+summary:
+[reference generation] <Subject 1> trots across the snowy paddock of <Subject 2> straight toward the camera, following the layout, shapes and motion of the depth map <Video 1>, in soft winter light. Hooves crunching in snow.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the black coat, the long wavy mane, the long tail and the feathered legs of the Friesian are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the snowy field, the wooden rail fence, the tall poplars and the hills are retained.
+<Video 1> (depth reference): reference - only its layout, shapes and motion are followed; the grey depth map is never shown.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action footage in full natural colour, with natural film grain and real materials; it never looks like a grey depth map. There is no text, lettering, sign, logo or brand mark anywhere. Soft, even winter light under a pale overcast sky, bright white snow and the deep black of the horse.
+[Shot 1] A static camera at shoulder height. <Subject 1> trots out from the back of the paddock straight toward the camera, growing from small in the distance to filling most of the frame height, and turns its head and body slightly to the right in the last second, exactly following the layout and motion of <Video 1>. The wooden rail fence runs across the frame behind it and the tall snowy poplars of <Subject 2> stand behind the fence. A thin lunge line runs from its halter out of the frame on the right. Its glossy black coat shines, its long mane bounces with each stride, and snow sprays up from its feathered hooves.
+
+overall_soundscape:
+The rhythmic crunch of hooves in snow, the horse's snorting breath and a soft winter wind in the poplars. No speech.
+
+non_diegetic_music:
+N/A

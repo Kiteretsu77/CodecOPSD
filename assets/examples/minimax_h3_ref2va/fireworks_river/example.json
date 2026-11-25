@@ -1,7 +1,6 @@
 {
  "label": "Fireworks effect: 1 picture + 1 video",
  "order": 51,
- "demo": false,
  "source": "picture + video Pexels",
  "args": [
   "--prompt-file",
@@ -16,11 +15,12 @@
   "1344",
   "--frames",
   "124",
-  "--video-drop",
-  "0.7",
-  "--video-drop-select",
-  "exact",
   "--seed",
-  "42"
+  "42",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage"
  ]
 }

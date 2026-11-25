@@ -1,1 +1,22 @@
-A 2D anime video: the young skateboarder from <Picture 1> skates along the low ledges of the seaside plaza in <Picture 2> at sunset, with the same skating moves and the same low tracking camera as <Video 1>. Clean anime line art and warm sunset colours.
+subject_definitions:
+<Subject 1> is the young anime skateboarder with messy blond hair and green eyes, wearing a red hoodie, loose grey cargo trousers and white sneakers, with a black skateboard, in <Picture 1>.
+<Subject 2> is the anime seaside plaza at sunset in <Picture 2>: pale concrete paving, low concrete ledges and steps, tall street lamps, a row of small trees and low hedges, a railing along the sea and an orange sun setting under purple and gold clouds.
+<Video 1> is the motion and camera reference: only the skater's moves and the low tracking camera are reproduced: rolling along beside a low ledge, crouching, popping an ollie and landing, filmed by a camera held low near the ground that follows him from the side. Its real person, its street, its trees and its houses are not used.
+
+summary:
+[reference generation] A 2D anime video: <Subject 1> skates along the low ledges of <Subject 2> at sunset with the same moves as <Video 1>, filmed by the same low tracking camera. Wheels rolling on concrete and the clack of the board.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the blond hair, the red hoodie, the grey cargo trousers, the white sneakers and the black skateboard are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the concrete plaza with its low ledges and steps, the street lamps, the trees, the railing and the sunset sea are retained.
+<Video 1> (motion and camera reference): reference - only the skating moves and the low tracking camera are reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot in clean 2D anime style, with crisp line art, flat cel shading and warm sunset colours, drawn in the same style as <Picture 1> and <Picture 2>. There is no text, lettering, sign, logo or brand mark anywhere. Golden low sun from the sea, long soft shadows across the concrete and glowing purple and gold clouds.
+[Shot 1] A camera held low near the ground follows <Subject 1> from the side as in <Video 1>, while he rolls across the plaza of <Subject 2> past the low concrete ledges, with the street lamps, the trees and the sunset sea sliding past behind him. Following the moves of <Video 1>, he pushes off, rolls along beside a ledge, crouches low, pops an ollie with the board rising under his feet, lands cleanly and rolls on. His red hoodie and blond hair flutter in the wind and his shadow stretches long across the warm concrete.
+
+overall_soundscape:
+The steady roll of skateboard wheels on smooth concrete, the sharp clack of the tail on the ollie and the thud of the landing, soft waves and distant gulls. No speech.
+
+non_diegetic_music:
+N/A

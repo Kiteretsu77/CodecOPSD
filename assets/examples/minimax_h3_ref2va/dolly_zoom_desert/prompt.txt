@@ -1,1 +1,20 @@
-The man in the leather jacket stands still on the desert highway of <Picture 1> and stares at the camera. The man, the road, and the mountains come from <Picture 1>. <Video 1> gives only the camera motion, a dolly zoom: he keeps his size in the frame while the road and the mountains behind him stretch away. Realistic.
+subject_definitions:
+<Subject 1> is the man with short dark hair in a brown leather jacket over a dark shirt and blue jeans, standing on the straight desert highway of <Picture 1>: dark asphalt with white edge lines and a yellow centre line, dry scrub on both sides and a long range of bare mountains under a pale sky.
+<Video 1> is the camera reference: only its dolly zoom is reproduced, not its content: the camera moves toward the subject while the lens zooms out, so the subject keeps the same size in the frame while the background behind him stretches away and looks farther and farther away. Its statues, bridge and river are not used.
+
+summary:
+[reference generation] <Subject 1> stands still in the middle of the desert highway and stares into the camera while the camera performs the dolly zoom of <Video 1>: he keeps the same size in the frame as the road and the mountains behind him stretch away. A quiet desert wind.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the man's face and short dark hair, the brown leather jacket, the dark shirt, the blue jeans and the desert highway with its mountains are retained.
+<Video 1> (camera reference): reference - only its dolly zoom is reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Warm late-afternoon sun from the side, a pale clear sky, soft shadows on the asphalt and a light haze over the distant mountains.
+[Shot 1] A medium-wide shot looking straight down the highway, with <Subject 1> standing still on the yellow centre line in the middle of the frame, his figure from head to shins filling about two thirds of the frame height. From the first frame to the last, the camera performs one smooth, steady dolly zoom exactly as in <Video 1>: it moves toward him while the lens zooms out at the same rate, so his head stays at the same height and his body keeps the same size and position in the frame for the whole shot. Behind him the road stretches into a much longer vanishing line, the white edge lines and the yellow centre line spread wider at the bottom of the frame, and the mountains shrink and fall back toward the horizon as more sky and desert come into view. He does not walk or move his feet; he only breathes, blinks and keeps staring into the lens with a calm, uneasy look. The warping perspective makes the empty desert feel vast and unsettling.
+
+overall_soundscape:
+A low, steady desert wind, the faint hiss of sand blowing over the asphalt and the distant hum of the heat. No speech.
+
+non_diegetic_music:
+N/A

@@ -1,7 +1,6 @@
 {
  "label": "Drone follow: 1 picture + 1 video",
  "order": 26,
- "demo": false,
  "source": "picture generated, video Pexels 13963645",
  "args": [
   "--prompt-file",
@@ -16,11 +15,12 @@
   "832",
   "--frames",
   "124",
-  "--video-drop",
-  "0.7",
-  "--video-drop-select",
-  "exact",
   "--seed",
-  "42"
+  "42",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage"
  ]
 }

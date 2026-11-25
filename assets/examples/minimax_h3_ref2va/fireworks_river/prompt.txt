@@ -1,1 +1,20 @@
-At night above the harbour of <Picture 1>, fireworks like those in <Video 1> burst across the sky and reflect in the water. The camera is still. Realistic.
+subject_definitions:
+<Subject 1> is the harbour at night in <Picture 1>: dark calm water, a long low bridge with white lights crossing it on the left, a row of lit old buildings along the quay on the right, their lights reflected in the water, and a cloudy night sky.
+<Video 1> is the effect reference: only its fireworks are reproduced: large white, pink and green bursts with crackling gold sparks and drifting smoke. Its black background is not used.
+
+summary:
+[reference generation] At night above <Subject 1>, fireworks like those in <Video 1> burst across the sky and reflect in the water, while the camera stays still. Booms and crackles echo over the water.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the dark water, the lit bridge, the row of lit buildings and the cloudy night sky of the harbour are retained.
+<Video 1> (effect reference): reference - only its fireworks are reproduced, not its black background.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic night footage filmed with a cinema camera on a tripod, with natural film grain and real materials. There is no text, lettering, sign, logo or brand mark anywhere. A dark night with warm city lights and bright, colourful firework light.
+[Shot 1] A locked-off wide shot of <Subject 1> from the same view as <Picture 1>; the camera does not move. Over the bridge and the buildings, fireworks like those of <Video 1> burst one after another: a white burst, then a big bright white and pink burst, then green and gold crackling bursts, with smoke drifting across the sky and glowing in the flashes. Their colours reflect and shimmer in the dark water below, and the building fronts flicker with the light of each burst.
+
+overall_soundscape:
+Deep booms of the bursts echoing across the water, crackling sparks, faint distant cheering and the soft lap of water. No speech.
+
+non_diegetic_music:
+N/A

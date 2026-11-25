@@ -1,1 +1,20 @@
-The red fox of <Picture 1> sits on a mossy boulder in an autumn birch forest and looks around. The camera zooms exactly like <Video 1>: a fast zoom in on the fox, a short hold, then a slow zoom back out to the wide shot. Realistic, soft morning light.
+subject_definitions:
+<Subject 1> is the red fox with a white chest and black legs sitting upright on a large moss-covered boulder in the autumn birch forest of <Picture 1>, among white birch trunks, a second mossy boulder and a carpet of orange fallen leaves.
+<Video 1> is the camera reference: only its zoom is reproduced, not its content: from a wide shot, a fast zoom in to a close shot, a short hold, then a slower zoom back out to the wide shot. Its oak tree and its wheat field are not used.
+
+summary:
+[reference generation] <Subject 1> sits on the mossy boulder in the autumn birch forest and looks around while the camera zooms exactly like <Video 1>: a fast zoom in on the fox, a short hold, then a slow zoom back out to the wide shot. Rustling leaves and birdsong.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the red fox with its white chest and black legs, the mossy boulders, the birch trunks and the orange leaves are retained.
+<Video 1> (camera reference): reference - only its zoom in, hold and zoom out are reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic wildlife footage filmed with a long zoom lens, with natural film grain and real materials. There is no text, lettering, sign, logo or brand mark anywhere. Soft morning light through the birches, warm orange and yellow leaves and bright green moss.
+[Shot 1] The camera stays in one place and only zooms, as in <Video 1>. It opens on the wide shot of <Picture 1>, with <Subject 1> small on the boulder among the birch trunks. In the first second it zooms in fast until the fox's head and chest fill the frame, holds there for about a second while the fox turns its head and looks around with its ears twitching, then zooms out slowly and smoothly until the frame is back to the full wide shot at the end. The fox stays seated on the boulder for the whole shot.
+
+overall_soundscape:
+Leaves rustling in a light breeze, a few dry leaves falling, soft birdsong and a quiet forest hush. No speech.
+
+non_diegetic_music:
+N/A

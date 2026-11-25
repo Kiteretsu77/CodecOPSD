@@ -1,1 +1,22 @@
-The cyclist rides his road bike along the coastal road of <Picture 1>, beside the turquoise sea on a sunny day. The cyclist and the coast come from <Picture 1>. <Video 1> gives only the camera motion: a drone follows him from behind and above. Realistic.
+subject_definitions:
+<Subject 1> is the road cyclist in a black cycling kit with dark pink details and a white helmet, on a white road bike, in <Picture 1>.
+<Subject 2> is the coastal road of <Picture 1>: a narrow winding asphalt road with white edge lines and a dashed centre line, a rocky shore and turquoise sea on the left and a green scrubby hillside on the right.
+<Video 1> is the camera reference: only its drone shot is reproduced: following the rider from behind and above at the same distance while they ride forward. Its woman, its dirt track and its fields are not used.
+
+summary:
+[reference generation] A drone follows <Subject 1> from behind and above as he rides along <Subject 2> beside the turquoise sea on a sunny day, as in <Video 1>. Wind and waves.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the black kit with dark pink details, the white helmet and the white road bike are retained.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the winding coastal road, the rocky shore, the turquoise sea and the green hillside are retained.
+<Video 1> (camera reference): reference - only its drone follow from behind and above is reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic aerial footage filmed by a drone, with natural detail and real materials. There is no text, lettering, sign, logo or brand mark anywhere. Bright midday sun, a sharp shadow of the rider and the bike on the asphalt, sparkling turquoise water and white foam on the rocks.
+[Shot 1] A high three-quarter view from a drone behind and above <Subject 1>, as in <Video 1>. From the first frame to the last, the drone glides forward at his speed and keeps him in the lower middle of the frame while he pedals steadily along the winding road of <Subject 2>. The road with its white lines, the rocky shore, the waves breaking on the rocks and the green scrub flow toward the camera beneath them, and his shadow follows him on the asphalt.
+
+overall_soundscape:
+Wind rushing past, the soft whir of the bike's chain and tyres, waves breaking on the rocks and the faint hum of the drone. No speech.
+
+non_diegetic_music:
+N/A

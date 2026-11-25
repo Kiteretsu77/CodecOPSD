@@ -35,8 +35,8 @@ EXAMPLES = ROOT / "assets" / "examples"
 # repository (assets/examples/...), downloaded once per install (the demo unpacks it before it starts). New data = a new
 # archive name here (`python scripts/pack_examples.py` writes them at the repository root; upload them to assets/ of
 # the repository), which every install downloads again.
-EXAMPLE_ARCHIVES = {"minimax_h3_ref2va": "CodecOPSD_examples_video_20261123.zip",  # the video page and its 12-32 GB page
-                    "h3_flash_ref2va": "CodecOPSD_examples_video_20261123.zip",
+EXAMPLE_ARCHIVES = {"minimax_h3_ref2va": "CodecOPSD_examples_video_20261125.zip",  # the video page and its 12-32 GB page
+                    "h3_flash_ref2va": "CodecOPSD_examples_video_20261125.zip",
                     "minimax_h3_image": "CodecOPSD_examples_image_20261123.zip"}
 
 _META = ["processor/*", "tokenizer/*", "scheduler/*", "model_index.json", "modular_model_index.json"]
@@ -73,7 +73,7 @@ EXAMPLES_OF = {"h3_flash_ref2va": "minimax_h3_ref2va"}
 # The CodecOPSD LoRAs: their file under models/ -> (Hugging Face repository, pinned revision). Each repository also
 # holds a small config.json (counted downloads, `count_lora_load`) and the example archive of its model under assets/.
 LORA_REPOS = {
-    "codecopsd_minimax_h3_ref2va.safetensors": ("HikariDawn/CodecOPSD-H3-Ref2VA", "5e4de5d78e2cfad894c69954101878ddb7bedb94"),
+    "codecopsd_minimax_h3_ref2va.safetensors": ("HikariDawn/CodecOPSD-H3-Ref2VA", "98e6ba85446430541f6f578bfa3a2c18ae395324"),
     "codecopsd_minimax_h3_image.safetensors": ("HikariDawn/CodecOPSD-H3-Image", "944e980d9c9cba38571b4de4e82d91a0ae535e85"),
 }
 

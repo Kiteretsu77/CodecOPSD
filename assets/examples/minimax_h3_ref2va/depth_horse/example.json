@@ -1,7 +1,6 @@
 {
  "label": "Depth control: 2 pictures + 1 video",
  "order": 8.2,
- "demo": false,
  "source": "pictures generated, video depth of Pexels 2122952",
  "args": [
   "--prompt-file",
@@ -18,9 +17,12 @@
   "832",
   "--frames",
   "124",
-  "--video-drop",
-  "threshold",
   "--seed",
-  "42"
+  "42",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage"
  ]
 }

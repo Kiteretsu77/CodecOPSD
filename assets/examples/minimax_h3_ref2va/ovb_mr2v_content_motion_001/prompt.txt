@@ -1,1 +1,20 @@
-The young woman in the red coat, shown from the front, side and back in <Picture 1>, <Picture 2> and <Picture 3>, walks slowly from left to right through a partly collapsed stone corridor with broken arches and slanting sunlight. She copies the walk and the poses of the man in <Video 1>. Realistic.
+subject_definitions:
+<Subject 1> is the young woman with long straight black hair, wearing a belted red trench coat over a white turtleneck, black knee-high boots and a small brown leather crossbody bag, shown from the front in <Picture 1>, from the side in <Picture 2> and from the back in <Picture 3>.
+<Video 1> is the motion and camera reference: only the man's steady walk from left to right and the camera that tracks alongside him are reproduced. Its man, the car in the foreground, the ruined street, the black bars and the subtitles are not used.
+
+summary:
+[reference generation] <Subject 1> walks slowly from left to right through a partly collapsed stone corridor with broken arches and slanting sunlight, with the walk of the man in <Video 1>, while the camera tracks alongside her. Footsteps on stone and drifting dust.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the face, the long black hair, the belted red trench coat, the white turtleneck, the black knee-high boots and the brown crossbody bag are retained.
+<Video 1> (motion and camera reference): reference - only the walk and the tracking camera are reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of real photographic live-action footage filmed with a full-frame cinema camera, with natural film grain and real materials. There is no text, subtitle, lettering, sign, logo or brand mark anywhere, and no black bars: the picture fills the whole frame. Warm low sunlight slants through the broken arches and lights the dust in the air, with cool shadows inside the corridor.
+[Shot 1] A medium shot from the side: from the first frame to the last, the camera tracks to the right at walking pace as in <Video 1>, keeping <Subject 1> in the left half of the frame from head to knees while she walks steadily from left to right along a partly collapsed stone corridor, seen from the side and slightly behind like the man in <Video 1>. Broken stone arches, cracked pillars, fallen blocks and patches of sunlight slide past behind her. She keeps walking for the whole shot with a calm, even stride and relaxed arms, following the walk of <Video 1>; her hair, her bag and the hem of her coat swing gently with each step. She never stops and never turns toward the camera.
+
+overall_soundscape:
+Slow footsteps of boots on dusty stone, small pebbles crunching underfoot and a soft wind through the broken arches. No speech.
+
+non_diegetic_music:
+N/A
