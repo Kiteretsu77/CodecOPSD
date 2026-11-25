@@ -13,12 +13,12 @@ import gradio as gr
 
 INTRO = """
 <div class="hdr">
-<h1 class="hdr-name">CodecOPSD</h1>
-<div class="hdr-title">On-Policy Codec Distillation for Efficient All-in-One Video Generation</div>
+<h1 class="hdr-title">On-Policy Codec Distillation for Efficient All-in-One Video Generation</h1>
 """
 # two lines on the page (split at "\n")
-SUMMARY = ("We use codec pruning to drop the condition tokens\n"
-           "and an on-policy self-distillation training paradigm, and reach a much faster speed.")
+SUMMARY = ("We propose codec pruning, based on our modified video codec, to drop redundant condition tokens,\n"
+           "and develop on-policy self-distillation (OPSD) to adapt the model to this pruning pattern for much faster "
+           "generation.")
 
 # System fonts: the page loads nothing from outside the demo (the default theme fetches Google Fonts).
 THEME = gr.themes.Soft(primary_hue="blue", font=["ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto",
@@ -30,7 +30,7 @@ CSS = """
   padding-right: 16px !important}
 .hdr {text-align: center; padding: 10px 0 14px 0; margin-bottom: 6px; border-bottom: 1px solid var(--border-color-primary)}
 .hdr-name {font-size: 38px !important; font-weight: 800 !important; margin: 0 0 6px 0 !important; letter-spacing: -0.5px}
-.hdr-title {font-size: 21px; font-weight: 600; margin: 0 auto 14px auto; max-width: 900px; text-wrap: balance}
+.hdr-title {font-size: 28px !important; font-weight: 700 !important; margin: 0 auto 14px auto !important; max-width: 900px; text-wrap: balance}
 .intro-line {font-size: 16px; margin: 14px 0 0 0 !important; text-wrap: balance}
 .star-line {font-size: 15px; margin: 10px 0 0 0 !important; text-wrap: balance}
 /* colours: the Student and its numbers in blue, the Teacher and its numbers in orange, precomputed results in purple;
@@ -86,7 +86,7 @@ table.stats-table th, table.stats-table td {padding: 2px 10px 2px 0; text-align:
 table.stats-table th:first-child, table.stats-table td:first-child {text-align: left}
 table.stats-table tr.total td {font-weight: 600}
 .stats-note {font-size: 12.5px; color: #6b7280; margin: 6px 0 0 0}
-.page-head {font-size: 15px; margin: 4px 0 0 0}
+.page-head {font-size: 15px; margin: 14px 0 0 0 !important}
 /* the header: paper / code / model links, then the authors (small), the demo pages */
 .hdr-authors {font-size: 13px; margin: 10px 0 0 0; line-height: 1.5} .hdr-author {white-space: nowrap}
 a.hdr-author {color: #1d4ed8; text-decoration: none} a.hdr-author:hover {text-decoration: underline}

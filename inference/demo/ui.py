@@ -150,16 +150,11 @@ def intro_html():
                      f'<a class="hdr-demo" href="{h.escape(url, quote=True)}" target="_blank">{label}</a>' if url else
                      f'<span class="hdr-demo soon">{label} (coming soon)</span>')
     demos.append('<span class="hdr-demo soon">Other models (coming soon)</span>')
-    def author(name, mark, url):
-        text = f'{h.escape(name)}<sup>{h.escape(mark)}</sup>' if mark else h.escape(name)
-        return (f'<a class="hdr-author" href="{h.escape(url, quote=True)}" target="_blank" rel="noopener">{text}</a>'
-                if url else f'<span class="hdr-author">{text}</span>')
-    authors = ", ".join(author(*a) for a in PAPER["authors"])
     # The star request, worded as in the README (same as our earlier repos); it links to the same URL as the Code button.
     code = next((url for icon, _, url in PAPER["links"] if icon == "github"), "")
     repo = (f'<a href="{h.escape(code, quote=True)}" target="_blank" rel="noopener">GitHub repo</a>' if code
             else "GitHub repo")
-    return (INTRO + f'<div class="hdr-links">{"".join(links)}</div><div class="hdr-authors">{authors}</div>'
+    return (INTRO + f'<div class="hdr-links">{"".join(links)}</div>'
             + f'<p class="intro-line">{"<br>".join(h.escape(line) for line in SUMMARY.split(chr(10)))}</p>'
             + f'<p class="page-head"><b>{linked(state.PAGE["heading"])}</b></p>'
             + f'<p class="star-line">⭐ <b>If you like CodecOPSD, please help ⭐⭐star⭐⭐ the {repo}. Thanks!</b> 🤗</p>'
