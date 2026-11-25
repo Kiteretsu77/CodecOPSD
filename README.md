@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-<a href="#"><img src="https://img.shields.io/badge/arXiv-Paper%20(TODO)-b31b1b?logo=arxiv&logoColor=white"></a>
+<a href="https://arxiv.org/abs/2611.31184"><img src="https://img.shields.io/badge/arXiv-2611.31184-b31b1b?logo=arxiv&logoColor=white"></a>
 <a href="https://kiteretsu77.github.io/CodecOPSD_website/"><img src="https://img.shields.io/badge/Project-Website-pink?logo=googlechrome&logoColor=white"></a>
 <a href="https://x.com/BoyangWang7"><img src="https://img.shields.io/badge/Follow-%40BoyangWang7-black?logo=x&logoColor=white"></a>
 <a href="https://github.com/Kiteretsu77/CodecOPSD"><img src="https://img.shields.io/github/stars/Kiteretsu77/CodecOPSD?style=social"></a>
@@ -124,7 +124,6 @@ on its own rollouts from the teacher, which sees every condition token:
   [H3-Image](https://huggingface.co/HikariDawn/CodecOPSD-H3-Image)) and Hugging Face Spaces
   ([H3-Ref2VA](https://huggingface.co/spaces/HikariDawn/CodecOPSD-H3-Ref2VA),
   [H3-Image](https://huggingface.co/spaces/HikariDawn/CodecOPSD-H3-Image)).
-- [ ] Release the paper (arXiv)
 - [ ] Check the training code
 - [ ] Extend to Cosmos 3 Nano
 - [ ] Extend to Qwen-Image 2.1
@@ -457,7 +456,14 @@ Pika H3 Flex, FastH3, HyperFlow H3 Flash) are under the MiniMax Community Licens
 Users are responsible for their use of the code, the models, and the generated content, and should follow the
 applicable laws and the licenses above. The authors are not responsible for any misuse.
 
-Citation: TBD
+```bibtex
+@article{wang2026codecopsd,
+  title   = {On-Policy Codec Distillation for Efficient All-in-One Video Generation},
+  author  = {Wang, Boyang and Blackburn-Matzen, Kevin and Saha, Oindrila and Gadelha, Matheus and Cheng, Zezhou},
+  journal = {arXiv preprint arXiv:2611.31184},
+  year    = {2026}
+}
+```
 
 ## 🤗 Acknowledgment
 
