@@ -34,7 +34,7 @@ from ...models import MiniMaxH3ImageCodecOPSDTransformer2DModel, text_encoder_to
 from ...models.fp8_linear import load_fp8_text_encoder
 from ...stats import Clock
 from ..minimax_h3_ref2va import MiniMaxH3CodecOPSDPipeline
-from ..minimax_h3_ref2va.pipeline_minimax_h3_ref2va import vlm_prompt_embeds
+from ..minimax_h3_ref2va.pipeline_minimax_h3_ref2va import map_references, vlm_prompt_embeds
 from ..minimax_h3_ref2va.vlm_drop import drop_vision_rows, vision_token_keep
 
 CONFIG = load("minimax_h3_image")  # src/codecopsd/configs/minimax_h3_image.yaml
@@ -128,17 +128,20 @@ class MiniMaxH3ImageCodecOPSDPipeline(DiffusionPipeline):
 
     def prepare_references(self, images):
         """Each picture upright and RGB, then its two released copies: the VAE's and the text encoder's (a short edge outside
-        `vae_short_edge` / `vision_short_edge` is resized to the nearer bound, multiples of 32)."""
-        copies = ([], [])
-        for image in images:
+        `vae_short_edge` / `vision_short_edge` is resized to the nearer bound, multiples of 32). One thread per picture
+        (`map_references`)."""
+        def two_copies(image):
             image = ImageOps.exif_transpose(image).convert("RGB")
             if min(image.size) < 32:
                 raise ValueError(f"a reference picture needs at least 32 pixels on each side, got {image.size}")
-            for out, (low, high) in zip(copies, (CONFIG["references"]["vae_short_edge"],
-                                                 CONFIG["references"]["vision_short_edge"])):
+            copies = []
+            for low, high in (CONFIG["references"]["vae_short_edge"], CONFIG["references"]["vision_short_edge"]):
                 size = bound_short_edge(*image.size, low, high, CONFIG["canvas"]["multiple"])
-                out.append(image if image.size == size else self.image_processor.resize(image, size[1], size[0]))
-        return copies
+                copies.append(image if image.size == size else self.image_processor.resize(image, size[1], size[0]))
+            return copies
+
+        pairs = map_references(two_copies, images)
+        return [vae for vae, _ in pairs], [vision for _, vision in pairs]
 
     @torch.no_grad()
     def encode(self, prompt, images, generator=None, gaze=True, vlm_drop=None, teacher_text=False, gaze_overrides=None):

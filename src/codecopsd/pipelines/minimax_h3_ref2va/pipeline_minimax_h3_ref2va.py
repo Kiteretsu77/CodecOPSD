@@ -22,7 +22,6 @@ from diffusers.modular_pipelines.minimax_h3.before_denoise import (
     MiniMaxH3Ref2VAPrepareLayoutStep,
     patchify_video_latents,
 )
-from diffusers.modular_pipelines.minimax_h3.before_encoder import MiniMaxH3Ref2VASetupStep
 from diffusers.modular_pipelines.minimax_h3.encoders import (
     MiniMaxH3Ref2VATextEncoderStep,
     encode_vae_condition,
@@ -35,6 +34,7 @@ from diffusers.modular_pipelines.minimax_h3.modular_pipeline import (
     MINIMAX_H3_VIDEO_TAG,
     align_num_frames,
     audio_latent_num_frames,
+    resolve_canvas_size,
     video_latent_num_frames,
 )
 from diffusers.modular_pipelines.minimax_h3.references import MiniMaxH3ImageReference, MiniMaxH3VideoReference
@@ -74,6 +74,33 @@ def video_tier(height, width):
     """(short edge, area cap) of the canvas a reference video is read on for an output of `height` x `width`: the
     smallest of `VIDEO_TIERS` whose short edge reaches the output's, the largest when none does (Pika H3 Flex's rule)."""
     return next((t for t in VIDEO_TIERS if t[0] >= min(height, width)), VIDEO_TIERS[-1])
+
+
+def video_frames(frames, fps, num_frames, canvas):
+    """A reference video's frames as uint8 [T, H, W, 3] at 24 fps, cut to `num_frames`, and the (height, width) of the
+    canvas of its own aspect ratio (`canvas`: short edge, area cap) they go on: the steps of diffusers'
+    `MiniMaxH3Ref2VASetupStep._normalize_video_condition` (0.43.0) in the same order, without its final per-frame
+    LANCZOS resize, which `normalize_references` runs on threads."""
+    if isinstance(frames, list):
+        frames = np.stack([np.asarray(frame.convert("RGB")) for frame in frames])
+    if isinstance(frames, torch.Tensor):
+        frames = frames.movedim(-3, -1).cpu().numpy()
+    frames = np.asarray(frames)
+    if frames.dtype != np.uint8:
+        frames = (frames * 255.0).round().clip(0, 255).astype(np.uint8)
+    if frames.ndim != 4 or frames.shape[3] != 3:
+        raise ValueError(
+            f"A reference video must be `(num_frames, height, width, 3)` RGB frames, got {tuple(frames.shape)}.")
+    if fps <= 0:
+        raise ValueError(f"A reference video must have a positive frame rate, got {fps}.")
+    target_fps = float(MINIMAX_H3_FPS)
+    if fps != target_fps:  # each frame held until the slot of the next one, as ffmpeg's fps filter does
+        scale = target_fps / fps
+        slots = np.floor(np.arange(frames.shape[0]) * scale + 0.5).astype(np.int64)
+        frames = np.repeat(frames, np.diff(slots, append=math.floor(frames.shape[0] * scale + 0.5)), axis=0)
+    frames = frames[:num_frames]
+    return frames, resolve_canvas_size(frames.shape[2], frames.shape[1], CANVAS["canvas_multiple"], *canvas)
+
 
 PICTURES = (".png", ".jpg", ".jpeg", ".webp", ".bmp")
 
@@ -140,6 +167,24 @@ def load_reference(path, num_frames=None):
             break
         frames.append(frame)
     return MiniMaxH3VideoReference(frames=np.stack(frames), fps=fps)
+
+
+def map_references(fn, *iterables):
+    """`[fn(*args) for args in zip(*iterables)]` on threads, the results in the same order: the reference files are
+    read and resized at the same time (PIL and the ffmpeg reader release the interpreter lock), with the same results.
+    At most half the CPU cores, since the codec gazer runs x264 and its reader on the CPU right after; it is never
+    nested (`normalize_references` runs its resizes as a second flat list), so that caps every thread it starts. One
+    after the other with CODECOPSD_SERIAL_REFERENCES=1 in the environment, or when the same object is given twice (PIL
+    reads a picture from its file on first use, which two threads must not do at once)."""
+    items = list(zip(*iterables))
+    cores = len(os.sched_getaffinity(0)) if hasattr(os, "sched_getaffinity") else os.cpu_count() or 1
+    workers = min(len(items), max(1, cores // 2))
+    if (workers < 2 or os.environ.get("CODECOPSD_SERIAL_REFERENCES") == "1"
+            or len({id(args[0]) for args in items}) < len(items)):
+        return [fn(*args) for args in items]
+    with ThreadPoolExecutor(workers, thread_name_prefix="references") as pool:
+        futures = [pool.submit(fn, *args) for args in items]
+        return [f.result() for f in futures]
 
 
 def stage_times(timings):
@@ -357,14 +402,16 @@ class MiniMaxH3CodecOPSDPipeline(DiffusionPipeline):
         (references.picture_short_edge; released MiniMax-H3 reads every picture at 2048); a video first resized
         onto the canvas of its own aspect ratio at the tier of the `height` x `width` output (`video_tier`, Pika H3
         Flex's rule; without an output size the released 768 canvas), then at 24 fps, cut to `num_frames` and then to
-        the longest 17n + 5 frames the VAE encodes. Other sizes: `set_reference_sizes`."""
+        the longest 17n + 5 frames the VAE encodes. Other sizes: `set_reference_sizes`. On threads (`map_references`):
+        first each reference (in order, errors included), then every LANCZOS resize as one job, each picture and each
+        video frame."""
         sizes = self.reference_sizes or {}
         short_edge, long_edge = sizes.get("picture_short_edge") or PICTURE_SHORT_EDGE, sizes.get("picture_long_edge")
         video_edge = sizes.get("video_short_edge")
         canvas = ((video_edge, video_edge * ((video_edge * 16 // 9 + 31) // 32 * 32)) if video_edge
                   else video_tier(height, width) if height and width else (CANVAS["short_edge"], CANVAS["max_pixels"]))
-        out = []
-        for ref in references:
+
+        def prepare(ref):  # (RGB picture or uint8 frames [T, H, W, 3], the (width, height) they are resized to)
             if ref.kind == "image":
                 image = ref.image if isinstance(ref.image, Image.Image) else Image.fromarray(np.asarray(ref.image))
                 image = image.convert("RGB")
@@ -376,19 +423,33 @@ class MiniMaxH3CodecOPSDPipeline(DiffusionPipeline):
                     scale = short_edge / min(width, height)
                 if long_edge:
                     scale = min(scale, long_edge / max(width, height))
-                size = (max(32, round(width * scale / 32) * 32), max(32, round(height * scale / 32) * 32))
-                image = image if image.size == size else image.resize(size, Image.LANCZOS)
-                out.append(MiniMaxH3ImageReference(image=image))
-            elif ref.kind == "video":
-                frames = MiniMaxH3Ref2VASetupStep._normalize_video_condition(
-                    ref.frames, float(ref.fps), num_frames, CANVAS["canvas_multiple"], *canvas, float(MINIMAX_H3_FPS),
-                )
+                return image, (max(32, round(width * scale / 32) * 32), max(32, round(height * scale / 32) * 32))
+            if ref.kind == "video":
+                frames, (height, width) = video_frames(ref.frames, float(ref.fps), num_frames, canvas)
                 if len(frames) < 22:
                     raise ValueError(f"a reference video needs at least 22 frames at 24 fps, got {len(frames)}")
-                frames = frames[: (len(frames) - 5) // 17 * 17 + 5]
-                out.append(MiniMaxH3VideoReference(frames=frames, fps=MINIMAX_H3_FPS))
+                return frames[: (len(frames) - 5) // 17 * 17 + 5], (width, height)
+            raise ValueError(f"references are pictures or videos, got {ref.kind!r}")
+
+        def resize(x, size):  # a picture, or a video frame as diffusers resizes it (back as an array)
+            if isinstance(x, Image.Image):
+                return x.resize(size, Image.LANCZOS)
+            return np.asarray(Image.fromarray(x).resize(size, Image.Resampling.LANCZOS))
+
+        prepared = map_references(prepare, references)
+        shape = lambda x: x.size if isinstance(x, Image.Image) else (x.shape[2], x.shape[1])
+        jobs = []  # every LANCZOS resize, in reference order: a picture, or each frame of a video
+        for x, size in prepared:
+            if shape(x) != size:
+                jobs += [(x, size)] if isinstance(x, Image.Image) else [(frame, size) for frame in x]
+        resized = iter(map_references(resize, *zip(*jobs)))  # in the order of `jobs`
+        out = []
+        for x, size in prepared:
+            if isinstance(x, Image.Image):
+                out.append(MiniMaxH3ImageReference(image=x if x.size == size else next(resized)))
             else:
-                raise ValueError(f"references are pictures or videos, got {ref.kind!r}")
+                frames = x if shape(x) == size else np.stack([next(resized) for _ in range(len(x))])
+                out.append(MiniMaxH3VideoReference(frames=frames, fps=MINIMAX_H3_FPS))
         return out
 
     @torch.no_grad()

@@ -33,7 +33,7 @@ from diffusers.utils import export_to_video
 
 from codecopsd.attention import BACKENDS, set_attention
 from codecopsd.configs import load
-from codecopsd.pipelines.minimax_h3_ref2va import load_reference, stage_times
+from codecopsd.pipelines.minimax_h3_ref2va import load_reference, map_references, stage_times
 
 from ..hardware import announce, cap_gpu_memory, vlm_files_gb
 from ..load import RESIDENT_GB, build_pipeline, place, vlm_notice, vlm_source
@@ -155,7 +155,7 @@ def main(argv=None):
         if args.offload == "auto":  # every model resident when the GPU holds them all with room (B200: 180 GB), as the demo
             args.offload = "none" if total >= RESIDENT_GB else "model"
         vlm_notice(vlm, args.offload)
-    references = [load_reference(path) for path in args.reference]
+    references = map_references(load_reference, args.reference)  # one thread per reference
     pipe = build_pipeline("minimax_h3_ref2va", args.model, args.lora, args.lora_weight_name, args.text_encoder,
                           args.sampler, args.sampler_weights, text_encoder_path=vlm["path"])
     if args.sampler == "flash" and args.vae_encoder == "taeh3":  # the extreme path only (inference/extreme.py)

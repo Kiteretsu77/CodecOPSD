@@ -143,6 +143,7 @@ def run_image_raw(prompt, files, size, strategy, picture_motion, picture_residua
     "both" the Teacher first); the last yield holds every result. The results of a request with the inputs of a bundled
     example are stored for it when it has none yet. `page`: `page_for` of the viewer (None: no page)."""
     from codecopsd.pipelines.minimax_h3_image.pipeline_minimax_h3_image import reference_size
+    from codecopsd.pipelines.minimax_h3_ref2va import map_references
     report = report or Report()
     paths = input_paths(files)
     report.log(f"image, Run {mode}: {len(paths)} pictures {[Path(p).name for p in paths]}, size {size!r}, seed {seed}, "
@@ -155,7 +156,7 @@ def run_image_raw(prompt, files, size, strategy, picture_motion, picture_residua
             raise Refused("Add at least one reference picture: this model generates from references.")
         seed = parse_seed(seed)
         codec = parse_codec(strategy, None, None, None, picture_motion, picture_residual, vlm, vlm_scale, video=False)
-        images = [open_picture(p, i + 1) for i, p in enumerate(paths)]
+        images = map_references(open_picture, paths, range(1, len(paths) + 1))  # one thread per picture
         check_tags(prompt, len(images))
         if str(size).startswith("first"):
             height, width = reference_size(images[0])
@@ -241,6 +242,7 @@ def run_video_raw(prompt, files, size, frames, strategy, video_drop, video_motio
     example are stored for it when it has none yet. `page`: `page_for` of the viewer (None: no page). `audio`: the
     Settings switch, the soundtrack generated with the video and put into the mp4 (part of the request, so a request
     with audio never shows or stores an example's silent result)."""
+    from codecopsd.pipelines.minimax_h3_ref2va import map_references
     report = report or Report()
     paths = input_paths(files)
     report.log(f"video, Run {mode}: {len(paths)} references {[Path(p).name for p in paths]}, size {size!r}, "
@@ -267,7 +269,7 @@ def run_video_raw(prompt, files, size, frames, strategy, video_drop, video_motio
                            f"{', '.join(map(str, state.PAGE['frames']))}).")
         codec = parse_codec(strategy, video_drop, video_motion, video_residual, picture_motion, picture_residual, vlm,
                             vlm_scale)
-        references = [open_reference(p, i + 1, frames) for i, p in enumerate(paths)]
+        references = map_references(lambda path, i: open_reference(path, i, frames), paths, range(1, len(paths) + 1))
         kinds = [r.kind for r in references]
         check_tags(prompt, kinds.count("image"), kinds.count("video"), video_tab=True)
     except Refused as e:
@@ -280,7 +282,7 @@ def run_video_raw(prompt, files, size, frames, strategy, video_drop, video_motio
                                                        seed, audio])))
     order = ["released", "student"] if mode == "both" else [mode]  # Teacher first: the GPU warm-up falls on it
     runs, page = {}, page if page is not None else new_page()
-    sources = [source_of(path, r) for path, r in zip(paths, references)]
+    sources = map_references(source_of, paths, references)
     asked = re.fullmatch(r"\s*(\d+)\s*[x×X*,]\s*(\d+)\s*", str(size))
     rounded = [] if (int(asked[1]), int(asked[2])) == (height, width) else [
         f"Output {asked[1]} x {asked[2]} rounded to {height} x {width} (multiples of 32)."]

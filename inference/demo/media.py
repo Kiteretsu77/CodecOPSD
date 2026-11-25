@@ -126,34 +126,35 @@ def fast_result(path):
     return _light(p, p.with_name(p.stem + ".fast.mp4"), _ffmpeg)
 
 
+def _caption_size(src):
+    """' · 480 x 832 · 5.0 s' of a video, ' · 2048 x 3072' of a picture (upright); '' when the file cannot be read."""
+    try:
+        if str(src).lower().endswith(VIDEO_FILES):
+            meta = iio.immeta(src, plugin="FFMPEG")
+            (w, h), seconds = meta["size"], meta.get("duration")
+            return f" · {h} x {w}" + (f" · {seconds:.1f} s" if seconds else "")
+        with Image.open(src) as image:
+            w, h = image.size
+            if image.getexif().get(0x0112) in (5, 6, 7, 8):  # shown upright, as the model reads it
+                w, h = h, w
+        return f" · {h} x {w}"
+    except Exception:
+        return ""
+
+
 def captioned(paths):
     """The reference list with captions: "Picture 1 · 2048 x 3072", "Video 1 · 480 x 832 · 5.0 s" (numbered per kind,
-    height x width as the model reads it)."""
+    height x width as the model reads it). Files not captioned before are read at the same time, one thread each."""
+    from codecopsd.pipelines.minimax_h3_ref2va import map_references
+    srcs = [original(path) for path in paths]  # a preview is captioned with its original's size
+    keys = [(str(src), os.path.getmtime(src) if os.path.exists(src) else 0) for src in srcs]
+    new = {key: src for key, src in zip(keys, srcs) if key not in _CAPTIONS}
+    _CAPTIONS.update(zip(new, map_references(_caption_size, list(new.values()))))
     out, count = [], {"Picture": 0, "Video": 0}
-    for path in paths:
-        src = original(path)  # a preview is captioned with its original's size
-        kind, size = ("Video" if str(src).lower().endswith(VIDEO_FILES) else "Picture"), ""
-        key = (str(src), os.path.getmtime(src) if os.path.exists(src) else 0)
-        if key in _CAPTIONS:
-            count[kind] += 1
-            out.append((path, f"{kind} {count[kind]}{_CAPTIONS[key]}"))
-            continue
-        try:
-            if kind == "Video":
-                meta = iio.immeta(src, plugin="FFMPEG")
-                (w, h), seconds = meta["size"], meta.get("duration")
-                size = f" · {h} x {w}" + (f" · {seconds:.1f} s" if seconds else "")
-            else:
-                with Image.open(src) as image:
-                    w, h = image.size
-                    if image.getexif().get(0x0112) in (5, 6, 7, 8):  # shown upright, as the model reads it
-                        w, h = h, w
-                size = f" · {h} x {w}"
-        except Exception:
-            pass
-        _CAPTIONS[key] = size
+    for path, src, key in zip(paths, srcs, keys):
+        kind = "Video" if str(src).lower().endswith(VIDEO_FILES) else "Picture"
         count[kind] += 1
-        out.append((path, f"{kind} {count[kind]}{size}"))
+        out.append((path, f"{kind} {count[kind]}{_CAPTIONS[key]}"))
     return out
 
 
