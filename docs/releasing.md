@@ -54,6 +54,7 @@ the `minimax-h3` tag), whose count rule takes requests for `.safetensors` files 
 - A LoRA that `ensure_lora()` has just downloaded is not counted again: the download itself counted.
 - Given a repo id, `load_condition_lora()` requests the `.safetensors` file, a HEAD when it is cached, and that
   request counts.
+- Training that starts from a released LoRA (`--init-lora`) calls `count_lora_load()` once, on rank 0.
 - Failures are ignored, so offline runs still work. `HF_HUB_OFFLINE=1` turns counting off.
 - Each count prints a `[download] counted: ...` line.
 

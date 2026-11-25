@@ -232,8 +232,11 @@ def count_lora_load(path):
     if entry is None or str(Path(path).resolve()) in _FETCHED:
         return
     try:
-        from huggingface_hub import hf_hub_download
+        from huggingface_hub import constants, hf_hub_download
 
+        if constants.HF_HUB_OFFLINE:  # a cached config.json would come back without any request: nothing counted
+            print(f"[download] not counted: one load of {entry[0]} (HF_HUB_OFFLINE=1)", flush=True)
+            return
         hf_hub_download(entry[0], "config.json")
         print(f"[download] counted: one load of {entry[0]} (config.json request)", flush=True)
     except Exception as e:

@@ -56,6 +56,7 @@ from torch.utils.data import DataLoader, Dataset
 from codecopsd import MiniMaxH3CodecOPSDPipeline, MiniMaxH3CodecOPSDTransformer3DModel
 from codecopsd.codec_gazer import MINIMAX_H3, submit_gaze
 from codecopsd.configs import load
+from codecopsd.download import count_lora_load
 from codecopsd.pipelines.minimax_h3_ref2va import load_reference
 from codecopsd.pipelines.minimax_h3_ref2va.pipeline_minimax_h3_ref2va import CONFIG as INFERENCE
 
@@ -255,6 +256,8 @@ def train(args, cfg=CFG, transformer_cls=MiniMaxH3CodecOPSDTransformer3DModel, s
                                     cfg["lora"]["last_block_targets"])
     init = out / f"lora_{state['update']:06d}.safetensors" if state else args.init_lora
     if init:  # resume: the LoRA of the last checkpoint; or a LoRA to start from (e.g. a released student)
+        if not state and rank == 0:  # a released CodecOPSD LoRA counts as one load (docs/releasing.md); others: no-op
+            count_lora_load(init)
         lora = load_file(init)
         loaded = 0
         for name, module in transformer.named_modules():
