@@ -85,6 +85,7 @@ table.stats-table {border-collapse: collapse; margin: 6px 0 0 0; font-variant-nu
 table.stats-table th, table.stats-table td {padding: 2px 10px 2px 0; text-align: right; border-bottom: 1px solid #e5e7eb}
 table.stats-table th:first-child, table.stats-table td:first-child {text-align: left}
 table.stats-table tr.total td {font-weight: 600}
+table.stats-table tr.tokens td {color: #6b7280; font-size: 12px; border-bottom-style: dashed}
 .stats-note {font-size: 12.5px; color: #6b7280; margin: 6px 0 0 0}
 .page-head {font-size: 15px; margin: 14px 0 0 0 !important}
 /* the header: paper / code / model links, then the authors (small), the demo pages */
@@ -385,52 +386,86 @@ HEAD = """
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
 })();
 (() => {
-  // The example gallery as a mosaic (CSS ".examples .grid-container"): every thumbnail at its own aspect ratio, placed
-  // on a fine grid (24 columns, 12 on a phone; 8 px rows) by a skyline: each tile goes into the lowest free stretch, at
-  // a width from an uneven pattern (narrower for portrait and square pictures), or over the whole stretch when the rest
-  // would be too narrow; a tile whose bottom lands within a quarter of its height of a neighbour's is snapped to it
-  // (cover crop), and no tile may line every column up. So no gutter runs straight across (checked on the real
-  // thumbnails from 700 to 1400 px wide). Placement only: the DOM order (the numbers in the corners, the clicks) stays
-  // the page order.
-  const ROW = 8, GAP = 6, PATTERN = [6, 7, 5, 6, 8, 5, 7, 6, 5, 7];  // 4 to 5 tiles a row (user 11/23: smaller tiles)
+  // The example gallery as a mosaic (CSS ".examples .grid-container"): 16:9 thumbnails (cover crop) on a fine grid (24
+  // columns, 12 on a phone; 8 px rows) placed by a skyline, as in the release: each tile goes into the lowest free
+  // stretch (the leftmost near the lowest), at a width from an uneven pattern (about 4 tiles a row), or over the whole
+  // stretch when the rest would be too narrow; a tile whose bottom lands within a quarter of its height of a
+  // neighbour's is snapped to it. Two changes (user 11/26: the right edge became a column of small tiles): a tile does
+  // not repeat the edges of the tile right below it (its width moves by 1 or 2 columns, or the tile below grows to its
+  // neighbour's bottom so the new tile spans both), and in a wider stretch every second tile takes the right end, so
+  // the narrow rest is not always on the right. Of a few tries (the pattern's start)
+  // the first without a gutter running straight across the gallery, down or across, is used (checked offline on 481
+  // widths x counts: none). The tiles then take the places in reading order (top, then left), so the numbers in the
+  // corners read left to right, top to bottom. Placement only: the DOM order (the numbers, the clicks) stays the page
+  // order.
+  const ROW = 8, GAP = 6, PATTERN = [7, 6, 8, 6, 7, 5, 8, 6, 7, 6];
   const childOf = (grid, el) => { while (el && el.parentElement !== grid) el = el.parentElement; return el; };
-  const layout = grid => {
-    const tracks = getComputedStyle(grid).gridTemplateColumns.split(' ').map(parseFloat).filter(x => x > 0);
-    const cols = tracks.length, colW = tracks[0];
-    if (!cols || !colW) return;
-    const scale = cols / 24, minW = Math.max(2, Math.round(4 * scale)), maxW = Math.max(minW + 1, Math.round(8 * scale));
-    const top = new Array(cols).fill(0);
-    grid.querySelectorAll('.thumbnail-item').forEach((thumb, i) => {
-      const cell = childOf(grid, thumb);
-      if (!cell) return;
-      const media = thumb.querySelector('img, video');
-      const mw = media ? (media.naturalWidth || media.videoWidth || 0) : 0;
-      const mh = media ? (media.naturalHeight || media.videoHeight || 0) : 0;
-      const ratio = mw && mh ? mw / mh : 16 / 9;
-      // the leftmost stretch whose top is near the lowest one (within about half a tile): the tiles fill the page
-      // left to right, band by band, so the numbers read in order; every stretch is filled at its own top (no holes)
+  const tryPlan = (n, cols, colW, shift) => {
+    const scale = cols / 24, minW = Math.max(2, Math.round(5 * scale)), maxW = Math.max(minW + 1, Math.round(8 * scale));
+    const rowsFor = w => Math.max(3, Math.round(((w * colW + (w - 1) * GAP) * 9 / 16 + GAP) / (ROW + GAP)));
+    const top = new Array(cols).fill(0), owner = new Array(cols).fill(-1), boxes = [];
+    for (let i = 0; i < n; i++) {
       const floor = Math.min(...top), near = Math.round(colW * 3 / (ROW + GAP));
-      const a = top.findIndex(t => t <= floor + near), low = top[a];  // the stretch [a, b)
-      let b = a;
-      while (b < cols && top[b] === low) b++;
-      const seg = b - a, shape = ratio < 0.9 ? 0.6 : ratio < 1.2 ? 0.8 : 1;
-      const want = Math.max(minW, Math.round(PATTERN[i % PATTERN.length] * scale * shape));
-      // a too narrow rest joins the tile only while the tile stays at most maxW wide; else it is left for a small tile
-      const w = Math.min(seg, seg - want >= minW ? want : seg <= maxW ? seg : Math.min(maxW, seg - minW));
-      let h = Math.max(3, Math.round(((w * colW + (w - 1) * GAP) / ratio + GAP) / (ROW + GAP)));
-      const x = a;  // always the stretch's left end: the numbers read left to right
+      let a = top.findIndex(t => t <= floor + near), b = a;  // the stretch [a, b)
+      while (b < cols && top[b] === top[a]) b++;
+      // a stretch that is exactly one tile: that tile grows down (cover crop, at most a quarter of its height) to the
+      // neighbouring stretch's top, so the next tile spans both and no column of tiles runs down the page
+      const one = owner[a] >= 0 ? boxes[owner[a]] : null;
+      if (one && one.x === a && one.x + one.w === b) {
+        const t2 = Math.min(...[b < cols ? top[b] : Infinity, a > 0 ? top[a - 1] : Infinity].filter(t => t > top[a]));
+        if (isFinite(t2) && t2 - top[a] <= one.h * 0.25) {
+          one.h = t2 - one.y;
+          for (let c = a; c < b; c++) top[c] = t2;
+          while (a > 0 && top[a - 1] === t2) a--;
+          while (b < cols && top[b] === t2) b++;
+        }
+      }
+      const low = top[a], seg = b - a, want = Math.max(minW, Math.round(PATTERN[(i + shift) % PATTERN.length] * scale));
+      let w = seg <= maxW ? seg : seg - want >= minW ? want : Math.min(maxW, seg - minW);
+      const fits = v => v >= minW && v <= maxW && (seg - v === 0 || seg - v >= minW);
+      const under = owner[a] >= 0 ? boxes[owner[a]] : null;
+      if (under && under.x === a && w === under.w) for (const d of [1, -1, 2, -2]) if (fits(w + d)) { w += d; break; }
+      let x = seg > w && i % 2 === 1 ? b - w : a;  // every second tile at the right end of a wider stretch
+      const under2 = owner[x] >= 0 ? boxes[owner[x]] : null;
+      if (under2 && under2.x === x && under2.w === w && seg > w) x = x === a ? b - w : a;
+      let h = rowsFor(w);
       const tol = Math.max(1, Math.round(h * 0.25));
-      for (const n of [x - 1, x + w]) {  // snap to a neighbour's bottom, unless that lines up every column
-        if (n < 0 || n >= cols) continue;
-        const d = top[n] - (low + h);
+      for (const k of [x - 1, x + w]) {  // snap to a neighbour's bottom, unless that lines up every column
+        if (k < 0 || k >= cols) continue;
+        const d = top[k] - (low + h);
         if (d === 0 || Math.abs(d) > tol) continue;
         const next = top.map((t, c) => (c >= x && c < x + w ? low + h + d : t));
         if (new Set(next).size > 1) { h += d; break; }
       }
       if (top.every((t, c) => (c >= x && c < x + w ? low + h : t) === low + h)) h += h > 6 ? -2 : 2;  // no line across
-      cell.style.gridColumn = `${x + 1} / span ${w}`;
-      cell.style.gridRow = `${low + 1} / span ${h}`;
-      for (let c = x; c < x + w; c++) top[c] = low + h;
+      boxes.push({x, w, y: low, h});
+      for (let c = x; c < x + w; c++) { top[c] = low + h; owner[c] = i; }
+    }
+    return boxes;
+  };
+  const straight = (boxes, cols) => {  // gutters running straight across the whole gallery, down or across
+    const H = Math.max(0, ...boxes.map(b => b.y + b.h));
+    let n = 0;
+    for (let y = 1; y < H; y++) if (!boxes.some(b => b.y < y && y < b.y + b.h)) n++;
+    for (let x = 1; x < cols; x++) if (!boxes.some(b => b.x < x && x < b.x + b.w)) n++;
+    return n;
+  };
+  const layout = grid => {
+    const tracks = getComputedStyle(grid).gridTemplateColumns.split(' ').map(parseFloat).filter(x => x > 0);
+    const cols = tracks.length, colW = tracks[0];
+    if (!cols || !colW) return;
+    const cells = [...grid.querySelectorAll('.thumbnail-item')].map(t => childOf(grid, t)).filter(Boolean);
+    let best = null;
+    for (let k = 0; k < PATTERN.length; k++) {
+      const boxes = tryPlan(cells.length, cols, colW, k), s = straight(boxes, cols);
+      if (!best || s < best.s) best = {boxes, s};
+      if (s === 0) break;
+    }
+    best.boxes.sort((p, q) => p.y - q.y || p.x - q.x);  // reading order: top, then left
+    cells.forEach((cell, i) => {
+      const b = best.boxes[i];
+      cell.style.gridColumn = `${b.x + 1} / span ${b.w}`;
+      cell.style.gridRow = `${b.y + 1} / span ${b.h}`;
     });
   };
   // Laid out again only when something it reads changed (the gallery's width, its tiles, their pictures' sizes): the

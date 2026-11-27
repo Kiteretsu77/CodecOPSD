@@ -13,7 +13,7 @@ import html as h
 import gradio as gr
 
 from . import state
-from .cache import cached, example_rows, gallery_items, request_key, size_label
+from .cache import cached, example_rows, example_size, gallery_items, page_examples, request_key, size_label
 from .media import add_files, captioned, paths_of
 from .outputs import shown, stopped, ui_outputs
 from .requests import image_runner, video_runner
@@ -189,7 +189,11 @@ def video_page(demo):
                     sizes = state.PAGE["sizes"]
                     size = gr.Dropdown([(size_label(v), v) for v in sizes], value=sizes[0],
                                        label="Output, height x width", interactive=len(sizes) > 1)
-                    frames = gr.Dropdown([(f"{f} ({f / 24:.1f} s)", f) for f in state.PAGE["frames"]], value=124,
+                    # the page's lengths plus every length a bundled example runs at (e.g. the 73 frames of a
+                    # 3 s line-art clip), so an example's own length is always a choice when it is run again
+                    lengths = sorted(set(state.PAGE["frames"]) | {example_size(state.VIDEO, spec["args"])[2]
+                                                                  for _, spec in page_examples(state.VIDEO)})
+                    frames = gr.Dropdown([(f"{f} ({f / 24:.1f} s)", f) for f in lengths], value=124,
                                          label="Frames at 24 fps")
                 # Codec pruning of Ours (the Teacher reads every token); an example fills these with its
                 # own setting, clearing or uploading references puts the defaults back (`codec_defaults`)
@@ -213,7 +217,7 @@ def video_page(demo):
                     vlm = gr.Dropdown(VLM_MODES, value="threshold", label="Text encoder (VLM) tokens")
                     vlm_scale = gr.Number(VLM_SCALE, label="VLM threshold scale", minimum=0.01, maximum=1.0,
                                           step=0.05)
-                seed = gr.Number(42, label="Seed", precision=0)
+                seed = gr.Number(42, label="Seed", precision=0, visible=False)  # no seed control on the page: an example keeps its own seed, other runs use 42
                 audio = gr.Checkbox(False, label="Audio: generate the soundtrack with the video (off: silent, as the "
                                     "CodecOPSD LoRA was trained; on: same speed, a slightly different video)",
                                     visible=state.VIDEO == "h3_flash_ref2va"
@@ -280,7 +284,7 @@ def image_page(demo):
                     vlm = gr.Dropdown(VLM_MODES, value="threshold", label="Text encoder (VLM) tokens")
                     vlm_scale = gr.Number(VLM_SCALE, label="VLM threshold scale", minimum=0.01, maximum=1.0,
                                           step=0.05)
-                seed = gr.Number(42, label="Seed", precision=0)
+                seed = gr.Number(42, label="Seed", precision=0, visible=False)  # no seed control on the page: an example keeps its own seed, other runs use 42
             codec = [strategy, p_motion, p_residual, vlm, vlm_scale]
             # the panel shows the controls of the chosen strategy (also when an example sets it)
             for c in (strategy, vlm):

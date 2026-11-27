@@ -40,10 +40,13 @@ references:
   picture_short_edge: [1024, 2048]  # a picture keeps its own short edge within this range: a smaller one is enlarged
                             # to 1024, a larger one reduced to 2048 (LANCZOS, never cropped; sides multiples of 32).
                             # Released MiniMax-H3 (diffusers) reads every picture at a 2048 short edge
-  video_tiers: [[480, 399360], [544, 522240], [768, 1032192]]  # a reference video is first resized onto the canvas of
-                            # its output's tier (short edge, area cap; Pika H3 Flex's tiers): the smallest tier whose
-                            # short edge reaches the output's (output 320-480 -> 480 x 832 area, 576-768 -> 768 x 1344),
-                            # then cut and gazed. Without an output size (training): the 768 canvas, as released
+  video_tiers: [[320, 184320], [480, 399360], [544, 522240], [576, 589824], [768, 1032192]]  # a reference video is
+                            # first resized onto the canvas of its output's tier (short edge, area cap): the smallest
+                            # tier whose short edge reaches the output's, so every page size reads its videos at its own
+                            # resolution (320 x 576 -> 320 tier, 480 x 832 -> 480, 576 x 1024 -> 576, 768 x 1344 -> 768).
+                            # Pika H3 Flex ships the 480 / 544 / 768 tiers only (a 320p output read its videos at 480,
+                            # a 576p output at 768); the 320 and 576 tiers are ours. Then cut and gazed. Without an output
+                            # size (training): the 768 canvas, as released
   noise_t: 0.999            # every reference row is noised to t = 0.999 (t = 1 - sigma) and held there, as released
   video_encode: mode        # CodecOPSD: videos are encoded as the VAE posterior mode; pictures as released (sampled, seed 42, float16)
   gaze_kinds:               # CodecOPSD: codec gazer kind per reference (configs/codec_gazer.yaml): plain RGB only

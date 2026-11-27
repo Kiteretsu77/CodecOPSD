@@ -2,7 +2,7 @@
  "label": "8-panel storyboard: 3 pictures",
  "order": 7,
  "source": "OmniVBench multi_panel_content_reference/014",
- "demo": true,
+ "demo": false,
  "args": [
   "--prompt-file",
   "prompt.txt",

@@ -2,7 +2,7 @@
  "label": "Eagle Hunter: 3 pictures + 1 video",
  "order": 11,
  "gallery": true,
- "source": "CodecOPSD homepage Ref2VA gallery: Eagle Hunter",
+ "source": "CodecOPSD homepage Ref2VA gallery: Eagle Hunter; camera video replaced by Pexels 15926214",
  "args": [
   "--prompt-file",
   "prompt.txt",
@@ -13,7 +13,7 @@
   "--reference",
   "../../refs/eagle_hunter_3.jpg",
   "--reference",
-  "../../refs/eagle_hunter_4.mp4",
+  "../../refs/eagle_hunter_4_p15926214.mp4",
   "--height",
   "768",
   "--width",

@@ -1,5 +1,6 @@
 {
  "label": "Silver wolf: 2 pictures + 3 videos",
+ "demo": false,
  "order": 1.3,
  "source": "pictures and videos generated with MiniMax-H3 (Pika H3 Flex)",
  "args": [

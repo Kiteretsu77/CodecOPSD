@@ -1,0 +1,20 @@
+subject_definitions:
+<Subject 1> is the white cylindrical pump bottle with a black pump head and a pattern of small black crosses in <Picture 1>.
+<Video 1> is the camera reference: only its slow camera move around the product is reproduced: the camera glides sideways in a gentle arc around the object on the stand, keeping it in the centre of the frame. Its paper cup, its wooden stool, its plant and its wall are not used.
+
+summary:
+[reference generation] A clean product video: <Subject 1> stands on a white bathroom shelf in soft daylight while the camera glides sideways around it in a slow arc, as in <Video 1>. A quiet room.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the white bottle, the black pump head and the black cross pattern are retained.
+<Video 1> (camera reference): reference - only the slow sideways arc of the camera is reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of a realistic, bright and clean product advertisement. There is no text, lettering, logo or brand mark anywhere. Soft daylight from a window and a long soft shadow on the shelf.
+[Shot 1] <Subject 1> stands alone in the centre of a white bathroom shelf against a pale grey wall, with a small green plant and a folded white towel out of focus at the side. From the first frame to the last, the camera glides sideways around the bottle in one slow arc as in <Video 1>, so the shelf, the wall and the plant shift behind it while the bottle stays in the centre of the frame and turns slightly to show its side. The bottle itself does not move.
+
+overall_soundscape:
+A quiet room with faint daylight ambience. No speech.
+
+non_diegetic_music:
+N/A

@@ -81,8 +81,27 @@ Where every reference file of the bundled examples (`assets/examples/refs/`) com
 **`anime_skater`**: Anime skater: 2 pictures + 1 video
 
 - `anime_skater_1.jpg` (picture): generated with MiniMax-H3-Image (text to image)
-- `anime_skater_2.jpg` (picture): generated with MiniMax-H3-Image (text to image)
+- `anime_skater_2c.jpg` (picture): generated with MiniMax-H3-Image (text to image), a flat seaside promenade with a low wall (replaces `anime_skater_2.jpg`, whose stepped terraces confused the motion)
 - `anime_skater_3.mp4` (video): Pexels video 7334612, skateboarding, 5 s cut, https://www.pexels.com/video/7334612/
+
+**`lipstick_recast`**: Lipstick ad recast: 1 picture + 1 video
+
+- `lipstick_recast_1.jpg` (picture): Comfy-Org workflow template api_minimax_h3_max_recast (MIT), the new presenter
+- `lipstick_recast_2.mp4` (video): Comfy-Org workflow template api_minimax_h3_max_recast (MIT), the advertisement whose presenter is replaced
+
+**`product_bottle`**: Product shot: 1 picture + 1 video
+
+- `product_bottle_1.jpg` (picture): Pexels photo 8070286, a pump bottle, https://www.pexels.com/photo/8070286/
+- `product_bottle_2.mp4` (video): Pexels video 6612210, a slow camera arc around a product, 5 s cut, https://www.pexels.com/video/6612210/
+
+**`lineart_hair`**: Line-art sketch: 1 video
+
+- `lineart_hair_1.mp4` (video): OmniVBench case structure/line_art/013 reference video (academic use only), the full 2.96 s clip with in-between frames added by us (a linear blend between consecutive drawings)
+
+**`storm_trawler`**, **`eagle_hunter`** (homepage gallery cases): replaced camera references
+
+- `storm_trawler_2_slow70.mp4` (video): the gallery camera video `storm_trawler_2.mp4`, its first 89 frames slowed to 0.7x with motion-compensated frames, back to 124 frames at 24 fps
+- `eagle_hunter_4_p15926214.mp4` (video): Pexels video 15926214, the camera rises and pulls back from a person on a snowy ridge, 5 s cut, https://www.pexels.com/video/15926214/
 
 **`blanket`**: Spreading a blanket: 4 pictures
 

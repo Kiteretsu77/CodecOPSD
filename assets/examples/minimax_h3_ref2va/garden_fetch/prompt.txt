@@ -5,7 +5,7 @@ subject_definitions:
 <Subject 4> is the sunny back garden with a green lawn, a white picket fence, a raised vegetable bed on the left, a lemon tree, a weathered wooden bench and terracotta pots of red geraniums on the right in <Picture 4>.
 
 summary:
-[reference generation] In <Subject 4>, <Subject 1> sits on the wooden bench and tosses a ball across the lawn, and <Subject 2> and <Subject 3> race after it.
+[reference generation] In <Subject 4>, <Subject 1> sits on the wooden bench and tosses a ball across the lawn; <Subject 3> runs after it, <Subject 2> follows, and she claps her hands.
 
 retention_analysis:
 <Subject 1> (appears in [Shot 1]): fully_preserved - her silver bun, lavender shawl, cream blouse, navy skirt and grey shoes are retained.
@@ -15,7 +15,7 @@ retention_analysis:
 
 detailed_description:
 The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Bright summer afternoon sun, soft shadows on the lawn.
-[Shot 1] A static wide shot of <Subject 4>, with the vegetable bed on the left, the lemon tree and the wooden bench on the right and the white picket fence behind. <Subject 1> sits on the bench holding a yellow tennis ball, while <Subject 2> and <Subject 3> wait on the lawn in front of her. She tosses the ball gently across the lawn to the left, and <Subject 2> and <Subject 3> race after it side by side, the beagle's ears flapping; the boy laughs, the dog reaches the ball first and trots back with it while <Subject 1> claps her hands. The camera does not move.
+[Shot 1] A static wide shot of <Subject 4>, with the vegetable bed on the left, the lemon tree and the wooden bench on the right and the white picket fence behind. <Subject 1> sits on the bench holding a yellow tennis ball, while <Subject 2> and <Subject 3> wait on the lawn in front of her. She tosses the ball gently across the lawn to the left; the beagle runs after it with its ears flapping and the boy follows, and <Subject 1> claps her hands. The camera does not move.
 
 overall_soundscape:
 Children's laughter, an excited bark, the soft thump of the ball on the grass, birdsong and a light breeze in the lemon tree. No speech.

@@ -1,14 +1,14 @@
 {
  "label": "Anime skater: 2 pictures + 1 video",
  "order": 3.5,
- "source": "pictures generated, video Pexels 7334612",
+ "source": "pictures generated, video Pexels 7334612; picture 2 regenerated with MiniMax-H3-Image (flat promenade)",
  "args": [
   "--prompt-file",
   "prompt.txt",
   "--reference",
   "../../refs/anime_skater_1.jpg",
   "--reference",
-  "../../refs/anime_skater_2.jpg",
+  "../../refs/anime_skater_2c.jpg",
   "--reference",
   "../../refs/anime_skater_3.mp4",
   "--height",

@@ -1,5 +1,5 @@
 {
- "label": "Anime Karate: 2 pictures + 2 videos",
+ "label": "Anime Karate: 2 pictures + 1 video",
  "order": 3,
  "gallery": true,
  "source": "CodecOPSD homepage Ref2VA gallery: Anime Karate",
@@ -12,8 +12,6 @@
   "../../refs/anime_karate_gallery_2.jpg",
   "--reference",
   "../../refs/anime_karate_gallery_3.mp4",
-  "--reference",
-  "../../refs/anime_karate_gallery_4.mp4",
   "--height",
   "768",
   "--width",

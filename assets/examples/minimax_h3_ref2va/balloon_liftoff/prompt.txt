@@ -4,7 +4,7 @@ subject_definitions:
 <Video 1> is the camera reference: only its drone camera move, a slow, steady straight rise with the camera looking level is reproduced; its green hills, its hedgerows, its fields and its trees are not used.
 
 summary:
-[reference generation] At sunrise over <Subject 2>, <Subject 1> lifts off the valley floor as its pilot fires the burner in roaring bursts, while the camera rises slowly and steadily straight up with it as in <Video 1>.
+[reference generation] At sunrise over <Subject 2>, <Subject 1> rises slowly above the valley as its burner fires in roaring bursts, while the camera rises slowly and steadily straight up with it as in <Video 1>.
 
 retention_analysis:
 <Subject 1> (appears in [Shot 1]): fully_preserved - the turquoise, saffron, crimson and violet patchwork gores, the ring of white diamonds and the wicker basket with leather trim of the balloon are retained.
@@ -13,7 +13,7 @@ retention_analysis:
 
 detailed_description:
 The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Warm low golden sunrise light, long shadows over the valley, soft haze and crisp detail in the fabric, the wicker and the rock.
-[Shot 1] <Subject 2> stretches out below a pale-gold sky, and a few other hot air balloons drift high and small in the distance. In the foreground <Subject 1> rises slowly from the valley floor, its huge envelope glowing in the sun. From the first frame to the last, the camera rises slowly and steadily straight up as in <Video 1>, looking level without turning or moving forward, so the rock chimneys, the orchards and the dirt road slide steadily down through the frame and more of the far valley appears, while <Subject 1> climbs alongside the camera. Inside the wicker basket a pilot in a brown leather jacket pulls the burner valve, and a tall yellow-orange flame roars up into the envelope in long bursts, lighting the patchwork gores from the inside. Between bursts the flame drops back to a small blue pilot light, and the balloon's long shadow slides across the vineyards below.
+[Shot 1] <Subject 2> stretches out below a pale-gold sky, and a few other hot air balloons drift high and small in the distance. In the foreground <Subject 1> rises slowly above the valley floor, its huge envelope glowing in the sun. From the first frame to the last, the camera rises slowly and steadily straight up as in <Video 1>, looking level without turning or moving forward, so the rock chimneys, the orchards and the dirt road slide steadily down through the frame and more of the far valley appears, while <Subject 1> climbs alongside the camera. Above the wicker basket the burner fires a tall yellow-orange flame up into the envelope in long bursts, lighting the patchwork gores from the inside. Between bursts the flame drops back to a small blue pilot light.
 
 overall_soundscape:
 Loud, roaring whooshes of the burner in long bursts, then quiet between them, with a soft morning wind, the creak of the wicker basket and birdsong rising from the valley. No speech.

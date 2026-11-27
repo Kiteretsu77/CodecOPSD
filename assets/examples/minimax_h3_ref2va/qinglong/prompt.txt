@@ -4,10 +4,10 @@ subject_definitions:
 <Subject 3> is the glowing golden pearl wreathed in swirling orange-red flames in <Picture 3>.
 <Subject 4> is the young woman martial artist with long black hair tied up with a jade hairpin, flowing white-and-azure robes with wide sleeves, a long red sash and a slim silver sword in <Picture 4>.
 <Subject 5> is the red-crowned crane with pure white plumage, a black neck, black tail feathers and a bright red crown in <Picture 5>.
-<Video 1> is the action reference: only the sword routine of the performer is reproduced, move for move: he raises the sword high above his head, spins around once, lunges forward and thrusts the sword straight ahead, then kicks one leg high; his grey clothes and the grey studio are not used.
+<Video 1> is the action reference: only the sword routine of the performer is reproduced: he raises the sword high above his head, spins around once, lunges forward and thrusts the sword straight ahead; his grey clothes and the grey studio are not used.
 
 summary:
-[reference generation] A four-shot sequence in <Subject 1>: <Subject 3> glows above the clouds, the one dragon <Subject 2> rises to chase it, <Subject 4> performs the sword routine of <Video 1> on the tallest pillar, and the dragon lowers its head in front of her while <Subject 5> flies past. There is only one dragon in the whole video. The video is silent.
+[reference generation] A four-shot sequence in <Subject 1>: <Subject 3> glows above the clouds, the one dragon <Subject 2> rises to chase it, <Subject 4> performs the sword routine of <Video 1> on the tallest pillar, and the dragon lowers its head in front of her. There is only one dragon in the whole video. The video is silent.
 
 retention_analysis:
 <Subject 1> (appears in [Shot 1], [Shot 2], [Shot 3], [Shot 4]): fully_preserved - the layout, colours and lighting of the sea of white clouds at sunrise among towering stone pillars covered in green pine trees, with a small red-roofed pavilion on the tallest pillar are retained.
@@ -15,14 +15,14 @@ retention_analysis:
 <Subject 3> (appears in [Shot 1], [Shot 2], [Shot 4]): fully_preserved - the shape, colours and glow of the glowing golden pearl wreathed in swirling orange-red flames are retained.
 <Subject 4> (appears in [Shot 3], [Shot 4]): fully_preserved - the face, hair and clothing of the young woman martial artist with long black hair tied up with a jade hairpin, flowing white-and-azure robes with wide sleeves, a long red sash and a slim silver sword are retained.
 <Subject 5> (appears in [Shot 1]): fully_preserved - the shape and colours of the red-crowned crane with pure white plumage, a black neck, black tail feathers and a bright red crown are retained.
-<Video 1> (action reference): reference - only the sword routine of the performer is reproduced, move for move: he raises the sword high above his head, spins around once, lunges forward and thrusts the sword straight ahead, then kicks one leg high; his grey clothes and the grey studio are not used.
+<Video 1> (action reference): reference - only the sword routine of the performer is reproduced: he raises the sword high above his head, spins around once, lunges forward and thrusts the sword straight ahead; his grey clothes and the grey studio are not used.
 
 detailed_description:
 The target video is a silent 10.1-second video in photorealistic feature-film visual effects with natural sunrise lighting and fine detail. There is no text, lettering or logo anywhere.
-[Shot 1] (00:00-00:02.5) Wide establishing shot of <Subject 1> at sunrise: <Subject 3> floats and burns above the sea of clouds beside the tallest stone pillar, and <Subject 5> glides slowly across the frame from right to left with its wide white wings spread.
-[Shot 2] (00:02.5-00:05.0) Low-angle shot: the one dragon <Subject 2> bursts up out of the sea of clouds, its extremely long body winding upward in big S-shaped curves as it chases the burning pearl.
-[Shot 3] (00:05.0-00:07.5) Full shot of <Subject 4> on top of the tallest stone pillar beside the red-roofed pavilion, performing the sword routine of <Video 1> move for move: she raises her silver sword high above her head, spins around once, lunges forward and thrusts the sword straight ahead, then kicks one leg high, her sleeves and red sash whirling.
-[Shot 4] (00:07.5-00:10.1) Medium shot from the side: the same single dragon <Subject 2> glides up to the top of the pillar and lowers its one huge head in front of <Subject 4>, its long body trailing away into the clouds behind it; the burning pearl hovers just above the dragon's head, and she slowly lowers her sword and looks up at it. Only one dragon appears in this shot.
+[Shot 1] (00:00-00:02.5) Wide establishing shot of <Subject 1> at sunrise: <Subject 3> floats and burns above the sea of clouds beside the tallest stone pillar, and <Subject 5> glides slowly across the frame with its wide white wings spread.
+[Shot 2] (00:02.5-00:05.0) Low-angle shot against the bright sunrise sky of <Subject 1>: the one dragon <Subject 2> bursts up out of the sea of clouds, its extremely long body winding upward in big S-shaped curves as it chases the burning pearl.
+[Shot 3] (00:05.0-00:07.5) Full shot of <Subject 4> on top of the tallest stone pillar beside the red-roofed pavilion, performing the sword routine of <Video 1>: she raises her silver sword high above her head, spins around once, then lunges forward and thrusts the sword straight ahead, her sleeves and red sash whirling.
+[Shot 4] (00:07.5-00:10.1) Medium shot from the side: the same single dragon <Subject 2> glides up to the top of the pillar and lowers its one huge head beside <Subject 4>, its long body trailing away into the clouds behind it; the burning pearl hovers just above the dragon's head, and she stands with her sword and looks up at it. Only one dragon appears in this shot.
 
 overall_soundscape:
 This is a silent video.

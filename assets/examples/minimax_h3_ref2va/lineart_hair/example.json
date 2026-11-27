@@ -1,0 +1,21 @@
+{
+ "label": "Line-art sketch: 1 video",
+ "order": 8.4,
+ "source": "OmniVBench structure/line_art/013 (academic use only), in-between frames added by us",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/lineart_hair_1.mp4",
+  "--height",
+  "768",
+  "--width",
+  "1344",
+  "--frames",
+  "73",
+  "--text-encoder",
+  "fp8-storage",
+  "--seed",
+  "2026"
+ ]
+}

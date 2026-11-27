@@ -19,8 +19,6 @@
   "1344",
   "--frames",
   "124",
-  "--video-drop",
-  "threshold",
   "--seed",
   "42"
  ]

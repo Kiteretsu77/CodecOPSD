@@ -2,15 +2,15 @@ subject_definitions:
 <Video 1> is the previous shot of the same scene; the target video is its next part and continues directly from its last frame.
 
 summary:
-[video continuation] The young woman in the yellow raincoat from <Video 1> stops her bicycle in front of a small bakery, and the story continues in a second shot from inside the bakery as she comes in out of the rain.
+[video continuation] The young woman in the yellow raincoat from <Video 1> rides her bicycle a little closer along the rainy street and brakes to a stop, and the story continues in a second shot from inside a small bakery as she comes in out of the rain.
 
 retention_analysis:
 <Video 1> (continuation starting point): fully_preserved - the woman, her bright yellow raincoat, dark blue jeans, red rubber boots and mint-green bicycle with the wicker basket, the wet cobblestone street, the warm shop windows and the blue dusk rain are retained, and [Shot 1] starts exactly where <Video 1> ends.
 
 detailed_description:
 The target video is a 5.2-second sequence of two shots of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Blue dusk, light rain, warm light from the shop windows reflecting on the wet stones.
-[Shot 1] The shot continues directly from the last frame of <Video 1>, from the same static camera position: the woman in the bright yellow raincoat rolls a little closer on the mint-green bicycle, brakes, stops in front of a small bakery with a glowing window on the right side of the street and steps off the bicycle.
-[Shot 2] At 00:02.500, cut to a medium shot from inside the warm bakery, looking at its glass door: the same woman in the yellow raincoat pushes the door open, a small brass bell above the door swings, and she lowers her hood and shakes the rain off it, smiling, with the wet blue street behind her.
+[Shot 1] The shot continues directly from the last frame of <Video 1>, from the same static camera position: the woman in the bright yellow raincoat rolls a little closer on the mint-green bicycle, brakes and stops in the middle of the wet cobblestone street.
+[Shot 2] At 00:02.500, cut to a medium shot from inside a warm little bakery, looking at its glass door: the same woman in the yellow raincoat pushes the door open, a small brass bell above the door swings, and she lowers her hood and shakes the rain off it, smiling, with the wet blue street behind her.
 
 overall_soundscape:
 Light rain on the cobblestones and the click of the bicycle brake, then, inside, the ring of the door bell and the quiet hum of the warm bakery. No speech.

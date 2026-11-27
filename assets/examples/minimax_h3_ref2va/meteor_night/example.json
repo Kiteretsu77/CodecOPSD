@@ -25,5 +25,6 @@
   "fp8-storage",
   "--seed",
   "42"
- ]
+ ],
+ "demo": false
 }

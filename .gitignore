@@ -36,6 +36,10 @@ dist/
 
 # Notes
 tmp_info/
+tmp/
 
 # Gradio (share-link certificate)
 .gradio/
+
+# Personal files (resume)
+/BoyangWang_Resume*

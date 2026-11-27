@@ -1,6 +1,6 @@
 {
  "source": "pictures and videos generated with MiniMax-H3",
- "demo": true,
+ "demo": false,
  "args": [
   "--prompt-file",
   "prompt.txt",
