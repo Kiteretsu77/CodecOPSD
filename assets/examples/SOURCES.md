@@ -14,6 +14,11 @@ Where every reference file of the bundled examples (`assets/examples/refs/`) com
 - `anime_karate_v2_2.jpg` (picture): generated with MiniMax-H3-Image (text to image)
 - `anime_karate_v2_3.mp4` (video): Pexels video 7045195, martial arts practice, 5 s cut, https://www.pexels.com/video/7045195/
 
+**`crane_desert`**: Crane up on a desert road: 1 picture + 1 video (not on the page)
+
+- `dolly_zoom_desert_1.jpg` (picture): generated with MiniMax-H3-Image (text to image)
+- `crane_barn_2.mp4` (video): Pexels video 19440551, drone rising past two pine trees, sped up 1.6x, https://www.pexels.com/video/19440551/
+
 **`dolly_zoom_desert`**: Dolly zoom on a desert road: 1 picture + 1 video
 
 - `dolly_zoom_desert_1.jpg` (picture): generated with MiniMax-H3-Image (text to image)
@@ -421,3 +426,8 @@ Cases published by others. Pictures were resized to a short edge of 1024 to 1536
 **`flash_yellow_plane`**: Yellow plane: 1 picture
 
 - `flash_yellow_plane_1.jpg` (picture): the ComfyUI template https://github.com/Comfy-Org/workflow_templates/blob/main/templates/video_fasth3_ominiref_r2v.json (repository MIT; no separate license for the media); prompt verbatim
+
+**`gas_station_vlog`**: Gas-station vlog remix: 3 pictures + 1 video
+
+- `gas_station_vlog_1.png`, `gas_station_vlog_2.png`, `gas_station_vlog_3.png` (pictures: T-shirt, made-up KIRA can, gas station): generated with MiniMax-H3-Image (text to image), no real brand or logo
+- `gas_station_vlog_4.mp4` (video): the MiniMax-H3 cookbook's case 3.3.4.2 input video (15.07 s, 1920 x 1080, 24 fps), likely generated with Seedance 2.0 (not confirmed)

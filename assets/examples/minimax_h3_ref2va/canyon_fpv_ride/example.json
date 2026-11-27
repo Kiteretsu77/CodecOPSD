@@ -11,9 +11,9 @@
   "--reference",
   "../../refs/canyon_fpv_ride_2.mp4",
   "--height",
-  "768",
+  "480",
   "--width",
-  "1344",
+  "832",
   "--frames",
   "124",
   "--picture-thresholds",
@@ -22,6 +22,8 @@
   "--text-encoder",
   "fp8-storage",
   "--seed",
-  "2026"
+  "2026",
+  "--video-drop",
+  "0.66"
  ]
 }

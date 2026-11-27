@@ -23,6 +23,8 @@
   "4.0",
   "1.5",
   "--text-encoder",
-  "fp8-storage"
+  "fp8-storage",
+  "--video-drop",
+  "0.66"
  ]
 }

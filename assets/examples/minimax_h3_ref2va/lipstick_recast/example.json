@@ -10,15 +10,17 @@
   "--reference",
   "../../refs/lipstick_recast_2.mp4",
   "--height",
-  "768",
+  "480",
   "--width",
-  "1344",
+  "832",
   "--frames",
   "124",
   "--picture-thresholds",
   "4.0",
   "1.5",
   "--seed",
-  "42"
+  "42",
+  "--video-drop",
+  "0.66"
  ]
 }

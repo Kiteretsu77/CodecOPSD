@@ -20,7 +20,7 @@ from diffusers.utils import export_to_video
 from PIL import ImageOps
 
 from . import state
-from .cache import example_rows, remember, request_key, finish, computed, read_meta
+from .cache import example_rows, remember, request_key, finish, computed, read_meta, example_size, page_examples
 from .inputs import check_tags, open_picture, open_reference, parse_seed, parse_size, source_of
 from .media import display_copy, input_paths
 from .outputs import page_outputs
@@ -264,11 +264,14 @@ def run_video_raw(prompt, files, size, frames, strategy, video_drop, video_motio
         except (TypeError, ValueError):
             frames = -1
         top = max(state.PAGE["frames"])
+        if (height, width, frames) in {tuple(map(int, example_size(state.VIDEO, spec["args"])))
+                                       for _, spec in page_examples(state.VIDEO)}:
+            top = max(top, frames)  # a bundled example at its own size and length (e.g. a 15 s video edit)
         if not 22 <= frames <= top or (frames - 5) % 17:
             raise Refused(f"Frames: 17n + 5, from 22 to {top} (the Settings offer "
                            f"{', '.join(map(str, state.PAGE['frames']))}).")
         codec = parse_codec(strategy, video_drop, video_motion, video_residual, picture_motion, picture_residual, vlm,
-                            vlm_scale)
+                            vlm_scale, size=(height, width))
         references = map_references(lambda path, i: open_reference(path, i, frames), paths, range(1, len(paths) + 1))
         kinds = [r.kind for r in references]
         check_tags(prompt, kinds.count("image"), kinds.count("video"), video_tab=True)

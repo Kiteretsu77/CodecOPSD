@@ -1,0 +1,23 @@
+subject_definitions:
+<Subject 1> is the young woman in <Video 1> with long black hair.
+<Subject 2> is the navy T-shirt in <Picture 1> with "VIRGINIA" printed in large orange letters across the chest.
+<Subject 3> is the pastel pink KIRA drink can in <Picture 2>, with the made-up name "KIRA" in white letters and a small peach drawing.
+<Subject 4> is the gas station in <Picture 3>: a flat white canopy over fuel pumps, a small shop with a glass front and a plain "GAS" sign.
+<Video 1> is the source video for the editing task: its handheld camera moves, framing, foreground canopy and ledge, and the woman's face, actions, gestures and their timing are kept.
+
+summary:
+[video editing] The target video is an edited version of <Video 1>, moved to a bright sunny afternoon, with four edits; all motion and camera movement stay exactly as in <Video 1>. First, <Subject 1> wears <Subject 2> instead of her black graphic T-shirt. Second, the blue can she holds at the beginning and then puts on the ledge becomes <Subject 3>, and it stays <Subject 3> until the last frame. Third, the FamilyMart convenience store across the parking lot, with its green-and-white stripes and its Chinese sign "全家", is completely replaced by <Subject 4>; there are no Chinese characters anywhere. Fourth, at the end her clear plastic bag is full of KIRA cans identical to <Subject 3> instead of snacks, and her final line is "I bought a whole bunch of KIRA." The video is silent.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - her face and long black hair are retained; only her T-shirt changes.
+<Subject 2> (appears in [Shot 1]): fully_preserved - the navy colour and the orange "VIRGINIA" lettering of the T-shirt are retained in every frame.
+<Subject 3> (appears in [Shot 1]): fully_preserved - the shape, the pastel pink colour, the white "KIRA" lettering and the peach drawing of the can are retained in every frame where it is visible.
+<Subject 4> (appears in [Shot 1]): fully_preserved - the white canopy, the fuel pumps, the glass-front shop and the plain "GAS" sign are retained in every frame.
+<Video 1> (source video editing): reference - the handheld camera moves, the framing, the canopy and ledge in the foreground, the layout of the open lot, and the woman's face, actions, gestures and their timing are reproduced exactly; her T-shirt, the can, the convenience store, the snacks and the night lighting are replaced.
+
+detailed_description:
+The target video is a silent 15.1-second handheld vlog in realistic photographic style on a bright sunny afternoon, with a blue sky, dry asphalt and natural daylight; there is no night, no rain and no artificial glow. The shot follows <Video 1> frame by frame, with the same framing, camera moves, actions and timing.
+[Shot 1] From 00:00 to 00:03, <Subject 1>, wearing <Subject 2>, stands under a canopy, talks to the camera and holds <Subject 3> up toward the lens, with <Subject 4> behind her across a sunlit forecourt. At about 00:03 she puts <Subject 3> down on the low ledge at the left edge of the frame; from then on it stands there, upright and unchanged, until the end of the video. From 00:04 to 00:07 she turns, points at <Subject 4> and turns back to the camera; the orange "VIRGINIA" lettering on her navy T-shirt faces the camera. At 00:09 she gives a thumbs-up. At 00:10 she bends down out of view, then lifts a clear plastic shopping bag. From 00:12 to the end she opens the bag toward the camera: it is full of pastel pink KIRA cans identical to <Subject 3>, with no snacks left inside, and she says her final line, "I bought a whole bunch of KIRA," with natural lip movements.
+
+overall_soundscape:
+Silence.

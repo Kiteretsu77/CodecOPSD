@@ -34,6 +34,11 @@ dist/
 /actions.json
 *.mp4
 
+# Pictures: only the ones under assets/ are tracked
+*.png
+!/assets/**/*.png
+*.docx
+
 # Notes
 tmp_info/
 tmp/
@@ -41,5 +46,4 @@ tmp/
 # Gradio (share-link certificate)
 .gradio/
 
-# Personal files (resume)
-/BoyangWang_Resume*
+

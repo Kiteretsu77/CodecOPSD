@@ -187,8 +187,14 @@ def video_page(demo):
             with gr.Accordion("Settings", open=False):
                 with gr.Row():
                     sizes = state.PAGE["sizes"]
-                    size = gr.Dropdown([(size_label(v), v) for v in sizes], value=sizes[0],
+                    size = gr.Dropdown([(size_label(v), v) for v in sizes],  # 480p by default
+                                       value="480 x 832" if "480 x 832" in sizes else sizes[0],
                                        label="Output, height x width", interactive=len(sizes) > 1)
+                    audio = gr.Checkbox(False, label="Audio: generate the soundtrack with the video (off: silent, "
+                                        "as the CodecOPSD LoRA was trained; on: same speed, a slightly different "
+                                        "video)", visible=state.VIDEO == "h3_flash_ref2va"
+                                        or getattr(state.ARGS, "sampler", None) == "base")
+                with gr.Row():  # the length, a minor choice, on the second row
                     # the page's lengths plus every length a bundled example runs at (e.g. the 73 frames of a
                     # 3 s line-art clip), so an example's own length is always a choice when it is run again
                     lengths = sorted(set(state.PAGE["frames"]) | {example_size(state.VIDEO, spec["args"])[2]
@@ -218,10 +224,6 @@ def video_page(demo):
                     vlm_scale = gr.Number(VLM_SCALE, label="VLM threshold scale", minimum=0.01, maximum=1.0,
                                           step=0.05)
                 seed = gr.Number(42, label="Seed", precision=0, visible=False)  # no seed control on the page: an example keeps its own seed, other runs use 42
-                audio = gr.Checkbox(False, label="Audio: generate the soundtrack with the video (off: silent, as the "
-                                    "CodecOPSD LoRA was trained; on: same speed, a slightly different video)",
-                                    visible=state.VIDEO == "h3_flash_ref2va"
-                                    or getattr(state.ARGS, "sampler", None) == "base")
             codec = [strategy, drop, v_motion, v_residual, p_motion, p_residual, vlm, vlm_scale]
             # the panel shows the controls of the chosen strategy (also when an example sets it)
             for c in (strategy, vlm):

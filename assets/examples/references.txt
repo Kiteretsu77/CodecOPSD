@@ -198,6 +198,10 @@ garden_fetch_1.jpg
 garden_fetch_2.jpg
 garden_fetch_3.jpg
 garden_fetch_4.jpg
+gas_station_vlog_1.png
+gas_station_vlog_2.png
+gas_station_vlog_3.png
+gas_station_vlog_4.mp4
 glowing_tide_1.jpg
 glowing_tide_2.jpg
 glowing_tide_3.mp4

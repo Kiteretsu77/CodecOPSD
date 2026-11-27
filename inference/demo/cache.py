@@ -213,7 +213,8 @@ def example_setting(name, ex, d, meta):
     src = f" (references: {spec['source']})" if spec.get("source") else ""
     if name in VIDEO_MODELS:
         h, w, frames = example_size(name, a)
-        return f"output {h} x {w}, {frames} frames{src}", parse_codec(*example_codec(spec))["text"]
+        ours = parse_codec(*example_codec(spec), size=(int(h), int(w)))["text"]
+        return f"output {h} x {w}, {frames} frames{src}", ours
     strategy, pm, pr, vlm, scale = example_codec(spec, video=False)
     ours = parse_codec(strategy, None, None, None, pm, pr, vlm, scale, video=False)["text"]
     for who in ("student", "released"):  # the full-size result (PNG, or the full-size JPEG of a release) gives the size

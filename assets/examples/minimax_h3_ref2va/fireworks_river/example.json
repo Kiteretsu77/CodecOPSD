@@ -10,9 +10,9 @@
   "--reference",
   "../../refs/fireworks_river_2.mp4",
   "--height",
-  "768",
+  "480",
   "--width",
-  "1344",
+  "832",
   "--frames",
   "124",
   "--seed",
@@ -21,6 +21,8 @@
   "4.0",
   "1.5",
   "--text-encoder",
-  "fp8-storage"
+  "fp8-storage",
+  "--video-drop",
+  "0.66"
  ]
 }

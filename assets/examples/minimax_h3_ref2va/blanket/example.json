@@ -14,12 +14,14 @@
   "--reference",
   "../../refs/blanket_picture4.png",
   "--height",
-  "768",
+  "480",
   "--width",
-  "1344",
+  "832",
   "--frames",
   "124",
   "--seed",
-  "42"
+  "42",
+  "--video-drop",
+  "0.66"
  ]
 }

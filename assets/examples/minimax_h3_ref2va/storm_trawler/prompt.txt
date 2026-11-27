@@ -3,7 +3,7 @@ subject_definitions:
 <Video 1> is the camera reference: only its slow, steady orbit around the subject is reproduced, not its content.
 
 summary:
-[reference generation] At dusk in a violent storm on the open ocean, <Subject 1> plows through huge grey waves; its bow rises over a crest and slams down, throwing a massive burst of white spray over the wheelhouse, while the camera travels with the trawler and sweeps slowly around it as in <Video 1>, about half a circle. Howling wind, crashing waves and a groaning hull.
+[reference generation] At dusk in a violent storm on the open ocean, <Subject 1> plows through huge grey waves; its bow rises over a crest and slams down, throwing a massive burst of white spray over the wheelhouse, while the camera circles slowly around it as in <Video 1>, about half a circle; the trawler holds a straight course and only the camera moves. Howling wind, crashing waves and a groaning hull.
 
 retention_analysis:
 <Subject 1> (appears in [Shot 1]): fully_preserved - the rust-streaked crimson-red hull, the white wheelhouse with its square windows, the yellow lifebuoys, the tyres, the A-frame with nets and green floats, the orange buoys and the mast of the trawler are retained.
@@ -11,7 +11,7 @@ retention_analysis:
 
 detailed_description:
 The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain, rich texture and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Dark slate-blue storm light at dusk, low racing clouds, foam streaks on the water and the warm glow of the trawler's work lights.
-[Shot 1] <Subject 1> fights its way through a heavy storm on the open ocean, its work lights and wheelhouse windows glowing warm. From the first frame to the last, the camera travels with the trawler and sweeps slowly and steadily around it as in <Video 1>, about half a circle over the shot, with a slight up-and-down handheld bob: at the start the trawler is seen from one side, in the middle the camera passes in front of its bow, and by the end it is seen from its other side. Huge grey waves with white foaming crests roll toward it. The bow climbs up the face of a towering wave, then slams down into the trough, and a massive burst of white spray explodes up and over the wheelhouse.
+[Shot 1] <Subject 1> fights its way through a heavy storm on the open ocean, its work lights and wheelhouse windows glowing warm. From the first frame to the last, the camera circles slowly and steadily around the trawler as in <Video 1>, about half a circle: at the start its bow points to the right of the frame and the A-frame at its stern is on the left, in the middle the bow points straight at the camera, and by the end the bow points to the left of the frame and the A-frame is on the right. The trawler itself holds a straight course and never turns; only the camera moves around it. Huge grey waves with white foaming crests roll toward it. The bow climbs up the face of a towering wave, then slams down into the trough, and a massive burst of white spray explodes up and over the wheelhouse.
 
 overall_soundscape:
 A howling, gusting wind, the deep thunder of breaking waves, the heavy boom as the bow slams into the trough, the hiss of spray across the deck, the groan of the steel hull and the steady throb of the diesel engine underneath. No speech.

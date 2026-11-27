@@ -26,7 +26,8 @@ from .progress import Refused
 # inside codec pruning and is not shown here.
 
 # Strategy of the reference videos (the pictures always keep the codec's threshold decision):
-#   default   = ours: priority drop of 70 %, or the threshold decision when it drops more (codec_gazer.yaml select: max);
+#   default   = ours: priority drop of 70 % at 768p and above, 66 % below 768p (`video_drop_default`), or the threshold
+#               decision when it drops more (codec_gazer.yaml select: max);
 #               every threshold at its config value (the panel's fields are hidden and not read)
 #   priority  = priority drop of exactly the slider's share (select: exact); thresholds at their config values
 #   threshold = the threshold decision alone, with the panel's thresholds (videos and pictures)
@@ -34,7 +35,7 @@ from .progress import Refused
 # at default.
 STRATEGIES = [("Default (recommended)", "default"), ("Priority drop", "priority"), ("Threshold", "threshold")]
 STRATEGY_NOTES = {
-    "default": "Priority drop of 70 %, or the threshold decision when it drops more.",
+    "default": "Priority drop of 66 % below 768p and 70 % at 768p, or the threshold decision when it drops more.",
     "priority": "Each reference video drops exactly this share, its least important tokens first.",
     "threshold": "A token is kept when its motion or its residual is above the threshold.",
 }
@@ -42,8 +43,15 @@ IMAGE_STRATEGIES = [("Default (recommended)", "default"), ("Threshold", "thresho
 VLM_MODES = [("Threshold x scale (as trained)", "threshold"), ("The VAE tokens' mask (DiT tokens)", "dit"),
              ("Every token (no VLM drop)", "off")]
 VLM_SCALE = 0.25  # codec_gazer.yaml vlm_drop.picture_threshold_scale
-VIDEO_DROP = 0.70  # codec_gazer.yaml priority_drop.video_default
+VIDEO_DROP = 0.70  # codec_gazer.yaml priority_drop.video_default, the default at 768p and above
+VIDEO_DROP_LOW = 0.66  # the default below 768p (the page's 480p): fewer tokens per frame, so a little more is kept
 THRESHOLDS = {form: (float(_GAZER[form]["motion_px"]), float(_GAZER[form]["residual"])) for form in ("video", "image")}
+
+
+def video_drop_default(size=None):
+    """The default priority drop of the reference videos for an output (height, width): 70 % at 768p and above,
+    66 % below (no size: 70 %, the config's value)."""
+    return VIDEO_DROP if size is None or min(map(int, size)) >= 768 else VIDEO_DROP_LOW
 
 
 def _positive(value, name, high):
@@ -58,10 +66,11 @@ def _positive(value, name, high):
 
 
 def parse_codec(strategy, video_drop, video_motion, video_residual, picture_motion, picture_residual, vlm, vlm_scale,
-                video=True):
+                video=True, size=None):
     """The checked codec pruning setting of a request: dict(video_drop=pipeline argument, overrides=gaze_overrides,
     vlm=mode, vlm_scale=float, text=setting line). `video` False: the image page (its strategy is default or
-    threshold; the video arguments are not read)."""
+    threshold; the video arguments are not read). `size`: the output (height, width); it sets the default's drop
+    (`video_drop_default`)."""
     if strategy not in [v for _, v in (STRATEGIES if video else IMAGE_STRATEGIES)]:
         raise Refused(f"Codec pruning: one of {', '.join(v for _, v in STRATEGIES)} (got {strategy!r}).")
     if vlm not in [v for _, v in VLM_MODES]:
@@ -85,10 +94,10 @@ def parse_codec(strategy, video_drop, video_motion, video_residual, picture_moti
         out["video_drop"] = share = _positive(video_drop, "Drop share", 0.95)
         out["overrides"]["video"] = {"select": "exact"}
         text += [f"reference videos: priority drop of {share:.0%}", "reference pictures: threshold"]
-    else:  # default: everything from codec_gazer.yaml
+    else:  # default: everything from codec_gazer.yaml, the video drop by the output size (`video_drop_default`)
         if video:
-            out["video_drop"] = VIDEO_DROP
-            text.append(f"reference videos: default (priority drop of {VIDEO_DROP:.0%}, or the threshold decision "
+            out["video_drop"] = share = video_drop_default(size)
+            text.append(f"reference videos: default (priority drop of {share:.0%}, or the threshold decision "
                         "when it drops more)")
         text.append("reference pictures: threshold")
     out["overrides"] = out["overrides"] or None

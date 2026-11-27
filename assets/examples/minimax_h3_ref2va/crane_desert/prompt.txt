@@ -1,0 +1,20 @@
+subject_definitions:
+<Subject 1> is the man with short dark hair in a brown leather jacket over a dark shirt and blue jeans, standing on the straight desert highway of <Picture 1>: dark asphalt with white edge lines and a yellow centre line, dry scrub on both sides and a long range of bare mountains under a pale sky.
+<Video 1> is the camera reference: only its slow crane move, rising straight up and a little forward, is reproduced, not its content; the pine trees, the lawn and the fields of the video are not used.
+
+summary:
+[reference generation] <Subject 1> stands still in the middle of the empty desert highway while the camera cranes slowly up and a little forward as in <Video 1>, revealing the long straight road running to the mountains. A quiet desert wind.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - the man's face and short dark hair, the brown leather jacket, the dark shirt, the blue jeans and the desert highway with its mountains are retained.
+<Video 1> (camera reference): reference - only its slow crane move is reproduced, not its content.
+
+detailed_description:
+The target video is a 5.2-second single continuous shot of photorealistic live-action cinema shot on a large-format digital cinema camera, with natural film grain and real-world materials. There is no text, lettering, sign, logo or brand mark anywhere. Warm late-afternoon sun from the side, a pale clear sky, soft shadows on the asphalt and a light haze over the distant mountains.
+[Shot 1] A medium shot at eye level of <Subject 1> standing still on the yellow centre line in the middle of the frame. From the first frame to the last, the camera rises slowly and steadily straight up and a little forward as in <Video 1>, so that by the end it looks down on him from high above: he becomes a small figure standing on the yellow centre line, and the long straight highway, the dry scrub on both sides and the mountain range are revealed around him. He does not walk or move his feet; he only looks up toward the rising camera. The empty desert around him feels vast and quiet.
+
+overall_soundscape:
+A low, steady desert wind, the faint hiss of sand blowing over the asphalt and the distant hum of the heat. No speech.
+
+non_diegetic_music:
+N/A

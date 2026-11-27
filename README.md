@@ -27,7 +27,7 @@
 </p>
 
 Sequence-wise generators (MiniMax-H3 Ref2VA, MiniMax-H3-Image, Qwen-Image 2.1, FLUX 3 Image Klein) append every
-reference picture or video to the input token sequence, so the token cost grows sharply as more references are added.
+reference to the sequence, where computation cost grows dramatically.
 We propose **CodecOPSD** to prune the redundant condition tokens with a video codec, and we train a small LoRA on the
 kept tokens via on-policy self-distillation.
 
@@ -148,7 +148,9 @@ pip install -e ".[app]"                 # PyTorch 2.8, diffusers 0.43, transform
 
 ## <a name="quick_start"></a> Quick Start ⚡
 
-Every demo prints a public link when it starts: open it and click an example. The first launch downloads the models.
+We also built a demo optimized for Hugging Face Spaces:
+[CodecOPSD-H3-Ref2VA](https://huggingface.co/spaces/HikariDawn/CodecOPSD-H3-Ref2VA) generates a 5-second 480p video
+from multiple reference pictures and videos in about 30 seconds end to end.
 
 **Video:** MiniMax-H3 $\color{#4493F8}{\textsf{Ref2VA}}$ (reference-to-video generation) with
 [Pika H3 Flex](https://huggingface.co/Pika-Labs/Pika-H3-Flex), 6 steps
@@ -168,6 +170,8 @@ python app.py ref2image
 ```bash
 python app.py ref2va_extreme
 ```
+
+Every demo prints a public link when it starts: open it and click an example. The first launch downloads the models.
 
 What the extreme app changes from the standard one ([docs/consumer_gpus.md](docs/consumer_gpus.md)):
 

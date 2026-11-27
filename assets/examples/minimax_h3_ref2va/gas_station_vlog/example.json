@@ -1,0 +1,32 @@
+{
+ "label": "Gas-station vlog remix: 3 pictures + 1 video",
+ "order": 27.7,
+ "source": "source video from the MiniMax-H3 cookbook (case 3.3.4.2, likely generated with Seedance 2.0); pictures generated with MiniMax-H3-Image",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/gas_station_vlog_1.png",
+  "--reference",
+  "../../refs/gas_station_vlog_2.png",
+  "--reference",
+  "../../refs/gas_station_vlog_3.png",
+  "--reference",
+  "../../refs/gas_station_vlog_4.mp4",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "362",
+  "--seed",
+  "0",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--video-drop",
+  "0.66"
+ ]
+}

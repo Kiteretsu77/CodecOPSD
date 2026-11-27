@@ -16,9 +16,8 @@ INTRO = """
 <h1 class="hdr-title">On-Policy Codec Distillation for Efficient All-in-One Video Generation</h1>
 """
 # two lines on the page (split at "\n")
-SUMMARY = ("We propose codec pruning, based on our modified video codec, to drop redundant condition tokens,\n"
-           "and develop on-policy self-distillation (OPSD) to adapt the model to this pruning pattern for much faster "
-           "generation.")
+SUMMARY = ("Our CodecOPSD prunes about 70% of the condition tokens at similar quality, for over 2x faster denoising.\n"
+           "More aggressive settings run even faster.")
 
 # System fonts: the page loads nothing from outside the demo (the default theme fetches Google Fonts).
 THEME = gr.themes.Soft(primary_hue="blue", font=["ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto",
@@ -117,6 +116,20 @@ a.hdr-author {color: #1d4ed8; text-decoration: none} a.hdr-author:hover {text-de
 .examples .caption-label, .ref-input .caption-label {white-space: normal !important; overflow: visible !important;
   text-overflow: clip !important; max-width: calc(100% - 8px) !important; line-height: 1.3 !important}
 .ref-input .caption-label {font-size: 12px !important}
+/* the references: the label in a band of its own above the tiles (clear of the upload / clear icons), every reference
+   whole (pictures and videos fitted, not cropped) with its caption under it, the columns and the row height from the
+   script in HEAD (as large as the panel allows) */
+.ref-input [data-testid=block-label] {max-width: calc(100% - 96px)}
+.ref-input .grid-wrap {padding-top: var(--ref-top, 56px) !important; overflow-y: auto !important}
+.ref-input .grid-container {padding-top: 0 !important; grid-template-columns: repeat(var(--ref-cols, 3), minmax(0, 1fr)) !important;
+  grid-template-rows: none !important; grid-auto-rows: var(--ref-row, 200px) !important}
+.ref-input .grid-container .gallery-item {min-width: 0; min-height: 0}
+.ref-input .grid-container .thumbnail-item {aspect-ratio: auto !important; height: 100% !important; display: flex; flex-direction: column}
+.ref-input .grid-container .thumbnail-item > img, .ref-input .grid-container .thumbnail-item video {flex: 1 1 0;
+  min-height: 0; width: 100% !important; height: auto !important; object-fit: contain !important}
+.ref-input .grid-container .caption-label {position: static !important; max-width: none !important; flex: none;
+  border: 0 !important; background: none !important; padding: 2px 4px 3px 24px !important; text-align: center}
+.ref-input .preview ~ .grid-wrap {visibility: hidden}  /* Gradio's preview of a reference only blurs the tiles behind it */
 .examples .caption-label {font-size: 11px !important; padding: 1px 5px !important; opacity: 0.92}
 /* every example thumbnail numbered in its top-left corner, in page order (1, 2, ...), to refer to an example by number */
 .examples .grid-container {counter-reset: example}
@@ -484,6 +497,12 @@ HEAD = """
     prepped.add(v);
     v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true; v.controls = false;
     v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.removeAttribute('controls');
+    // Gradio's video sets `loop` (false in a gallery), `muted` (off) and `controls` again whenever the gallery's value
+    // is updated (the refresh at page load): the tile stopped after one pass, or was paused when unmuted. They stay.
+    for (const k of ['loop', 'muted', 'controls']) {
+      const keep = v[k];
+      Object.defineProperty(v, k, {configurable: true, get: () => keep, set: () => {}});
+    }
     if (onScreen) onScreen.observe(v); else v.play().catch(() => {});
   });
   let queued = false;
@@ -515,6 +534,49 @@ HEAD = """
   document.addEventListener('loadedmetadata', loaded, true);  // a video tile's size is known
   window.addEventListener('resize', schedule);
   schedule();
+})();
+(() => {
+  // The references gallery (CSS ".ref-input"): the tiles start under the label, and the number of columns is the one
+  // that shows the references largest in the panel (each fitted whole at its own aspect ratio, its caption under it):
+  // one alone fills the panel, two stand side by side or one above the other, and so on; past about 12 they scroll.
+  const CAPTION = 22, MIN_ROW = 90;
+  const ratio = m => { const w = m && (m.naturalWidth || m.videoWidth), h = m && (m.naturalHeight || m.videoHeight); return w && h ? w / h : 16 / 9; };
+  const layout = panel => {
+    const box = panel.querySelector('.gallery-container'), wrap = panel.querySelector('.grid-wrap'),
+      grid = panel.querySelector('.grid-container'), label = panel.querySelector('[data-testid=block-label]');
+    if (!box || !wrap || !grid) return;
+    const top = label ? label.offsetTop + label.offsetHeight + 6 : 8;
+    const media = [...grid.querySelectorAll('.thumbnail-item')].map(t => t.querySelector('img, video'));
+    const gap = parseFloat(getComputedStyle(grid).columnGap) || 8, W = grid.clientWidth, H = wrap.clientHeight - top - 8;
+    let best = {cols: 3, row: Math.max(MIN_ROW, (W - 2 * gap) / 3 * 0.75), area: -1};  // too many: 3 columns, scrolled
+    for (let c = 1; c <= media.length; c++) {
+      const rows = Math.ceil(media.length / c), w = (W - (c - 1) * gap) / c, row = (H - (rows - 1) * gap) / rows;
+      if (row < MIN_ROW) continue;
+      const h = row - CAPTION, area = media.reduce((s, m) => s + Math.min(w, h * ratio(m)) * Math.min(h, w / ratio(m)), 0);
+      if (area > best.area) best = {cols: c, row, area};
+    }
+    const vars = {'--ref-top': `${top}px`, '--ref-cols': `${best.cols}`, '--ref-row': `${Math.floor(best.row)}px`};
+    for (const [k, v] of Object.entries(vars)) if (box.style.getPropertyValue(k) !== v) box.style.setProperty(k, v);
+  };
+  let queued = false;
+  const schedule = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => { queued = false; document.querySelectorAll('.ref-input').forEach(layout); });
+  };
+  // each gallery watched on its own (references added, removed or replaced); the page only for a gallery that appears
+  const watched = new WeakSet();
+  new MutationObserver(records => {
+    for (const r of records) for (const n of r.addedNodes) {
+      const panel = n.nodeType === 1 && (n.closest('.ref-input') || n.querySelector('.ref-input'));
+      if (panel && !watched.has(panel)) { watched.add(panel); new MutationObserver(schedule).observe(panel, {childList: true, subtree: true}); }
+      if (panel) return schedule();
+    }
+  }).observe(document.body, {childList: true, subtree: true});
+  const loaded = e => { if (e.target.closest && e.target.closest('.ref-input')) schedule(); };
+  document.addEventListener('load', loaded, true);
+  document.addEventListener('loadedmetadata', loaded, true);  // a video's aspect ratio is known
+  window.addEventListener('resize', schedule);
 })();
 </script>
 <style>

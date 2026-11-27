@@ -1,0 +1,29 @@
+{
+ "label": "Crane up on a desert road: 1 picture + 1 video",
+ "order": 0.5,
+ "source": "picture generated, video Pexels 19440551",
+ "args": [
+  "--prompt-file",
+  "prompt.txt",
+  "--reference",
+  "../../refs/dolly_zoom_desert_1.jpg",
+  "--reference",
+  "../../refs/crane_barn_2.mp4",
+  "--height",
+  "480",
+  "--width",
+  "832",
+  "--frames",
+  "124",
+  "--seed",
+  "42",
+  "--picture-thresholds",
+  "4.0",
+  "1.5",
+  "--text-encoder",
+  "fp8-storage",
+  "--video-drop",
+  "0.66"
+ ],
+ "demo": false
+}
